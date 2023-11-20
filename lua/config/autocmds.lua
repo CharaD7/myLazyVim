@@ -41,3 +41,57 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
     vim.cmd([[ :wa! ]])
   end,
 })
+
+-- Open in last edit point
+create({ 'BufReadPost' }, {
+  callback = function()
+    vim.cmd [[ if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif ]]
+  end
+})
+
+-- Border color for all floating windows
+create({ 'VimEnter' }, {
+  callback = function()
+    vim.cmd [[ highlight FloatBorder guifg=#F28FAD ]]
+    vim.cmd [[ highlight CursorLineNr gui=bold guifg=#F28FAD ]]
+    vim.cmd [[ highlight CursorLine guibg=#002b36 ]]
+    vim.cmd [[ highlight LineNr guifg=#2aa198 ]]
+  end
+})
+
+-- Italic/Bold/Underline/underdashed font support for various neovim highlights
+create({
+  'VimEnter',
+  'BufEnter',
+  'WinEnter',
+  'BufWinEnter'
+}, {
+  callback = function()
+    -- All Keywords
+    vim.cmd [[ hi Keyword gui=underdotted cterm=underdotted ]]
+    -- All Comments
+    vim.cmd [[ hi Comment gui=italic cterm=italic ]]
+    -- All Functions
+    vim.cmd [[ hi Function gui=bold cterm=bold ]]
+    -- All Constants
+    vim.cmd [[ hi Constant gui=underline cterm=underline ]]
+    -- All Exceptions
+    vim.cmd [[ hi Exception gui=italic cterm=italic ]]
+    -- All Types
+    vim.cmd [[ hi Type gui=italic cterm=italic ]]
+    -- All Labels
+    vim.cmd [[ hi Label gui=italic cterm=italic ]]
+    -- All Includes
+    vim.cmd [[ hi Include gui=underdashed cterm=underdashed ]]
+    -- All StorageClasses
+    vim.cmd [[ hi StorageClass gui=underdashed cterm=underdashed ]]
+    -- All Structures
+    vim.cmd [[ hi Structure gui=italic cterm=italic ]]
+    -- All Typedefs
+    vim.cmd [[ hi Typedef gui=underdouble cterm=underdouble ]]
+    -- All SpecialComments
+    vim.cmd [[ hi SpecialComment gui=italic cterm=italic ]]
+    -- All PreProcs
+    vim.cmd [[ hi PreProc gui=italic cterm=italic ]]
+  end
+})
