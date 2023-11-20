@@ -16,8 +16,14 @@ keymap.set("n", "<C-m>", "<c-i>", opts)
 
 -- New tab
 keymap.set("n", "te", ":tabedit", opts)
-keymap.set("n", "<tab>", ":tabnext<cr>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<cr>", opts)
+
+-- Cycle buffers
+keymap.set("n", "<tab>", ":BufferLineCycleNext<cr>", opts)
+keymap.set("n", "<s-tab>", ":BufferLineCyclePrev<cr>", opts)
+
+-- Close bulk buffers
+keymap.set("n", "L", ":BufferLineCloseRight<cr>", opts)
+keymap.set("n", "H", ":BufferLineCloseLeft<cr>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<cr>", opts)
