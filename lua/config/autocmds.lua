@@ -64,6 +64,19 @@ create({
   end
 })
 
+-- Set popup scrollbar color and vertical split color
+create({
+  'VimEnter',
+  'BufEnter',
+  'WinEnter',
+  'BufWinEnter'
+}, {
+  callback = function()
+    vim.cmd [[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]]
+    vim.cmd [[ highlight VertSplit guifg=#61AFEF ]]
+  end
+})
+
 -- Italic/Bold/Underline/underdashed font support for various neovim highlights
 create({
   'VimEnter',
