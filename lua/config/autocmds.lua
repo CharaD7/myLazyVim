@@ -50,7 +50,7 @@ create({ 'BufReadPost' }, {
 })
 
 -- Border color for all floating windows
-create({ 
+create({
   'VimEnter',
   'BufEnter',
   'WinEnter',
