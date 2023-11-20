@@ -15,7 +15,7 @@ keymap.set("n", "<C-a>", "gg<s-v>G")
 keymap.set("n", "<C-m>", "<c-i>", opts)
 
 -- New tab
-keymap.set("n", "te", "tabedit", opts)
+keymap.set("n", "te", ":tabedit", opts)
 keymap.set("n", "<tab>", ":tabnext<cr>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<cr>", opts)
 
@@ -36,10 +36,10 @@ keymap.set("n", "<c-up", ":resize -2<cr>", opts)
 keymap.set("n", "<c-down", ":resize +2<cr>", opts)
 
 -- Split focus
-keymap.set("n", "<leader>h", ":FocusSplitLeft<cr>", opts)
-keymap.set("n", "<leader>l", ":FocusSplitRight<cr>", opts)
-keymap.set("n", "<leader>k", ":FocusSplitUp<cr>", opts)
-keymap.set("n", "<leader>j", ":FocusSplitDown<cr>", opts)
+-- keymap.set("n", "<leader>h", ":FocusSplitLeft<cr>", opts)
+-- keymap.set("n", "<leader>l", ":FocusSplitRight<cr>", opts)
+-- keymap.set("n", "<leader>k", ":FocusSplitUp<cr>", opts)
+-- keymap.set("n", "<leader>j", ":FocusSplitDown<cr>", opts)
 
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
