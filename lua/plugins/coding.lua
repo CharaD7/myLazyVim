@@ -49,4 +49,11 @@ return {
       }
     end
   },
+
+  -- git conflict resolution
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    config = true,
+  }
 }

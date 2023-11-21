@@ -42,6 +42,15 @@ keymap.set("n", "<c-k>", ":<c-u>TmuxNavigateUp<cr>", opts)
 keymap.set("n", "<c-j>", ":<c-u>TmuxNavigateDown<cr>", opts)
 keymap.set("n", "<c-/>", ":<c-u>TmuxNavigatePrevious<cr>", opts)
 
+-- Git conflict resolution
+keymap.set("n", "<leader>co", ":GitConflictChooseOurs<cr>", opts)
+keymap.set("n", "<leader>ct", ":GitConflictChooseTheirs<cr>", opts)
+keymap.set("n", "<leader>cb", ":GitConflictChooseBoth<cr>", opts)
+keymap.set("n", "<leader>c0", ":GitConflictChooseNone<cr>", opts)
+keymap.set("n", "<leader>cp", ":GitConflictPrevConflict<cr>", opts)
+keymap.set("n", "<leader>cn", ":GitConflictNextConflict<cr>", opts)
+keymap.set("n", "<leader>cl", ":GitConflictListQf<cr>", opts)
+
 -- Resize window
 keymap.set("n", "<c-left>", ":vertical resize -2<cr>", opts)
 keymap.set("n", "<c-right>", ":vertical resize +2<cr>", opts)
