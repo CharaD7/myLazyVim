@@ -10,5 +10,6 @@ return {
     })
 
     opts.presets.lsp_doc_border = true
+    opts.presets.inc_rename = false
   end
 }
