@@ -62,4 +62,14 @@ return {
     "nvim-focus/focus.nvim",
     version = "*",
   },
+
+  -- Visual multi
+  {
+    "mg979/vim-visual-multi"
+  },
+
+  -- Vim TMUX Navigator
+  {
+    "christoomey/vim-tmux-navigator",
+  },
 }
