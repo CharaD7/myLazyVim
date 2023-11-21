@@ -7,6 +7,9 @@ local cmd = vim.cmd
 local options = {
   guifont = "Fira Code iScript:h10",
   list = true,
+  updatetime = 100,
+  timeoutlen = 500,
+  ttimeoutlen = 11,
 }
 
 for key, value in pairs(options) do
