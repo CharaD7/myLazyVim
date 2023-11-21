@@ -72,4 +72,9 @@ return {
   {
     "christoomey/vim-tmux-navigator",
   },
+
+  -- Vim Comment
+  {
+    "numToStr/Comment.nvim"
+  },
 }
