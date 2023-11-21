@@ -28,6 +28,26 @@ create({ "BufWritePre" }, {
   end,
 })
 
+-- Configuration for vim diagnostics
+create({ 'DiagnosticChanged' }, {
+  callback = function()
+    local icons = require "chara.icons"
+    local sign = function(opts)
+      vim.fn.sign_define(opts.name, {
+        texthl = opts.name,
+        text = opts.text,
+        numhl = ''
+      })
+    end
+
+    sign({ name = 'DiagnosticSign', text = icons.ui.Gear })
+    sign({ name = 'DiagnosticSignError', text = icons.diagnostics.Error })
+    sign({ name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning })
+    sign({ name = 'DiagnosticSignInfo', text = icons.diagnostics.Information })
+    sign({ name = 'DiagnosticSignHint', text = icons.diagnostics.Hint })
+  end
+})
+
 -- Show diagnostic in floating window on hover
 create({ "CursorHold", "CursorHoldI" }, {
   callback = function()
