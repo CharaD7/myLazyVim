@@ -10,6 +10,9 @@ local options = {
   updatetime = 100,
   timeoutlen = 500,
   ttimeoutlen = 11,
+  wildoptions = "pum",
+  pumblend = 15,
+  winblend = 15,
 }
 
 for key, value in pairs(options) do
