@@ -42,7 +42,7 @@ return {
   {
     "ur4ltz/surround.nvim",
     config = function ()
-      local surround = require("suround")
+      local surround = require("surround")
 
       surround.setup {
         mapping_style = "surround",
