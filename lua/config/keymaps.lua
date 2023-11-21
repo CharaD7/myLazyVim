@@ -63,23 +63,6 @@ keymap.set("n", "<leader>l", ":FocusSplitRight<cr>", opts)
 keymap.set("n", "<leader>k", ":FocusSplitUp<cr>", opts)
 keymap.set("n", "<leader>j", ":FocusSplitDown<cr>", opts)
 
--- LspSaga
-keymap.set("n", "[f", ":Lspsaga lsp_finder<cr>", opts)
-keymap.set("n", "[a", ":Lspsaga code_action<cr>", opts)
-keymap.set("n", "[g", ":Lspsaga open_floaterm lazygit<cr>", opts)
-keymap.set("n", "[o", ":Lspsaga hover_doc<cr>", opts)
-keymap.set("n", "[s", ":Lspsaga signature_help<cr>", opts)
-keymap.set("n", "[t", ":Lspsaga outline<cr>", opts)
-keymap.set("n", "[n", ":Lspsaga rename<cr>", opts)
-keymap.set("n", "[N", ":Lspsaga rename ++project<cr>", opts)
-keymap.set("n", "gd", ":Lspsaga preview_definition<cr>", opts)
-keymap.set("n", "<A-d>", ":Lspsaga term_toggle<cr>", opts)
-keymap.set("n", "<leader>cd", ":Lspsaga show_line_diagnostics<cr>", opts)
-keymap.set("n", "<leader>cd", ":Lspsaga show_cursor_diagnostics<cr>", opts)
-keymap.set("n", "[b", ":Lspsaga show_buf_diagnostics<cr>", opts)
-keymap.set("n", "[e", ":Lspsaga diagnostic_jump_next<cr>", opts)
-keymap.set("n", "]e", ":Lspsaga diagnostic_jump_prev<cr>", opts)
-
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
 
