@@ -1,8 +1,4 @@
 return {
-
   -- Vim Comment
-  {
-    "numToStr/Comment.nvim"
-  },
-
+  "numToStr/Comment.nvim"
 }
