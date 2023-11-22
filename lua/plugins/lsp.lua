@@ -5,7 +5,6 @@ return {
     vim.list_extend(opts.ensure_installed, {
       "stylua",
       "luacheck",
-      "spellcheck",
       "shfmt",
       "tailwindcss",
       "tsserver",
