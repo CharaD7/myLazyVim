@@ -1,9 +1,9 @@
 return {
-  {
-    "smjonas/inc-rename.nvim",
-    cmd = "IncRename",
-    config = true,
-  },
+  -- {
+  --   "smjonas/inc-rename.nvim",
+  --   cmd = "IncRename",
+  --   config = true,
+  -- },
 
   -- Go forward/backward with square brackets
 	{
@@ -23,7 +23,7 @@ return {
 
 	{
 		"simrat39/symbols-outline.nvim",
-		keys = { { "[t", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+		keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
 		cmd = "SymbolsOutline",
 		opts = {
 			position = "right",
@@ -37,18 +37,6 @@ return {
 			table.insert(opts.sources, { name = "emoji" })
 		end,
 	},
-
-  -- nvim surround
-  {
-    "ur4ltz/surround.nvim",
-    config = function ()
-      local surround = require("surround")
-
-      surround.setup {
-        mapping_style = "surround",
-      }
-    end
-  },
 
   -- git conflict resolution
   {
@@ -81,29 +69,26 @@ return {
   -- Lspsaga
   {
     "nvimdev/lspsaga.nvim",
-    config = function ()
-      require("lspsaga").setup({})
-    end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons"
     },
     keys = {
-      { "n", "[f", ":Lspsaga lsp_finder<cr>", "Finder" },
-      { "n", "[a", ":Lspsaga code_action<cr>", "Code Action" },
-      { "n", "[g", ":Lspsaga open_floaterm lazygit<cr>", "Lazygit" },
-      { "n", "[o", ":Lspsaga hover_doc<cr>", "Hover doc" },
-      { "n", "[s", ":Lspsaga signature_help<cr>", "Signature help" },
-      { "n", "[t", ":Lspsaga outline<cr>", "Outline" },
-      { "n", "[n", ":Lspsaga rename<cr>", "Rename" },
-      { "n", "[N", ":Lspsaga rename ++project<cr>", "Rename project" },
-      { "n", "gd", ":Lspsaga preview_definition<cr>", "Preview definition" },
-      { "n", "<A-d>", ":Lspsaga term_toggle<cr>", "Toggle term" },
-      { "n", "<leader>cd", ":Lspsaga show_line_diagnostics<cr>", "Show line diagnostics" },
-      { "n", "<leader>cd", ":Lspsaga show_cursor_diagnostics<cr>", "Show cursor diagnostics" },
-      { "n", "[b", ":Lspsaga show_buf_diagnostics<cr>", "Show buffer diagnostics" },
-      { "n", "[e", ":Lspsaga diagnostic_jump_next<cr>", "Diagnostic jump next" },
-      { "n", "]e", ":Lspsaga diagnostic_jump_prev<cr>", "Diagnostic jump previous" },
+      { "n", "[f", ":Lspsaga lsp_finder<cr>", desc = "Finder" },
+      { "n", "[a", ":Lspsaga code_action<cr>", desc = "Code Action" },
+      { "n", "[g", ":Lspsaga open_floaterm lazygit<cr>", desc = "Lazygit" },
+      { "n", "[o", ":Lspsaga hover_doc<cr>", desc = "Hover doc" },
+      { "n", "[s", ":Lspsaga signature_help<cr>", desc = "Signature help" },
+      { "n", "[t", ":Lspsaga outline<cr>", desc = "Outline" },
+      { "n", "[n", ":Lspsaga rename<cr>", desc = "Rename" },
+      { "n", "[N", ":Lspsaga rename ++project<cr>", desc = "Rename project" },
+      { "n", "gd", ":Lspsaga preview_definition<cr>", desc = "Preview definition" },
+      { "n", "<A-d>", ":Lspsaga term_toggle<cr>", desc = "Toggle term" },
+      { "n", "<leader>cd", ":Lspsaga show_line_diagnostics<cr>", desc = "Show line diagnostics" },
+      { "n", "<leader>cd", ":Lspsaga show_cursor_diagnostics<cr>", desc = "Show cursor diagnostics" },
+      { "n", "[b", ":Lspsaga show_buf_diagnostics<cr>", desc = "Show buffer diagnostics" },
+      { "n", "[e", ":Lspsaga diagnostic_jump_next<cr>", desc = "Diagnostic jump next" },
+      { "n", "]e", ":Lspsaga diagnostic_jump_prev<cr>", desc = "Diagnostic jump previous" },
     },
   },
 }
