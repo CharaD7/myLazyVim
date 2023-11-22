@@ -38,11 +38,6 @@ return {
 		end,
 	},
 
-  -- Vim Comment
-  {
-    "numToStr/Comment.nvim"
-  },
-
   -- Lspsaga
   {
     "nvimdev/lspsaga.nvim",
