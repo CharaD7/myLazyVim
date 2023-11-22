@@ -1,7 +1,9 @@
+local surround = require("surround")
+
 return {
   -- nvim surround
   "ur4ltz/surround.nvim",
-  opts = {
+  surround.setup({
     context_offset = 101,
     load_autogroups = false,
     mappings_style = "sandwich",
@@ -14,5 +16,5 @@ return {
       linear = { q = { "'", "'" }, t = { "`", "`" }, d = { '"', '"' } },
     },
     prefix = "s",
-  }
+  }),
 }
