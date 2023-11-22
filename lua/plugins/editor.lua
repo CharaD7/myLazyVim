@@ -16,17 +16,17 @@ return {
 
   -- Git
   {
-		"dinhhuy258/git.nvim",
-		event = "BufReadPre",
-		opts = {
-			keymaps = {
-				-- Open blame window
-				blame = "<Leader>gb",
-				-- Open file/folder in git repository
-				browse = "<Leader>go",
-			},
-		},
-	},
+    "dinhhuy258/git.nvim",
+    event = "BufReadPre",
+    opts = {
+      keymaps = {
+        -- Open blame window
+        blame = "<Leader>gb",
+        -- Open file/folder in git repository
+        browse = "<Leader>go",
+      },
+    },
+  },
 
   -- Telescope
   "telescope.nvim",
@@ -38,7 +38,7 @@ return {
   keys = {
     {
       "<leader>fP",
-      function ()
+      function()
         require("telescope.builtin").find_files({
           cwd = require("lazy.core.config").options.root,
         })
@@ -47,59 +47,59 @@ return {
     },
     {
       ";f",
-      function ()
+      function()
         local builtin = require("telescope.builtin")
         builtin.find_files({
           no_ignore = false,
           hidden = true,
         })
-      end
+      end,
     },
     {
       ";r",
-      function ()
+      function()
         local builtin = require("telescope.builtin")
         builtin.live_grep()
-      end
+      end,
     },
     {
       ";b",
-      function ()
+      function()
         local builtin = require("telescope.builtin")
         builtin.buffers()
-      end
+      end,
     },
     {
       ";ht",
-      function ()
+      function()
         local builtin = require("telescope.builtin")
         builtin.help_tags()
-      end
+      end,
     },
     {
       ";;",
-      function ()
+      function()
         local builtin = require("telescope.builtin")
         builtin.resume()
-      end
+      end,
     },
     {
       ";e",
-      function ()
+      function()
         local builtin = require("telescope.builtin")
         builtin.diagnostics()
-      end
+      end,
     },
     {
       ";s",
-      function ()
+      function()
         local builtin = require("telescope.builtin")
         builtin.treesitter()
-      end
+      end,
     },
     {
       "sf",
-      function ()
+      function()
         local telescope = require("telescope")
         local function telescope_buffer_dir()
           return vim.fn.expand("%:p:h")
@@ -118,7 +118,7 @@ return {
       end,
     },
   },
-  config = function (_, opts)
+  config = function(_, opts)
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local fb_actions = require("telescope").extensions.file_browser.actions
@@ -140,8 +140,8 @@ return {
         initial_mode = "normal",
         layout_config = {
           preview_cutoff = 9999,
-        }
-      }
+        },
+      },
     }
 
     opts.extensions = {
@@ -177,4 +177,3 @@ return {
     require("telescope").load_extension("file_browser")
   end,
 }
-
