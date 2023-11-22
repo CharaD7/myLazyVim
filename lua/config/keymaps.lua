@@ -58,10 +58,10 @@ keymap.set("n", "<c-up", ":resize -2<cr>", opts)
 keymap.set("n", "<c-down", ":resize +2<cr>", opts)
 
 -- Split focus
-keymap.set("n", ";H", ":FocusSplitLeft<cr>", opts)
-keymap.set("n", ";L", ":FocusSplitRight<cr>", opts)
-keymap.set("n", ";K", ":FocusSplitUp<cr>", opts)
-keymap.set("n", ";J", ":FocusSplitDown<cr>", opts)
+-- keymap.set("n", ";H", ":FocusSplitLeft<cr>", opts)
+-- keymap.set("n", ";L", ":FocusSplitRight<cr>", opts)
+-- keymap.set("n", ";K", ":FocusSplitUp<cr>", opts)
+-- keymap.set("n", ";J", ":FocusSplitDown<cr>", opts)
 
 -- Lspsaga
 keymap.set("n", ";f", ":Lspsaga lsp_finder<cr>", opts )
