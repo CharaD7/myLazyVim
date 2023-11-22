@@ -38,11 +38,6 @@ return {
 		end,
 	},
 
-  -- Vim TMUX Navigator
-  {
-    "christoomey/vim-tmux-navigator",
-  },
-
   -- Vim Comment
   {
     "numToStr/Comment.nvim"
