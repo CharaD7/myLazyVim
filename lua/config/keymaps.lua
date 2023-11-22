@@ -58,10 +58,27 @@ keymap.set("n", "<c-up", ":resize -2<cr>", opts)
 keymap.set("n", "<c-down", ":resize +2<cr>", opts)
 
 -- Split focus
-keymap.set("n", "<leader>h", ":FocusSplitLeft<cr>", opts)
-keymap.set("n", "<leader>l", ":FocusSplitRight<cr>", opts)
-keymap.set("n", "<leader>k", ":FocusSplitUp<cr>", opts)
-keymap.set("n", "<leader>j", ":FocusSplitDown<cr>", opts)
+keymap.set("n", ";H", ":FocusSplitLeft<cr>", opts)
+keymap.set("n", ";L", ":FocusSplitRight<cr>", opts)
+keymap.set("n", ";K", ":FocusSplitUp<cr>", opts)
+keymap.set("n", ";J", ":FocusSplitDown<cr>", opts)
+
+-- Lspsaga
+keymap.set("n", ";f", ":Lspsaga lsp_finder<cr>", opts )
+keymap.set("n", ";a", ":Lspsaga code_action<cr>", opts)
+keymap.set("n", ";g", ":Lspsaga open_floaterm lazygit<cr>", opts)
+keymap.set("n", ";o", ":Lspsaga hover_doc<cr>", opts)
+keymap.set("n", ";s", ":Lspsaga signature_help<cr>", opts)
+keymap.set("n", ";t", ":Lspsaga outline<cr>", opts)
+keymap.set("n", ";n", ":Lspsaga rename<cr>", opts)
+keymap.set("n", ";N", ":Lspsaga rename ++project<cr>", opts)
+keymap.set("n", "gd", ":Lspsaga preview_definition<cr>", opts)
+keymap.set("n", "<A-d>", ":Lspsaga term_toggle<cr>", opts)
+keymap.set("n", "<leader>cd", ":Lspsaga show_line_diagnostics<cr>", opts)
+keymap.set("n", "<leader>cd", ":Lspsaga show_cursor_diagnostics<cr>", opts)
+keymap.set("n", ";b", ":Lspsaga show_buf_diagnostics<cr>", opts)
+keymap.set("n", ";e", ":Lspsaga diagnostic_jump_next<cr>", opts)
+keymap.set("n", ";E", ":Lspsaga diagnostic_jump_prev<cr>", opts)
 
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
