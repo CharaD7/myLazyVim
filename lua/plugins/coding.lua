@@ -38,12 +38,6 @@ return {
 		end,
 	},
 
-  -- Focus nvim
-  {
-    "nvim-focus/focus.nvim",
-    version = "*",
-  },
-
   -- Visual multi
   {
     "mg979/vim-visual-multi"
