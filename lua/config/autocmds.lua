@@ -51,7 +51,8 @@ create({ 'DiagnosticChanged' }, {
 -- Show diagnostic in floating window on hover
 create({ "CursorHold", "CursorHoldI" }, {
   callback = function()
-    vim.cmd([[ lua vim.diagnostic.open_float(nil, { focus=false }) ]])
+    vim.cmd([[ :Lspsaga hover_doc ]])
+    -- vim.cmd([[ lua vim.diagnostic.open_float(nil, { focus=false }) ]])
   end,
 })
 
