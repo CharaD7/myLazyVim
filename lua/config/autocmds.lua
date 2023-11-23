@@ -49,12 +49,12 @@ create({ 'DiagnosticChanged' }, {
 })
 
 -- Show diagnostic in floating window on hover
-create({ "CursorHold", "CursorHoldI" }, {
-  callback = function()
-    vim.cmd([[ :Lspsaga hover_doc ]])
-    -- vim.cmd([[ lua vim.diagnostic.open_float(nil, { focus=false }) ]])
-  end,
-})
+-- create({ "CursorHold", "CursorHoldI" }, {
+--   callback = function()
+--     vim.cmd([[ :Lspsaga hover_doc ]])
+--     -- vim.cmd([[ lua vim.diagnostic.open_float(nil, { focus=false }) ]])
+--   end,
+-- })
 
 -- Enable autosave at every edit and on focus lost
 create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
