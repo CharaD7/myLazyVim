@@ -1,10 +1,4 @@
 return {
-  -- {
-  --   "smjonas/inc-rename.nvim",
-  --   cmd = "IncRename",
-  --   config = true,
-  -- },
-
   -- Go forward/backward with square brackets
 	{
 		"echasnovski/mini.bracketed",
@@ -26,9 +20,7 @@ return {
 		dependencies = { "hrsh7th/cmp-emoji" },
     opts = function(_, opts)
       local cmp = require("cmp")
-      opts.sources = {
-        { name = "emoji" }
-      }
+      table.insert(opts.sources, { name = "emoji" })
       opts.window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered()
