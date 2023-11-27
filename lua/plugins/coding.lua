@@ -21,21 +21,20 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"simrat39/symbols-outline.nvim",
-	-- 	keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-	-- 	cmd = "SymbolsOutline",
-	-- 	opts = {
-	-- 		position = "right",
-	-- 	},
-	-- },
-
 	{
 		"nvim-cmp",
 		dependencies = { "hrsh7th/cmp-emoji" },
-		opts = function(_, opts)
-			table.insert(opts.sources, { name = "emoji" })
-		end,
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      opts.sources = {
+        { name = "emoji" }
+      }
+      opts.window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered()
+      }
+      return opts
+    end,
 	},
 
 }
