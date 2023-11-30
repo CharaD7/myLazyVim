@@ -80,6 +80,12 @@ keymap.set("n", ";b", ":Lspsaga show_buf_diagnostics<cr>", opts)
 keymap.set("n", ";e", ":Lspsaga diagnostic_jump_next<cr>", opts)
 keymap.set("n", ";E", ":Lspsaga diagnostic_jump_prev<cr>", opts)
 
+--Toggleterm
+keymap.set("n", "<leader>tf", ":Toggleterm<cr>", opts)
+keymap.set("n", "<leader>th", ":Toggleterm direction=horizontal size=10<cr>", opts)
+keymap.set("n", "<leader>tt", ":Toggleterm direction=tab size=10<cr>", opts)
+keymap.set("n", "<leader>tv", ":Toggleterm direction=vertical size=10<cr>", opts)
+
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
 
