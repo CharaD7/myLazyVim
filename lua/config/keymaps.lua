@@ -57,16 +57,9 @@ keymap.set("n", "<c-right>", ":vertical resize +2<cr>", opts)
 keymap.set("n", "<c-up", ":resize -2<cr>", opts)
 keymap.set("n", "<c-down", ":resize +2<cr>", opts)
 
--- Split focus
--- keymap.set("n", ";H", ":FocusSplitLeft<cr>", opts)
--- keymap.set("n", ";L", ":FocusSplitRight<cr>", opts)
--- keymap.set("n", ";K", ":FocusSplitUp<cr>", opts)
--- keymap.set("n", ";J", ":FocusSplitDown<cr>", opts)
-
 -- Lspsaga
 keymap.set("n", ";f", ":Lspsaga lsp_finder<cr>", opts )
 keymap.set("n", ";a", ":Lspsaga code_action<cr>", opts)
--- keymap.set("n", ";g", ":Lspsaga open_floaterm lazygit<cr>", opts)
 keymap.set("n", ";o", ":Lspsaga hover_doc<cr>", opts)
 keymap.set("n", ";s", ":Lspsaga signature_help<cr>", opts)
 keymap.set("n", ";t", ":Lspsaga outline<cr>", opts)
@@ -85,6 +78,32 @@ keymap.set("n", "<leader>tf", ":ToggleTerm<cr>", opts)
 keymap.set("n", "<leader>th", ":ToggleTerm direction=horizontal size=25<cr>", opts)
 keymap.set("n", "<leader>tt", ":ToggleTerm direction=tab<cr>", opts)
 keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=25<cr>", opts)
+
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  direction = "float",
+  float_opts = {
+    border = "curved",
+  },
+  -- function to run on opening the terminal
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+  end,
+  -- function to run on closing the terminal
+  on_close = function(term)
+    vim.cmd("startinsert!")
+  end,
+})
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+-- Toggleterm lazygit
+keymap.set("n", "<leader>tg", ":lua _lazygit_toggle()<cr>", opts)
 
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
