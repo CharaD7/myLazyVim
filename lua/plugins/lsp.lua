@@ -8,6 +8,7 @@ return {
       "shfmt",
       "tailwindcss-language-server",
       "typescript-language-server",
+      "pylyzer",
       "css-lsp",
       "shellcheck",
       "vls",
