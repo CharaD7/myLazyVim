@@ -17,7 +17,33 @@ return {
       "williamboman/mason-lspconfig.nvim",
     },
     opts = {
-      servers = {},
+      servers = {
+        -- Html
+        html = {
+          filetpyes = {
+            "html",
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx"
+          }
+        },
+        -- Emmet
+        emmet_ls = {
+          init_options = {
+            html = {
+              options = {
+                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                ["bem.enabled"] = true,
+              },
+            },
+          },
+        },
+        -- CSS
+        cssls = {},
+      },
       setup = {},
       format = {
         timeout_ms = 2000,
@@ -67,8 +93,25 @@ return {
       end
     end,
   },
+  -- Color picker
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "uga-rosa/ccc.nvim",
+    opts = {},
+    cmd = {
+      "CccPick",
+      "CccConvert",
+      "CccHighlighterEnable",
+      "CccHighlighterDisable",
+      "CccHighlighterToggle",
+    },
+    keys = {
+      { "<leader>zp", "<cmd>CccPick<cr>", desc = "Pick" },
+      { "<leader>zc", "<cmd>CccConvert<cr>", desc = "Convert" },
+      { "<leader>zh", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Highlighter" },
+    },
+  },
+  {
+    "nvimtools/none-ls.nvim",
     event = "BufReadPre",
     dependencies = { "mason.nvim" },
     opts = function()
