@@ -13,6 +13,8 @@ local options = {
   wildoptions = "pum",
   pumblend = 15,
   winblend = 15,
+  sessionoptions = { "buffers", "curdir", "tabpages", "winsize" },
+  wildmode = "longest:full,full",
 }
 
 for key, value in pairs(options) do
@@ -28,6 +30,7 @@ vim.opt.fillchars:append('fold:•')
 -- More options for listchars.
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
+vim.opt.shortmess:append { W = true, I = true, c = true, C = true }
 
 -- Neovide Configuration
 vim.g.neovide_fullscreen = false
@@ -50,3 +53,5 @@ vim.g.neovide_cursor_vfx_particle_speed = 10.0
 vim.g.neovide_cursor_vfx_particle_phase = 1.5
 vim.g.neovide_cursor_vfx_particle_curl = 1.0
 vim.g.neovide_cursor_unfocused_outline_width = 0.125
+
+vim.g.markdown_recommended_style = 0
