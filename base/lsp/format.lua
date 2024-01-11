@@ -1,4 +1,4 @@
-ocal M = {}
+local M = {}
 
 M.autoformat = true
 
