@@ -175,7 +175,7 @@ augroup('close_with_q', {
     }, 'lua vim.bo[<abuf>].buflisted = false | lua vim.keymap.buf_set_keymap("n", "q", "<cmd>close<cr>", { noremap = true, silent = true })'},
 })
 
-augroup('auto_format_options', { 
+augroup('auto_format_options', {
   {
     "BufWinEnter", {},
       'lua vim.cmd "set formatoptions-=cro"'
