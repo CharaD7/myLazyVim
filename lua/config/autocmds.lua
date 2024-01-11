@@ -136,40 +136,48 @@ create({
 })
 
 -- windows to close
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup "close_with_q",
-  pattern = {
-    "OverseerForm",
-    "OverseerList",
-    "checkhealth",
-    "floggraph",
-    "fugitive",
-    "git",
-    "help",
-    "lspinfo",
-    "man",
-    "neotest-output",
-    "neotest-summary",
-    "qf",
-    "query",
-    "spectre_panel",
-    "startuptime",
-    "toggleterm",
-    "tsplayground",
-    "vim",
-    "neoai-input",
-    "neoai-output",
-    "notify",
-  },
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
-  end,
+-- Function to define autocmd groups
+local function augroup(name, autocmds)
+    vim.api.nvim_command('augroup ' .. name)
+    vim.api.nvim_command('autocmd!')
+
+    for _, autocmd in ipairs(autocmds) do
+        local cmd = table.concat(vim.tbl_flatten {'autocmd', autocmd}, ' ')
+        vim.api.nvim_command(cmd)
+    end
+
+    vim.api.nvim_command('augroup END')
+end
+-- Autocommands
+augroup('close_with_q', {
+    {'FileType', {
+        'OverseerForm',
+        'OverseerList',
+        'checkhealth',
+        'floggraph',
+        'fugitive',
+        'git',
+        'help',
+        'lspinfo',
+        'man',
+        'neotest-output',
+        'neotest-summary',
+        'qf',
+        'query',
+        'spectre_panel',
+        'startuptime',
+        'toggleterm',
+        'tsplayground',
+        'vim',
+        'neoai-input',
+        'neoai-output',
+        'notify',
+    }, 'lua vim.bo[<abuf>].buflisted = false | lua vim.keymap.buf_set_keymap("n", "q", "<cmd>close<cr>", { noremap = true, silent = true })'},
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  group = augroup "auto_format_options",
-  callback = function()
-    vim.cmd "set formatoptions-=cro"
-  end,
+augroup('auto_format_options', { 
+  {
+    "BufWinEnter", {},
+      'lua vim.cmd "set formatoptions-=cro"'
+  },
 })
