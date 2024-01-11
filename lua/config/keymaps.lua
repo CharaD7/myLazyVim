@@ -74,9 +74,8 @@ keymap.set("n", ";e", ":Lspsaga diagnostic_jump_next<cr>", opts)
 keymap.set("n", ";E", ":Lspsaga diagnostic_jump_prev<cr>", opts)
 
 --Toggleterm
-keymap.set("n", "<leader>tf", ":ToggleTerm<cr>", opts)
+keymap.set("n", "<leader>tt", ":ToggleTerm<cr>", opts)
 keymap.set("n", "<leader>th", ":ToggleTerm direction=horizontal size=25<cr>", opts)
-keymap.set("n", "<leader>tt", ":ToggleTerm direction=tab<cr>", opts)
 keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=25<cr>", opts)
 
 local Terminal = require('toggleterm.terminal').Terminal
