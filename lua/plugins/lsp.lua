@@ -7,7 +7,7 @@ return {
         "stylua",
         "luacheck",
         "shfmt",
-        "csharp-languague-server",
+        "csharp-language-server",
         "htmx-lsp",
         "tailwindcss-language-server",
         "typescript-language-server",
@@ -19,7 +19,7 @@ return {
         "clangd",
         "marksman",
         "gopls",
-        "prettierd",
+        "prettier",
       })
     end,
   },
@@ -54,23 +54,6 @@ return {
         },
         -- CSS
         cssls = {},
-        -- Prettier
-        prettierd = {
-          bin = "prettierd",
-          filetypes = {
-            "css",
-            "graphql",
-            "html",
-            "javascript",
-            "javascriptreact",
-            "json",
-            "less",
-            "markdown",
-            "scss",
-            "typescript",
-            "typescriptreact",
-            "yaml",
-          },
         },
       },
     },
