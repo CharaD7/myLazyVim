@@ -7,6 +7,7 @@ return {
         "stylua",
         "luacheck",
         "shfmt",
+        "eslint-lsp",
         "csharp-language-server",
         "htmx-lsp",
         "tailwindcss-language-server",
