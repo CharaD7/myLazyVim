@@ -119,7 +119,7 @@ return {
         version = "1.*",
       },
       {
-        "mxdev/nvim-dap-vscode-js",
+        "mxsdev/nvim-dap-vscode-js",
         config = function()
           require("dap-vscode-js").setup({
             -- Path to vscode-js-debug installation.
