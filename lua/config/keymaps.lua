@@ -73,6 +73,7 @@ keymap.set("n", "<leader>cd", ":Lspsaga show_cursor_diagnostics<cr>", opts)
 keymap.set("n", ";b", ":Lspsaga show_buf_diagnostics<cr>", opts)
 keymap.set("n", ";e", ":Lspsaga diagnostic_jump_next<cr>", opts)
 keymap.set("n", ";E", ":Lspsaga diagnostic_jump_prev<cr>", opts)
+keymap.set("n", ";w", ":Lspsaga show_workspace_diagnostics<cr>", opts)
 
 --Toggleterm
 keymap.set("n", "<leader>tf", ":ToggleTerm<cr>", opts)
