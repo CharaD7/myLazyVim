@@ -15,7 +15,7 @@ keymap.set("n", "<C-a>", "gg<s-v>G")
 keymap.set("n", "<C-m>", "<c-i>", opts)
 
 -- New tab
-keymap.set("n", "te", ":tabedit", opts)
+keymap.set("n", "<leaader>te", ":tabedit", opts)
 
 -- Cycle buffers
 keymap.set("n", "<tab>", ":BufferLineCycleNext<cr>", opts)
