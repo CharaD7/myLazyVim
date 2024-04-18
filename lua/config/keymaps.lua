@@ -105,7 +105,7 @@ function _lazygit_toggle()
 end
 
 -- Messages
-keymap.set("n", "mm", ":messages<cr>", opts)
+keymap.set("n", ";m", ":messages<cr>", opts)
 
 -- Toggleterm lazygit
 keymap.set("n", "<leader>tg", ":lua _lazygit_toggle()<cr>", opts)
