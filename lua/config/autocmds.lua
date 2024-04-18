@@ -91,7 +91,7 @@ create({
   callback = function()
     vim.cmd [[ highlight FloatBorder guifg=#F28FAD ]]
     vim.cmd [[ highlight CursorLineNr gui=bold guifg=#F28FAD ]]
-    vim.cmd [[ highlight CursorLine guibg=#002b36 ]]
+    -- vim.cmd [[ highlight CursorLine guibg=#002b36 ]]
     vim.cmd [[ highlight LineNr guifg=#2aa198 ]]
   end
 })
