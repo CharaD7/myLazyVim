@@ -10,8 +10,7 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = {
-      colorscheme = "gruvbox",
-      -- colorscheme = "zephyr",
+      colorscheme = "tokyonight",
     } },
     -- import any extras modules here
     { import = "lazyvim.plugins.extras.linting.eslint" },
