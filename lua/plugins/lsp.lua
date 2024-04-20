@@ -60,6 +60,9 @@ return {
         pyright = {
           enabled = lsp == "pyright",
         },
+        [lsp] = {
+          enabled = true,
+        },
         -- CSS
         cssls = {},
         -- eslint
