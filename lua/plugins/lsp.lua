@@ -56,6 +56,10 @@ return {
             },
           },
         },
+        -- PYTHON
+        pyright = {
+          enabled = lsp == "pyright",
+        },
         -- CSS
         cssls = {},
         -- eslint
