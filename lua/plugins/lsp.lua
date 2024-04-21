@@ -60,9 +60,6 @@ return {
         pyright = {
           enabled = lsp == "pyright",
         },
-        [lsp] = {
-          enabled = true,
-        },
         ruff_lsp = {
           keys = {
             {
