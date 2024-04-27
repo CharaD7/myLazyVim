@@ -10,7 +10,7 @@ return {
         "eslint-lsp",
         "csharp-language-server",
         "htmx-lsp",
-        "ninja",
+        -- "ninja",
         "python",
         "rst",
         "toml",
