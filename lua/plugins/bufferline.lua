@@ -50,7 +50,7 @@ return {
 				end
 
 				if info ~= 0 then
-					table.insert(result, { text = "  " .. info, guifg = "#7EA9A7" })
+					table.insert(result, { text = " " .. info, guifg = "#7EA9A7" })
 				end
 				return result
 			end,
