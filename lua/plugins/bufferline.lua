@@ -54,6 +54,7 @@ return {
 				end
 				return result
 			end,
-		},always_show_bufferline = true,
+		},
+    always_show_bufferline = true,
   },
 }
