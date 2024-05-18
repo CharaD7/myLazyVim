@@ -37,20 +37,22 @@ return {
 				local info = #vim.diagnostic.get(0, { severity = seve.INFO })
 				local hint = #vim.diagnostic.get(0, { severity = seve.HINT })
 
+        local icons = require "chara.icons"
+
 				if error ~= 0 then
-					table.insert(result, { text = "  " .. error, guifg = "#EC5241" })
+					table.insert(result, { text = " " .. icons.diagnostics.Error .. error, guifg = "#EC5241" })
 				end
 
 				if warning ~= 0 then
-					table.insert(result, { text = "  " .. warning, guifg = "#EFB839" })
+					table.insert(result, { text = " " .. icons.diagnostics.Warning .. warning, guifg = "#EFB839" })
 				end
 
 				if hint ~= 0 then
-					table.insert(result, { text = "  " .. hint, guifg = "#A3BA5E" })
+					table.insert(result, { text = " " .. icons.diagnostics.Hint .. hint, guifg = "#A3BA5E" })
 				end
 
 				if info ~= 0 then
-					table.insert(result, { text = " " .. info, guifg = "#7EA9A7" })
+					table.insert(result, { text = " " .. icons.diagnostics.Information .. info, guifg = "#7EA9A7" })
 				end
 				return result
 			end,
