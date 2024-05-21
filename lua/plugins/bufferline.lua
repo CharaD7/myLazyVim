@@ -26,6 +26,7 @@ return {
 		end,
     diagnostics = "nvim_lsp",
     color_icons = true,
+    sort_by = "relative_directory",
     show_tab_indicators = true,
     separator_style = "thin",
     custom_areas = {
