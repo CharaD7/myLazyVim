@@ -57,7 +57,6 @@ return {
 				return result
 			end,
 		},
-    -- TODO: Comment the line below
-    always_show_bufferline = true,
+    always_show_bufferline = false,
   },
 }
