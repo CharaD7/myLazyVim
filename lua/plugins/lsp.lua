@@ -11,7 +11,7 @@ return {
         "csharp-language-server",
         "htmx-lsp",
         -- "ninja",
-        "python",
+        "pyright",
         "rst",
         "toml",
         "tailwindcss-language-server",
