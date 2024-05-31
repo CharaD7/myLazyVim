@@ -12,7 +12,7 @@ return {
         "htmx-lsp",
         -- "ninja",
         "pyright",
-        "rst",
+        "rust",
         "toml",
         "tailwindcss-language-server",
         "typescript-language-server",
