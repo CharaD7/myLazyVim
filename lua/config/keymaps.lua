@@ -58,7 +58,7 @@ keymap.set("n", "<c-up", ":resize -2<cr>", opts)
 keymap.set("n", "<c-down", ":resize +2<cr>", opts)
 
 -- Lspsaga
-keymap.set("n", ";f", ":Lspsaga lsp_finder<cr>", opts )
+keymap.set("n", ";f", ":Lspsaga finder<cr>", opts )
 keymap.set("n", ";a", ":Lspsaga code_action<cr>", opts)
 keymap.set("n", ";o", ":Lspsaga hover_doc<cr>", opts)
 keymap.set("n", ";s", ":Lspsaga signature_help<cr>", opts)
