@@ -84,8 +84,6 @@ create({ 'BufReadPost' }, {
 -- Border color for all floating windows
 create({
   'VimEnter',
-  'WinEnter',
-  'BufWinEnter'
 }, {
   callback = function()
     vim.cmd [[ highlight FloatBorder guifg=#F28FAD ]]
