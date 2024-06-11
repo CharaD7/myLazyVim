@@ -84,7 +84,6 @@ create({ 'BufReadPost' }, {
 -- Border color for all floating windows
 create({
   'VimEnter',
-  'BufEnter',
   'WinEnter',
   'BufWinEnter'
 }, {
