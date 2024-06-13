@@ -35,9 +35,9 @@ vim.g.lazyvim_python_slp = "pyright"
 
 -- Neovide Configuration
 vim.g.neovide_fullscreen = false
-vim.g.neovide_floating_blur_amount_x = 4.0
+vim.g.neovide_floating_blur_amount_x = 4.0 -- works only on mac
 vim.g.floaterm_winblend = 15
-vim.g.neovide_floating_blur_amount_y = 4.0
+vim.g.neovide_floating_blur_amount_y = 4.0 -- works only on mac
 vim.g.neovide_remember_window_size = true
 vim.g.neovide_transparency = 1
 -- vim.g.neovide_transparency = 0.8
@@ -47,7 +47,7 @@ vim.g.neovide_padding_right = 10
 vim.g.neovide_padding_left = 10
 vim.g.neovide_cursor_animation_length = 0.13
 vim.g.neovide_cursor_trail_length = 0.8
-vim.g.neovide_cursor_vfx_mode = "railgun" -- Railgun particles behind cursor
+vim.g.neovide_cursor_vfx_mode = "torpedo" -- Torpedo particles behind cursor
 vim.g.neovide_cursor_vfx_opacity = 200.0
 vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
 vim.g.neovide_cursor_vfx_particle_density = 7.0
