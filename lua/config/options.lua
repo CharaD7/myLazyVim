@@ -6,6 +6,7 @@ local cmd = vim.cmd
 
 local options = {
   guifont = "Fira Code iScript:h10",
+  ve = "block", -- All virtual text editing modes in block
   list = true,
   updatetime = 100,
   timeoutlen = 500,
