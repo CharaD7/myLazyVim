@@ -8,6 +8,7 @@ local options = {
   guifont = "Fira Code iScript:h10",
   ve = "block", -- All virtual text editing modes in block
   list = true,
+  relativenumber = true,
   encoding = 'utf-8',
   fileencoding = 'utf-8',
   updatetime = 100,
