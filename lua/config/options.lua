@@ -32,7 +32,8 @@ vim.opt.fillchars:append('fold:•')
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 vim.opt.listchars:append("trail:◊")
-vim.opt.listchars:append("tab:▷▷")
+vim.opt.listchars:append("tab:➡️")
+
 
 -- LSP Server to use for Python.
 -- Set to "basedpyright" to use basedpyright instead of pyright.
