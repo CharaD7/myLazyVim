@@ -1,6 +1,6 @@
 return {
   {
-    "glepnir/zephyr-nvim",
+    "nvimdev/zephyr-nvim",
     lazy = true,
     priority = 1000,
   },
