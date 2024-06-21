@@ -8,6 +8,8 @@ local options = {
   guifont = "Fira Code iScript:h10",
   ve = "block", -- All virtual text editing modes in block
   list = true,
+  encoding = 'utf-8',
+  fileencoding = 'utf-8',
   updatetime = 100,
   timeoutlen = 500,
   ttimeoutlen = 11,
@@ -32,7 +34,7 @@ vim.opt.fillchars:append('fold:•')
 vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:↴")
 vim.opt.listchars:append("trail:◊")
-vim.opt.listchars:append("tab:➡️")
+vim.opt.listchars:append("tab:▷▷⋮")
 
 
 -- LSP Server to use for Python.
