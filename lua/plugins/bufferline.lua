@@ -10,8 +10,8 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   options = {
     numbers = function(opts)
-			return string.format("%s", opts.raise(opts.ordinal))
-			-- return string.format('%s.%s', opts.ordinal, opts.raise(opts.id))
+			-- return string.format("%s", opts.raise(opts.ordinal))
+			return string.format('%s.%s', opts.ordinal, opts.raise(opts.id))
 		end,
     indicator = {
       style = "icon",
@@ -28,7 +28,7 @@ return {
     color_icons = true,
     sort_by = "relative_directory",
     show_tab_indicators = true,
-    separator_style = "thin",
+    separator_style = "slant",
     custom_areas = {
 			right = function()
 				local result = {}
