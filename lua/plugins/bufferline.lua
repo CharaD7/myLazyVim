@@ -12,7 +12,7 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   bufferline.setup({
     options = {
-      -- style_preset = bufferline.style_preset.default, -- or bufferline.style_preset.minimal,
+      mode = "buffers",
       numbers = function(opts)
         return string.format("%s", opts.raise(opts.ordinal))
       end,
