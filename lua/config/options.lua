@@ -41,6 +41,7 @@ vim.opt.listchars:append("tab:▷▷⋮")
 -- LSP Server to use for Python.
 -- Set to "basedpyright" to use basedpyright instead of pyright.
 vim.g.lazyvim_python_slp = "pyright"
+vim.g.lazyvim_python_lsp = "pyright"
 
 -- Neovide Configuration
 vim.g.neovide_fullscreen = false
