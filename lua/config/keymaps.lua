@@ -23,8 +23,8 @@ keymap.set("n", "L", ":BufferLineCloseRight<cr>", opts)
 keymap.set("n", "H", ":BufferLineCloseLeft<cr>", opts)
 
 -- Move buffers forwards or backwards
-keymap.set("n", "<Left>", ":BufferlineMovePrev<cr>", opts)
-keymap.set("n", "<Right>", ":BufferlineMoveNext<cr>", opts)
+keymap.set("n", "<Left>", ":BufferLineMovePrev<cr>", opts)
+keymap.set("n", "<Right>", ":BufferLineMoveNext<cr>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<cr>", opts)
