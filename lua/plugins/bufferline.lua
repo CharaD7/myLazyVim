@@ -12,7 +12,7 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   bufferline.setup({
     options = {
-      mode = "buffers",
+      mode = "tabs",
       numbers = function(opts)
         return string.format("%s", opts.raise(opts.ordinal))
       end,
@@ -29,7 +29,7 @@ return {
       end,
       diagnostics = "nvim_lsp",
       color_icons = true,
-      sort_by = "relative_directory",
+      sort_by = "tabs",
       show_tab_indicators = true,
       separator_style = "slope",
       custom_areas = {
