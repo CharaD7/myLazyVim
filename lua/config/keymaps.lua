@@ -14,9 +14,6 @@ keymap.set("n", "<C-a>", "gg<s-v>G")
 -- Jumplist
 keymap.set("n", "<C-m>", "<c-i>", opts)
 
--- New tab
-keymap.set("n", "<leaader>te", ":tabedit", opts)
-
 -- Cycle buffers
 keymap.set("n", "<tab>", ":BufferLineCycleNext<cr>", opts)
 keymap.set("n", "<s-tab>", ":BufferLineCyclePrev<cr>", opts)
