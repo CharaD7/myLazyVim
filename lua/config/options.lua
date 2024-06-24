@@ -29,6 +29,9 @@ end
 cmd([[ let &t_Cs = "\e[4:3m]" ]])
 cmd([[ let &t_Ce = "\e[4:0m]" ]])
 
+-- Stop auto commenting new lines
+cmd([[ au BufEnter * set formatoptions+=/ ]])
+
 -- Pretty Fold
 vim.opt.fillchars:append('fold:•')
 -- More options for listchars.
@@ -40,7 +43,6 @@ vim.opt.listchars:append("tab:▷▷⋮")
 
 -- LSP Server to use for Python.
 -- Set to "basedpyright" to use basedpyright instead of pyright.
-vim.g.lazyvim_python_slp = "pyright"
 vim.g.lazyvim_python_lsp = "pyright"
 
 -- Neovide Configuration
