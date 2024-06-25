@@ -5,7 +5,6 @@ return {
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "stylua",
-        "luacheck",
         "shfmt",
         "eslint-lsp",
         "dart-debug-adapter",
@@ -14,7 +13,6 @@ return {
         "pyright",
         "rust-analyzer",
         "svelte-language-server",
-        "taplo",
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
