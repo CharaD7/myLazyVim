@@ -29,8 +29,9 @@ return {
         return s
       end,
       diagnostics = "nvim_lsp",
+      diagnostics_update_in_insert = true,
       color_icons = true,
-      sort_by = "tabs",
+      sort_by = "relative_directory",
       show_tab_indicators = true,
       separator_style = "slope",
       custom_areas = {
