@@ -31,7 +31,7 @@ return {
       diagnostics = "nvim_lsp",
       diagnostics_update_in_insert = true,
       color_icons = true,
-      sort_by = "tabs", -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
+      sort_by = "directory", -- 'insert_after_current' |'insert_at_end' | 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
       show_tab_indicators = true,
       separator_style = "slope",
       custom_areas = {
