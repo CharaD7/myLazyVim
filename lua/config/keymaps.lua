@@ -83,34 +83,8 @@ keymap.set("n", "<leader>th", ":ToggleTerm direction=horizontal size=25<cr>", op
 keymap.set("n", "<leader>tt", ":ToggleTerm direction=tab<cr>", opts)
 keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=25<cr>", opts)
 
-local Terminal = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({
-  cmd = "lazygit",
-  dir = "git_dir",
-  direction = "float",
-  float_opts = {
-    border = "curved",
-  },
-  -- function to run on opening the terminal
-  on_open = function(term)
-    vim.cmd("startinsert!")
-    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
-  end,
-  -- function to run on closing the terminal
-  on_close = function(term)
-    vim.cmd("startinsert!")
-  end,
-})
-
-function _lazygit_toggle()
-  lazygit:toggle()
-end
-
 -- Messages
 keymap.set("n", ";m", ":messages<cr>", opts)
-
--- Toggleterm lazygit
-keymap.set("n", "<leader>tg", ":lua _lazygit_toggle()<cr>", opts)
 
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
