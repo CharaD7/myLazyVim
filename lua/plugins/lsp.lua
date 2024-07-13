@@ -76,16 +76,6 @@ return {
             },
           },
         },
-        setup = {
-          ruff_lsp = function()
-            LazyVim.lsp.on_attach(function (client, _)
-              if client.name == "ruff_lsp" then
-                -- Disable hover in favour of pyright
-                client.server_capabilities.hoverProvider = false
-              end
-            end)
-          end,
-        },
         -- CSS
         cssls = {},
         -- eslint
