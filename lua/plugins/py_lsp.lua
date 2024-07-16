@@ -10,8 +10,6 @@ return {
         "default",
         "system"
       },
-      capabilities = capabilities,
-      on_attach = on_attach,
       pylsp_plugins = {
         autopep8 = { enabled = true },
         pyls_mypy = { enabled = true },
