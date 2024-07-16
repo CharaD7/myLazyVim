@@ -56,9 +56,6 @@ return {
           },
         },
         -- PYTHON
-        pyright = {
-          enabled = lsp == "pyright",
-        },
         ruff_lsp = {
           keys = {
             {
