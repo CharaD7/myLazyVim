@@ -9,3 +9,6 @@ data
 
 # Neovide
 nohup.out
+
+# Lazy lock
+lazy-lock.json
