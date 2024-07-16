@@ -6,3 +6,6 @@ debug
 foo.*
 *.log
 data
+
+# Neovide
+nohup.out
