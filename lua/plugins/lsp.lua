@@ -10,7 +10,6 @@ return {
         "dart-debug-adapter",
         "csharp-language-server",
         "htmx-lsp",
-        "pyright",
         "rust-analyzer",
         "svelte-language-server",
         "tailwindcss-language-server",
