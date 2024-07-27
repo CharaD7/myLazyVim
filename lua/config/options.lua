@@ -41,10 +41,6 @@ vim.opt.listchars:append("trail:◊")
 vim.opt.listchars:append("tab:▷▷⋮")
 
 
--- LSP Server to use for Python.
--- Set to "basedpyright" to use basedpyright instead of pyright.
-vim.g.lazyvim_python_lsp = "pyright"
-
 -- Neovide Configuration
 vim.g.neovide_fullscreen = false
 vim.g.neovide_floating_blur_amount_x = 4.0 -- works only on mac
