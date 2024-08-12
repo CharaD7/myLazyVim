@@ -90,6 +90,7 @@ create({
     vim.cmd [[ highlight FloatBorder guifg=#F28FAD ]]
     vim.cmd [[ highlight CursorLineNr gui=bold guifg=#F28FAD ]]
     vim.cmd [[ highlight LineNr guifg=#2aa198 ]]
+    vim.cmd [[ highlight CursorLine guibg=#3f3a60 ]]
   end
 })
 
