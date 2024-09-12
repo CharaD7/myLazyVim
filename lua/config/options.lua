@@ -71,6 +71,6 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_particle_lifetime = 1.8
   vim.g.neovide_cursor_vfx_particle_density = 9.0
   vim.g.neovide_cursor_vfx_particle_speed = 15.0
-  -- vim.g.neovide_cursor_vfx_particle_phase = 1.5 -- only for railgun
-  -- vim.g.neovide_cursor_vfx_particle_curl = 1.0 -- only for railgun
+  vim.g.neovide_cursor_vfx_particle_phase = 1.5 -- only for railgun
+  vim.g.neovide_cursor_vfx_particle_curl = 1.0 -- only for railgun
 end
