@@ -1,6 +1,6 @@
-local nvim_lsp = nvim_lsp -- composer global require php-stubs/wordpress-globals php-stubs/wordpress-stubs php-stubs/woocommerce-stubs php-stubs/acf-pro-stubs wpsyntex/polylang-stubs php-stubs/genesis-stubs php-stubs/wp-cli-stubs
-local configs = require'lspconfig/configs'
-local util = require'lspconfig/util'
+local nvim_lsp = require("nvim_lsp") -- composer global require php-stubs/wordpress-globals php-stubs/wordpress-stubs php-stubs/woocommerce-stubs php-stubs/acf-pro-stubs wpsyntex/polylang-stubs php-stubs/genesis-stubs php-stubs/wp-cli-stubs
+local configs = require'lspconfig.configs'
+local util = require'lspconfig.util'
 
 vim.lsp.set_log_level("off")
 
@@ -89,7 +89,16 @@ nvim_lsp.cssls.setup{
 
 nvim_lsp.html.setup{
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    filetpyes = {
+      "html",
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx"
+    }
 }
 
 nvim_lsp.bashls.setup{
@@ -109,7 +118,15 @@ nvim_lsp.typos_lsp.setup{
 }
 nvim_lsp.emmet_language_server.setup{
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    },
 }
 nvim_lsp.gitlab_ci_ls.setup{
     capabilities = capabilities,
@@ -152,6 +169,26 @@ nvim_lsp.marksman.setup{
 nvim_lsp.ruby_lsp.setup{
     capabilities = capabilities,
     on_attach = on_attach
+}
+-- PYTHON
+nvim_lsp.ruff_lsp.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  keys = {
+    {
+      "<leader>oi",
+      function ()
+        vim.lsp.buf.code_action({
+          apply = true,
+          context = {
+            only = { "source.organizeImports"},
+            diagnostics = {},
+          }
+        })
+      end,
+      desc = "Organize Imports",
+    },
+  },
 }
 
 require'py_lsp'.setup({
@@ -234,3 +271,93 @@ end
 require('tw-values').setup({
     show_unknown_classes = true,
 })
+
+
+return {
+  -- LSPconfig
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "ms-jpq/coq_nvim",
+    "ms-jpq/coq.thirdparty",
+    {
+      "ms-jpq/coq.artifacts",
+      branch = "artifacts",
+    },
+    {
+      "Mte90/coq_wordpress",
+    }
+  },
+  init = function()
+    vim.g.coq_settings = {
+      auto_start = true, -- if you want to start COQ at startup
+      opts = {
+        keymaps = {
+          jump_to_mark = '<S-h>',
+          bigger_preview = '<S-k>'
+        }
+      }
+    }
+  end,
+  clients = {
+    lsp = { enabled = true },
+    tree_sitter = { enabled = true, weight_adjust = 1.0 },
+  },
+  -- Mason
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, {
+        "stylua",
+        "shfmt",
+        "eslint-lsp",
+        "dart-debug-adapter",
+        "csharp-language-server",
+        "htmx-lsp",
+        "rust-analyzer",
+        "svelte-language-server",
+        "tailwindcss-language-server",
+        "typescript-language-server",
+        "css-lsp",
+        "emmet-ls",
+        "shellcheck",
+        "vls",
+        "clangd",
+        "marksman",
+        "gopls",
+        "prettier",
+      })
+    end,
+  },
+  -- Mason lspconfig
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup()
+    end,
+  },
+  -- Null-ls
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      local nls = require("null-ls")
+      table.insert(opts.sources, nls.builtins.formatting.prettierd)
+    end,
+  },
+  -- Color picker
+  {
+    "uga-rosa/ccc.nvim",
+    opts = {},
+    cmd = {
+      "CccPick",
+      "CccConvert",
+      "CccHighlighterEnable",
+      "CccHighlighterDisable",
+      "CccHighlighterToggle",
+    },
+    keys = {
+      { "<leader>zp", "<cmd>CccPick<cr>", desc = "Pick" },
+      { "<leader>zc", "<cmd>CccConvert<cr>", desc = "Convert" },
+      { "<leader>zh", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Highlighter" },
+    },
+  },
+}
