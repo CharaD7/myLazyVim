@@ -1,4 +1,3 @@
-
 return {
   -- LSPconfig
   "neovim/nvim-lspconfig",
@@ -39,133 +38,133 @@ return {
     require("lsp_lines").setup()
 
     local on_attach = function(client, bufnr)
-        vim.lsp.completion.enable(true, client, bufnr, {autotrigger=true})
-        require'lsp_signature'.on_attach({
-            bind = true,
-            floating_window = true,
-            handler_opts = {
-                border = "rounded"
-            }
+      vim.lsp.completion.enable(true, client, bufnr, {autotrigger=true})
+      require'lsp_signature'.on_attach({
+        bind = true,
+        floating_window = true,
+        handler_opts = {
+          border = "rounded"
+        }
+      })
+
+      if client.server_capabilities.documentHighlightProvider then
+        vim.api.nvim_create_augroup('lsp_document_highlight', {
+          clear = false
         })
 
-        if client.server_capabilities.documentHighlightProvider then
-            vim.api.nvim_create_augroup('lsp_document_highlight', {
-                clear = false
-            })
+        vim.api.nvim_clear_autocmds({
+          buffer = bufnr,
+          group = 'lsp_document_highlight',
+        })
 
-            vim.api.nvim_clear_autocmds({
-                buffer = bufnr,
-                group = 'lsp_document_highlight',
-            })
+        vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
+          group = 'lsp_document_highlight',
+          buffer = bufnr,
+          callback = vim.lsp.buf.document_highlight,
+        })
 
-            vim.api.nvim_create_autocmd({'CursorHold', 'CursorHoldI'}, {
-                group = 'lsp_document_highlight',
-                buffer = bufnr,
-                callback = vim.lsp.buf.document_highlight,
-            })
-
-            vim.api.nvim_create_autocmd('CursorMoved', {
-                group = 'lsp_document_highlight',
-                buffer = bufnr,
-                callback = vim.lsp.buf.clear_references,
-            })
-        end
+        vim.api.nvim_create_autocmd('CursorMoved', {
+          group = 'lsp_document_highlight',
+          buffer = bufnr,
+          callback = vim.lsp.buf.clear_references,
+        })
+      end
     end
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true
+      dynamicRegistration = false,
+      lineFoldingOnly = true
     }
 
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = {'documentation', 'detail', 'additionalTextEdits',}
+      properties = {'documentation', 'detail', 'additionalTextEdits',}
     }
 
     local coq = require("coq")
     capabilities = coq.lsp_ensure_capabilities(capabilities)
     nvim_lsp.intelephense.setup({
-        settings = {
-            intelephense = {
-                stubs = {"bcmath", "bz2", "Core", "curl", "date", "dom", "fileinfo", "filter", "gd", "gettext", "hash", "iconv", "imap", "intl", "json", "libxml", "mbstring", "mcrypt", "mysql", "mysqli", "password", "pcntl", "pcre", "PDO", "pdo_mysql", "Phar", "readline", "regex", "session", "SimpleXML", "sockets", "sodium", "standard", "superglobals", "tokenizer", "xml", "xdebug", "xmlreader", "xmlwriter", "yaml", "zip", "zlib", "wordpress-stubs", "woocommerce-stubs", "acf-pro-stubs", "wordpress-globals", "wp-cli-stubs", "genesis-stubs", "polylang-stubs"},
-                environment = {
-                    includePaths = {'/home/chara-tech/.composer/vendor/php-stubs/', '/home/chara-tech/.composer/vendor/wpsyntex/'}
-                },
-                files = {
-                    maxSize = 5000000;
-                };
-            };
-        },
-        capabilities = capabilities,
-        on_attach = on_attach
+      settings = {
+        intelephense = {
+          stubs = {"bcmath", "bz2", "Core", "curl", "date", "dom", "fileinfo", "filter", "gd", "gettext", "hash", "iconv", "imap", "intl", "json", "libxml", "mbstring", "mcrypt", "mysql", "mysqli", "password", "pcntl", "pcre", "PDO", "pdo_mysql", "Phar", "readline", "regex", "session", "SimpleXML", "sockets", "sodium", "standard", "superglobals", "tokenizer", "xml", "xdebug", "xmlreader", "xmlwriter", "yaml", "zip", "zlib", "wordpress-stubs", "woocommerce-stubs", "acf-pro-stubs", "wordpress-globals", "wp-cli-stubs", "genesis-stubs", "polylang-stubs"},
+          environment = {
+            includePaths = {'/home/chara-tech/.composer/vendor/php-stubs/', '/home/chara-tech/.composer/vendor/wpsyntex/'}
+          },
+          files = {
+            maxSize = 5000000;
+          };
+        };
+      },
+      capabilities = capabilities,
+      on_attach = on_attach
     })
 
     local phpactor_capabilities = vim.lsp.protocol.make_client_capabilities()
     phpactor_capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true
+      dynamicRegistration = false,
+      lineFoldingOnly = true
     }
 
     phpactor_capabilities['textDocument']['codeAction'] = {}
     nvim_lsp.phpactor.setup{
-        capabilities = phpactor_capabilities,
-        on_attach = on_attach
+      capabilities = phpactor_capabilities,
+      on_attach = on_attach
     }
 
     nvim_lsp.cssls.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
 
     nvim_lsp.html.setup{
-        capabilities = capabilities,
-        on_attach = on_attach,
-        filetpyes = {
-          "html",
-          "javascript",
-          "javascriptreact",
-          "javascript.jsx",
-          "typescript",
-          "typescriptreact",
-          "typescript.tsx"
-        }
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetpyes = {
+        "html",
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx"
+      }
     }
 
     nvim_lsp.bashls.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
 
     nvim_lsp.tailwindcss.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
     require("tailwind-tools").setup({
     })
     nvim_lsp.typos_lsp.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
     nvim_lsp.emmet_language_server.setup{
-        capabilities = capabilities,
-        on_attach = on_attach,
-        init_options = {
-          html = {
-            options = {
-              -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-              ["bem.enabled"] = true,
-            },
+      capabilities = capabilities,
+      on_attach = on_attach,
+      init_options = {
+        html = {
+          options = {
+            -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+            ["bem.enabled"] = true,
           },
         },
+      },
     }
     nvim_lsp.gitlab_ci_ls.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
     nvim_lsp.htmx.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
     nvim_lsp.jsonls.setup{}
     nvim_lsp.lua_ls.setup {
@@ -194,12 +193,12 @@ return {
       }
     }
     nvim_lsp.marksman.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
     nvim_lsp.ruby_lsp.setup{
-        capabilities = capabilities,
-        on_attach = on_attach
+      capabilities = capabilities,
+      on_attach = on_attach
     }
     -- PYTHON
     nvim_lsp.ruff_lsp.setup{
@@ -223,37 +222,37 @@ return {
     }
 
     require("pyright").setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
+      on_attach = on_attach,
+      capabilities = capabilities,
     })
 
     require'py_lsp'.setup({
-        language_server = {"pyright", "pylsp"}, --"pylsp",
-        source_strategies = "system", -- {"poetry", "default", "conda", "system"},
-        capabilities = capabilities,
-        on_attach = on_attach,
-        venvs = {".venv", "venv", ".env", "env"},
-        pylsp_plugins = {
-            pyls_mypy = {
-                enabled = true
-            },
-            rope_autoimport = {
-                enabled = true
-            },
-            rope_completion = {
-                enabled = true
-            },
-            pyls_isort = {
-                enabled = true
-            },
-            pycodestyle = {
-                enabled = false,
-            },
-            flake8 = {
-                enabled = true,
-                executable = venv_bin_detection("flake8"),
-            }
+      language_server = {"pyright", "pylsp"}, --"pylsp",
+      source_strategies = "system", -- {"poetry", "default", "conda", "system"},
+      capabilities = capabilities,
+      on_attach = on_attach,
+      venvs = {".venv", "venv", ".env", "env"},
+      pylsp_plugins = {
+        pyls_mypy = {
+          enabled = true
+        },
+        rope_autoimport = {
+          enabled = true
+        },
+        rope_completion = {
+          enabled = true
+        },
+        pyls_isort = {
+          enabled = true
+        },
+        pycodestyle = {
+          enabled = false,
+        },
+        flake8 = {
+          enabled = true,
+          executable = venv_bin_detection("flake8"),
         }
+      }
     })
 
     -- I want to be sure that there isn't any pycodestyle
@@ -273,40 +272,40 @@ return {
     )
 
     require'nvim-lightbulb'.update_lightbulb({
-        sign = {
-            enabled = true,
-            priority = 10,
-        },
-        float = {
-            enabled = false,
-        },
-        virtual_text = {
-            enabled = true,
-            hl_mode = "combine",
-        },
-        status_text = {
-            enabled = true,
-        }
+      sign = {
+        enabled = true,
+        priority = 10,
+      },
+      float = {
+        enabled = false,
+      },
+      virtual_text = {
+        enabled = true,
+        hl_mode = "combine",
+      },
+      status_text = {
+        enabled = true,
+      }
     })
 
     vim.api.nvim_create_autocmd({'CursorHoldI', 'CursorHold'}, {
-        pattern = '*',
-        callback = function() require'nvim-lightbulb'.update_lightbulb() end,
+      pattern = '*',
+      callback = function() require'nvim-lightbulb'.update_lightbulb() end,
     })
 
     local notify = require'notify'
     vim.lsp.handlers['window/showMessage'] = function(_, result, ctx)
-        local client = vim.lsp.get_client_by_id(ctx.client_id)
-        local lvl = ({'ERROR', 'WARN', 'INFO', 'DEBUG',})[result.type]
-        notify(result.message, lvl, {
-            title = 'LSP | ' .. client.name,
-            timeout = 10000,
-            keep = function() return lvl == 'ERROR' or lvl == 'WARN' end,
-        })
+      local client = vim.lsp.get_client_by_id(ctx.client_id)
+      local lvl = ({'ERROR', 'WARN', 'INFO', 'DEBUG',})[result.type]
+      notify(result.message, lvl, {
+        title = 'LSP | ' .. client.name,
+        timeout = 10000,
+        keep = function() return lvl == 'ERROR' or lvl == 'WARN' end,
+      })
     end
 
     require('tw-values').setup({
-        show_unknown_classes = true,
+      show_unknown_classes = true,
     })
 
   end,
