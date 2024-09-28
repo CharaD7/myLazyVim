@@ -228,10 +228,11 @@ return {
     })
 
     require'py_lsp'.setup({
-        language_server = "pylsp",
-        source_strategies = {"poetry", "default", "system"},
+        language_server = {"pyright", "pylsp"}, --"pylsp",
+        source_strategies = "system", -- {"poetry", "default", "conda", "system"},
         capabilities = capabilities,
         on_attach = on_attach,
+        venvs = {".venv", "venv", ".env", "env"},
         pylsp_plugins = {
             pyls_mypy = {
                 enabled = true
