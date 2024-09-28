@@ -7,6 +7,7 @@ return {
       "css",
       "fish",
       "gitignore",
+      "php",
       "go",
       "http",
       "rust",
