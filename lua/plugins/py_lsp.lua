@@ -4,12 +4,8 @@ return {
     require('py_lsp').setup({
       default_venv_name = ".venv", -- For local venv
       host_python = ".venv/bin/python3",
-      language_server = "pylsp",
-      source_strategies = {
-        "poetry",
-        "default",
-        "system"
-      },
+      language_server = {"pyright", "pylsp"},
+      source_strategies = {"system"},
       capabilities = capabilities,
       on_attach = on_attach,
       pylsp_plugins = {
