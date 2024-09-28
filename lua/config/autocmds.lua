@@ -85,6 +85,9 @@ create({ 'BufReadPost' }, {
 create({
   'ColorScheme',
   'VimEnter',
+  'BufEnter',
+  'WinEnter',
+  'BufWinEnter'
 }, {
   callback = function()
     vim.cmd [[ highlight FloatBorder guifg=#F28FAD ]]
