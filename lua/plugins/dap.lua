@@ -12,6 +12,12 @@ return {
     "mfussenegger/nvim-dap",
     config = function()
       local dap = require("dap")
+      local venv = os.getenv("VIRTUAL_ENV") .. "/bin/python3"
+      dap.adapters.python = {
+        type = 'executable',
+        command = venv,
+        args = {'-m', 'debugpy.adapter'}
+      }
       local Config = require("lazyvim.config")
 
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
@@ -82,7 +88,7 @@ return {
       local set_python_dap = function()
         require('dap-python').setup() -- earlier, so I can setup the various defaults ready to be replaced
         require('dap-python').resolve_python = function()
-          return "venv/bin/python3"
+          return venv
         end
         dap.configurations.python = {
           {
@@ -90,7 +96,7 @@ return {
             request = 'launch';
             name = "Launch file";
             program = "${file}";
-            pythonPath = "venv/bin/python3"
+            pythonPath = venv
           },
           {
             type = 'debugpy',
@@ -103,7 +109,7 @@ return {
             justMyCode = true,
             django = true,
             console = "integratedTerminal",
-            pythonPath = "venv/bin/python3"
+            pythonPath = venv
           },
           {
             type = 'python';
@@ -126,14 +132,8 @@ return {
               return vim.split(args_string, " +")
             end;
             console = "integratedTerminal",
-            pythonPath = "venv/bin/python3"
+            pythonPath = venv
           }
-        }
-
-        dap.adapters.python = {
-          type = 'executable',
-          command = "venv/bin/python3",
-          args = {'-m', 'debugpy.adapter'}
         }
       end
 
