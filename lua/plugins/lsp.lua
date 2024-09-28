@@ -222,6 +222,11 @@ return {
       },
     }
 
+    require("pyright").setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+    })
+
     require'py_lsp'.setup({
         language_server = "pylsp",
         source_strategies = {"poetry", "default", "system"},
