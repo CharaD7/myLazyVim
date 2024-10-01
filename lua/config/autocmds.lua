@@ -22,10 +22,16 @@ create("FileType", {
 -- Persist indentation for Filetypes
 create("FileType", {
   pattern = { "blade", "rs", "js", "ts", "css", "scss", "sass" },
+
+-- Use php syntax for blade Filetypes
+create({
+  'FileType',
+  'BufRead',
+  'BufNewFile',
+}, {
+  pattern = { "*.blade.php" },
   callback = function()
-    vim.cmd([[ tabstop=2 ]])
-    vim.cmd([[ shiftwidth=2 expandtab ]])
-    vim.cmd([[ expandtab ]])
+    vim.cmd([[ set filetype=php ]])
   end,
 })
 
