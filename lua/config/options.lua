@@ -42,7 +42,6 @@ vim.opt.listchars:append("eol:↴")
 vim.opt.listchars:append("trail:◊")
 vim.opt.listchars:append("tab:▷▷⋮")
 
-
 -- Neovide Configuration
 if vim.g.neovide then
   vim.g.neovide_scale_factor = 1.0

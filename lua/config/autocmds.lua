@@ -50,7 +50,6 @@ create({ 'DiagnosticChanged' }, {
         numhl = ''
       })
     end
-
     sign({ name = 'DiagnosticSign', text = icons.ui.Gear })
     sign({ name = 'DiagnosticSignError', text = icons.diagnostics.Error })
     sign({ name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning })
