@@ -204,6 +204,12 @@ return {
     nvim_lsp.ruff_lsp.setup{
       capabilities = capabilities,
       on_attach = on_attach,
+      trace = 'messages',
+      init_options ={
+        settings = {
+          logLevel = 'debug',
+        }
+      },
       keys = {
         {
           "<leader>oi",
@@ -227,7 +233,7 @@ return {
     -- })
 
     require'py_lsp'.setup({
-      language_server = {"pylsp"}, --"pylsp",
+      language_server = {"pylsp", "ruff"}, --"pylsp",
       source_strategies = "system", -- {"poetry", "default", "conda", "system"},
       capabilities = capabilities,
       on_attach = on_attach,
