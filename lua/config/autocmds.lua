@@ -19,6 +19,16 @@ create("FileType", {
   end,
 })
 
+-- Persist indentation for Filetypes
+create("FileType", {
+  pattern = { "blade", "rs", "js", "ts", "css", "scss", "sass" },
+  callback = function()
+    vim.cmd([[ tabstop=2 ]])
+    vim.cmd([[ shiftwidth=2 expandtab ]])
+    vim.cmd([[ expandtab ]])
+  end,
+})
+
 -- Enable italics if colorscheme is set to gruvbox
 create("ColorScheme", {
   pattern = "*",
