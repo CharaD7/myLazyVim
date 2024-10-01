@@ -20,8 +20,18 @@ create("FileType", {
 })
 
 -- Persist indentation for Filetypes
-create("FileType", {
-  pattern = { "blade", "rs", "js", "ts", "css", "scss", "sass" },
+create({
+  'FileType',
+  'BufRead',
+  'BufNewFile',
+}, {
+  pattern = { "*" },
+  callback = function()
+    vim.cmd([[ set tabstop=2 ]])
+    vim.cmd([[ set shiftwidth=2 ]])
+    vim.cmd([[ set expandtab ]])
+  end,
+})
 
 -- Use php syntax for blade Filetypes
 create({
