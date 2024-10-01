@@ -221,13 +221,13 @@ return {
       },
     }
 
-    require("pyright").setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
+    -- require("pyright").setup({
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- })
 
     require'py_lsp'.setup({
-      language_server = {"pyright", "pylsp"}, --"pylsp",
+      language_server = {"pylsp"}, --"pylsp",
       source_strategies = "system", -- {"poetry", "default", "conda", "system"},
       capabilities = capabilities,
       on_attach = on_attach,
