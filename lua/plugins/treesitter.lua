@@ -22,9 +22,11 @@ return {
       "vue"
     },
   },
+  highlight = {
+    enable = true,
+  },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
-
     -- MDX
     vim.filetype.add({
       extension = {
