@@ -48,6 +48,7 @@ if vim.g.neovide then
   vim.g.neovide_text_gamma = 0.0
   vim.g.neovide_text_contrast = 0.5
   vim.g.neovide_fullscreen = false
+  vim.g.neovide_floating_shadow = true
   vim.g.neovide_floating_blur_amount_x = 4.0 -- works only on mac
   vim.g.floaterm_winblend = 15
   vim.g.neovide_hide_mouse_when_typing = true
