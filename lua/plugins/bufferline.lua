@@ -71,7 +71,19 @@ return {
           highlight = "Directory",
           separator = true -- use a "true" to enable the default, or set your own character
         }
-      }
+      },
+      highlights = {
+        buffer_selected = {
+          bold = true,
+          fg = '#FFFFFF',
+          underline = '#F28FAD',
+        },
+        tab_selected = {
+          bold = true,
+          fg = '#F28FAD',
+          underline = '#F28FAD',
+        }
+      },
     },
   })
 }
