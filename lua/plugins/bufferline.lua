@@ -18,7 +18,7 @@ return {
         return string.format("%s", opts.raise(opts.ordinal))
       end,
       indicator = {
-        style = "icon",
+        style = "underline",
       },
       diagnostics_indicator = function(count, level, diagnostics_dict, context)
         local s = " "
@@ -70,18 +70,6 @@ return {
           text = "File Explorer",
           highlight = "Directory",
           separator = true -- use a "true" to enable the default, or set your own character
-        }
-      },
-      highlights = {
-        buffer_selected = {
-          bold = true,
-          fg = '#FFFFFF',
-          underline = '#F28FAD',
-        },
-        tab_selected = {
-          bold = true,
-          fg = '#F28FAD',
-          underline = '#F28FAD',
         }
       },
     },
