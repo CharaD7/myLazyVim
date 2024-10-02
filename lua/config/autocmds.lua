@@ -122,6 +122,21 @@ create({
   end
 })
 
+-- Highlights for Bufferline
+--gui=underline cterm=underline 
+create({
+  'ColorScheme',
+  'VimEnter',
+  'BufEnter',
+  'WinEnter',
+  'BufWinEnter'
+}, {
+  callback = function()
+    vim.cmd [[ highlight BufferLineTabSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]]
+    vim.cmd [[ highlight BufferLineTabSeparatorSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]]
+  end
+})
+
 -- Set popup scrollbar color and vertical split color
 create({
   'VimEnter',
