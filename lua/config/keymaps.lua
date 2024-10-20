@@ -4,10 +4,6 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
--- Increment/decrement
-keymap.set("n", "+", "<c-a>")
-keymap.set("n", "-", "<c-x>")
-
 -- Select all
 keymap.set("n", "<C-a>", "gg<s-v>G")
 
