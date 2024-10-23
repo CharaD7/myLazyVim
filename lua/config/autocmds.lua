@@ -103,6 +103,7 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
 create({ "BufWritePost" }, {
   pattern = { "*.dart" },
   callback = function()
+    require("flutter-tools").setup {}
     vim.fn.system("flutter pub get") -- Ensure dependencies are up to date
     vim.fn.system("flutter pub global run flutter_tools --hot-reload")
   end
