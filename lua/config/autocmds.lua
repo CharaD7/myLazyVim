@@ -99,6 +99,14 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
   end,
 })
 
+-- Hot reload dart files on save
+create({ "BufWritePost" }, {
+  pattern = { "*.dart" },
+  callback = function()
+    vim.cmd [[ FlutterReload ]]
+  end
+})
+
 -- Open in last edit point
 create({ 'BufReadPost' }, {
   callback = function()
