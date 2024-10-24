@@ -141,46 +141,6 @@ return {
       vim.api.nvim_create_autocmd({"DirChanged", "BufEnter"}, {
         callback = function() set_python_dap() end,
       })
-
-      local set_dart_dap = function()
-        require('flutter-tools').setup({
-          debugger = {
-            enabled = true,
-            run_via_dap = true,
-            register_configurations = function (_)
-              dap.adapters.dart = {
-                type = 'executable',
-                command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
-                args = {"flutter"}
-              }
-              dap.configurations.dart = {
-                {
-                  type = 'dart',
-                  request = 'launch',
-                  name = 'Launch flutter',
-                  dartSdkPath = '~/flutter/bin/cache/dart-sdk/',
-                  flutterSdkPath = '~/flutter',
-                  program = '${workspaceFolder}/lib/main.dart',
-                  cwd = "${workspaceFolder}",
-                }
-              }
-            end,
-          },
-          dev_log = {
-            enabled = false,
-            open_cmd = "tabedit",
-          },
-          lsp = {
-            on_attach = require("plugins.dap").on_attach,
-            capabilities = require("plugins.dap").capabilities,
-          }
-        })
-      end
-
-      set_dart_dap()
-      vim.api.nvim_create_autocmd({"DirChanged", "BufEnter"}, {
-        callback = function() set_dart_dap() end,
-      })
     end,
 
     keys = {
@@ -222,7 +182,6 @@ return {
         build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
         version = "1.*",
       },
-      {"dart-lang/dart-vim-plugin"},
       {
         "mxsdev/nvim-dap-vscode-js",
         config = function()
