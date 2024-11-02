@@ -4,6 +4,7 @@ return {
     "jmbuhr/otter.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
+  ft = { "quarto", "markdown" },
   config = function()
     local runner = require("quarto.runner")
     vim.keymap.set("n", "<leader>qr", runner.run_cell, { desc = "Run Cell", silent = true })
