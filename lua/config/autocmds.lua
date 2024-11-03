@@ -150,6 +150,44 @@ create({ "BufEnter", }, {
   end
 })
 
+-- use molten for regular python files
+create({ "BufEnter" }, {
+  pattern = {"*.py"},
+  callback = function(e)
+    if string.match(e.file, ".otter.") then
+      return
+    end
+    if require("molten.status").initialized() == "Molten" then --this is kinda hacky
+      vim.fn.MoltenUpdateOption("virt_lines_off_by_1", false)
+      vim.fn.MoltenUpdateOption("virt_text_output", false)
+    else
+      vim.g.molten_virt_lines_off_by_1 = false
+      vim.g.molten_virt_text_output = false
+    end
+  end,
+})
+
+-- Undo those config changes when we go back to a markdown or quarto file
+create({ "BufEnter" }, {
+  pattern = {
+    '*.qmd',
+    '*.md',
+    '*.ipynb',
+  },
+  callback = function(e)
+    if string.match(e.file, ".otter.") then
+      return
+    end
+    if require("molten.status").initialized() == "Molten" then --this is kinda hacky
+      vim.fn.MoltenUpdateOption("virt_lines_off_by_1", true)
+      vim.fn.MoltenUpdateOption("virt_text_output", true)
+    else
+      vim.g.molten_virt_lines_off_by_1 = true
+      vim.g.molten_virt_text_output = true
+    end
+  end,
+})
+
 -- Open in last edit point
 create({ 'BufReadPost' }, {
   callback = function()
