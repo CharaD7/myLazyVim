@@ -109,6 +109,47 @@ create({ "BufWritePost" }, {
   end
 })
 
+-- automatically import output chunks from a jupytr notebook
+-- tris to find a kernel that matches the krnel in the jupyter notebook
+-- falls back to a kernel that matches the name of the active venv (if any)
+local imb = function(e) -- init molten buffer
+  vim.schedule(function ()
+    local kernels = vim.fn.MoltenAvailableKernels()
+    local try_kernel_name = function()
+      local metadata = vim.json.decode(io.open(e.file, "r"):read("a"))["metadata"]
+      return metadata["kernelspec"]["name"]
+    end
+    local ok, kernel_name = pcall(try_kernel_name)
+    if not ok or not vim.tbl_contains(kernels, kernel_name) then
+      kernel_name = nil
+      local venv = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX")
+      if venv ~= nil then
+        kernel_name = string.match(venv, "/.+/(.+)")
+      end
+    end
+    if kernel_name ~= nil and vim.tbl_contains(kernels, kernel_name) then
+      vim.cmd(("MoltenInit %s"):format(kernel_name))
+    end
+    vim.cmd("MoltenImportOutput")
+  end)
+end
+
+-- automatically import output chunks from a jupytr notebook
+create({ "BufAdd" }, {
+  patterin = { "*.ipynb" },
+  callback = imb,
+})
+
+-- catch open files like ./hi.ipynb
+create({ "BufEnter", }, {
+  pattern = {"*.ipynb"},
+  callback = function(e)
+    if vim.api.nvim_get_vvar("vim_did_enter") ~= 1 then
+      imb(e)
+    end
+  end
+})
+
 -- Open in last edit point
 create({ 'BufReadPost' }, {
   callback = function()
