@@ -136,7 +136,7 @@ end
 
 -- automatically import output chunks from a jupyter notebook
 create({ "BufAdd" }, {
-  patterin = { "*.ipynb" },
+  pattern = { "*.ipynb" },
   callback = imb,
 })
 
