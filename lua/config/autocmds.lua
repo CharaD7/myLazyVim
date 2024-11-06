@@ -135,7 +135,7 @@ local imb = function(e) -- init molten buffer
 end
 
 -- automatically import output chunks from a jupyter notebook
-create({ "BufEnter" }, {
+create({ "BufAdd" }, {
   patterin = { "*.ipynb" },
   callback = imb,
 })
