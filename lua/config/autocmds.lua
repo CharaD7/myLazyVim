@@ -10,6 +10,15 @@ create("InsertLeave", {
   command = "set nopaste",
 })
 
+-- Turn off virtual_line when mason window is open
+create("BufEnter", {
+  pattern = {"Mason"},
+  callback = function()
+    require("lsp_lines").setup()
+    vim.diagnostic.config({ virtual_lines = false })
+  end
+})
+
 -- Fix conceallevel for json files
 create("FileType", {
   pattern = { "json", "jsonc" },
