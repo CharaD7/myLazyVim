@@ -118,4 +118,4 @@ local quarto_notebook_cmd = 'nvim -c enew -c "set filetype=quarto"' ..
 " -c \"lua require('lazy.core.loader').load({'molten-nvim', 'quarto-nvim'}, {cmd = 'Lazy load'})\"" ..
 ' -c "MoltenInit python3" -c QuartoActivate -c startinsert'
 
-keymap.set("n", "<leader>qn", quarto_notebook_cmd, desc = "Create Quarto Notebook", opts)
+keymap.set("n", "<leader>qn", quarto_notebook_cmd, opts)
