@@ -1,22 +1,15 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {
-        "markdown",
-        "markdown_inline",
-        "python",
-      },
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighing = false,
-      },
-    })
-  end,
   opts = {
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighing = false,
+    },
     ensure_installed = {
       "astro",
+      "markdown",
+      "markdown_inline",
+      "python",
       "cmake",
       "css",
       "fish",
