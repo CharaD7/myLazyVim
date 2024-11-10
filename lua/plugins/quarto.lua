@@ -19,6 +19,7 @@ return {
         }
       },
     })
+    require("quarto").activate()
   end,
   keys = {
     {"<leader>qr", ":lua require('quarto.runner').run_cell()<cr>", desc = "Run Cell"},
