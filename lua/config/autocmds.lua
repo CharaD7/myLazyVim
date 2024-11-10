@@ -161,6 +161,16 @@ create({ "BufEnter" }, {
   end,
 })
 
+-- automatically export output chunks to a jupyter notebook on write
+create("BufWritePost", {
+    pattern = { "*.ipynb" },
+    callback = function()
+        if require("molten.status").initialized() == "Molten" then
+            vim.cmd("MoltenExportOutput!")
+        end
+    end,
+})
+
 -- use molten for regular python files
 create({ "BufEnter" }, {
   pattern = { "*.py" },
