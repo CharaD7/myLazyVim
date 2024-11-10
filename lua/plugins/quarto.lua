@@ -4,7 +4,6 @@ return {
     "jmbuhr/otter.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
-  ft = { "quarto", "markdown" },
   keys = {
     {"<leader>qr", ":lua require('quarto.runner').run_cell()<cr>", desc = "Run Cell"},
     {"<leader>qa", ":lua require('quarto.runner).run_above()<cr>", desc = "Run Cell and Above"},
@@ -12,5 +11,15 @@ return {
     {"<leader>ql", ":lua require('quarto.runner).run_line()<cr>", desc = "Run Line"},
     {"<leader>qv", ":lua require('quarto.runner).run_range()<cr>", desc = "Run Visual Range"},
     {"<leader>RA", ":lua require('quarto.runner').run_all(true)<cr>", desc = "Run All Cells of All Languages"}
-  }
+  },
+  opts = {
+    ft = { "quarto", "markdown" },
+    codeRunner = {
+      enabled = false,
+      default_method = 'molten',
+      ft_runners = {
+        python = "molten",
+      }
+    },
+  },
 }
