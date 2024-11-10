@@ -4,6 +4,32 @@ return {
     "jmbuhr/otter.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
+  config = function()
+    local function markdown_codeblock(language, content)
+        return '\\`\\`\\`{' .. language .. '}\n' .. content .. '\n\\`\\`\\`'
+    end
+
+    local quarto_notebook_cmd = 'nvim -c enew -c "set filetype=quarto"' ..
+    ' -c "norm GO## IPython\nThis is Quarto IPython notebook. Syntax is the same as in markdown\n\n' .. markdown_codeblock('python', '# enter code here\n') .. '"' ..
+    ' -c "norm Gkk"' ..
+    -- This line needed because QuartoActivate and MoltenInit commands must be accessible; should be adjusted depending on plugin manager
+    " -c \"lua require('lazy.core.loader').load({'molten-nvim', 'quarto-nvim'}, {cmd = 'Lazy load'})\"" ..
+    ' -c "MoltenInit python3" -c QuartoActivate -c startinsert'
+    require("quarto").setup({
+      lspFeatures = {
+        enabled = true,
+        chunks = "curly",
+        languages = { "r", "python", "jupyter" },
+      },
+      codeRunner = {
+        enabled = false,
+        default_method = 'molten',
+        ft_runners = {
+          python = "molten",
+        }
+      },
+    })
+  end,
   keys = {
     {"<leader>qr", ":lua require('quarto.runner').run_cell()<cr>", desc = "Run Cell"},
     {"<leader>qa", ":lua require('quarto.runner).run_above()<cr>", desc = "Run Cell and Above"},
@@ -19,12 +45,5 @@ return {
   },
   opts = {
     ft = { "quarto", "markdown" },
-    codeRunner = {
-      enabled = false,
-      default_method = 'molten',
-      ft_runners = {
-        python = "molten",
-      }
-    },
   },
 }
