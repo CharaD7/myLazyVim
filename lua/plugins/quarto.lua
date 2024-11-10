@@ -5,13 +5,12 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   ft = { "quarto", "markdown" },
-  config = function()
-    local runner = require("quarto.runner")
-    vim.keymap.set("n", "<leader>qr", runner.run_cell, { desc = "Run Cell", silent = true })
-    vim.keymap.set("n", "<leader>qa", runner.run_above, { desc = "Run Cell and Above", silent = true })
-    vim.keymap.set("n", "<leader>qA", runner.run_all, { desc = "Run All Cells", silent = true })
-    vim.keymap.set("n", "<leader>ql", runner.run_line, { desc = "Run Line", silent = true })
-    vim.keymap.set("n", "<leader>qv", runner.run_range, { desc = "Run Visual Range", silent = true })
-    vim.keymap.set("n", "<leader>RA", function() runner.run_all(true) end, { desc = "Run All Cells of All Languages", silent = true })
-  end,
+  keys = {
+    {"<leader>qr", ":lua require('quarto.runner').run_cell()<cr>", desc = "Run Cell"},
+    {"<leader>qa", ":lua require('quarto.runner).run_above()<cr>", desc = "Run Cell and Above"},
+    {"<leader>qA", ":lua require('quarto.runner).run_all()<cr>", desc = "Run All Cells"},
+    {"<leader>ql", ":lua require('quarto.runner).run_line()<cr>", desc = "Run Line"},
+    {"<leader>qv", ":lua require('quarto.runner).run_range()<cr>", desc = "Run Visual Range"},
+    {"<leader>RA", ":lua require('quarto.runner').run_all(true)<cr>", desc = "Run All Cells of All Languages"}
+  }
 }
