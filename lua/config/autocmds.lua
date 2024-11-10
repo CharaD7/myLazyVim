@@ -128,7 +128,7 @@ local imb = function(e) -- init molten buffer
     local kernels = vim.fn.MoltenAvailableKernels()
     local try_kernel_name = function()
       local metadata = vim.json.decode(io.open(e.file, "r"):read("a"))["metadata"]
-      return metadata["kernelspec"]["name"]
+      return metadata.kernelspec.name
     end
     local ok, kernel_name = pcall(try_kernel_name)
     if not ok or not vim.tbl_contains(kernels, kernel_name) then
@@ -252,14 +252,6 @@ vim.api.nvim_create_user_command("NewNotebook", function(opts)
 end, {
   nargs = 1,
   complete = "file",
-})
-
--- Generalized molten configuration
-create("FileType", {
-  pattern = { "python", "py", "ipynb" },
-  callback = function()
-    require("molten").setup_buffers()
-  end,
 })
 
 -- Open in last edit point
