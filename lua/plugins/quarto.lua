@@ -10,7 +10,12 @@ return {
     {"<leader>qA", ":lua require('quarto.runner).run_all()<cr>", desc = "Run All Cells"},
     {"<leader>ql", ":lua require('quarto.runner).run_line()<cr>", desc = "Run Line"},
     {"<leader>qv", ":lua require('quarto.runner).run_range()<cr>", desc = "Run Visual Range"},
-    {"<leader>RA", ":lua require('quarto.runner').run_all(true)<cr>", desc = "Run All Cells of All Languages"}
+    {"<leader>RA", ":lua require('quarto.runner').run_all(true)<cr>", desc = "Run All Cells of All Languages"},
+    {
+      "<C-p>",
+      ":lua require('toggleterm.terminal').Terminal:new({ cmd = 'python3', hidden = true, direction = 'float' }):toggle()<cr>",
+      desc = "Toggle quarto python terminal"
+    }
   },
   opts = {
     ft = { "quarto", "markdown" },
