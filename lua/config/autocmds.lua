@@ -254,6 +254,14 @@ end, {
   complete = "file",
 })
 
+-- Generalized molten configuration
+create("FileType", {
+  pattern = { "python", "py", "ipynb" },
+  callback = function()
+    require("molten").setup_buffers()
+  end,
+})
+
 -- Open in last edit point
 create({ "BufReadPost" }, {
   callback = function()
