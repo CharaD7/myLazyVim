@@ -11,12 +11,14 @@ create("InsertLeave", {
 })
 
 -- Turn off virtual_line when mason window is open
-create("BufEnter", {
-  pattern = {"Mason"},
+create("WinEnter", {
   callback = function()
-    require("lsp_lines").setup()
-    vim.diagnostic.config({ virtual_lines = false })
-  end
+    local win_config = vim.api.nvim_win_get_config(0)
+    if win_config.zindex then
+      require("lsp_lines").setup()
+      vim.diagnostic.config({ virtual_lines = false })
+    end
+  end,
 })
 
 -- Fix conceallevel for json files
@@ -30,9 +32,9 @@ create("FileType", {
 
 -- Persist indentation for Filetypes
 create({
-  'FileType',
-  'BufRead',
-  'BufNewFile',
+  "FileType",
+  "BufRead",
+  "BufNewFile",
 }, {
   pattern = { "*" },
   callback = function()
@@ -44,9 +46,9 @@ create({
 
 -- Use php syntax for blade Filetypes
 create({
-  'FileType',
-  'BufRead',
-  'BufNewFile',
+  "FileType",
+  "BufRead",
+  "BufNewFile",
 }, {
   pattern = { "*.blade.php" },
   callback = function()
@@ -75,22 +77,22 @@ create({ "BufWritePre" }, {
 })
 
 -- Configuration for vim diagnostics
-create({ 'DiagnosticChanged' }, {
+create({ "DiagnosticChanged" }, {
   callback = function()
-    local icons = require "chara.icons"
+    local icons = require("chara.icons")
     local sign = function(opts)
       vim.fn.sign_define(opts.name, {
         texthl = opts.name,
         text = opts.text,
-        numhl = ''
+        numhl = "",
       })
     end
-    sign({ name = 'DiagnosticSign', text = icons.ui.Gear })
-    sign({ name = 'DiagnosticSignError', text = icons.diagnostics.Error })
-    sign({ name = 'DiagnosticSignWarn', text = icons.diagnostics.Warning })
-    sign({ name = 'DiagnosticSignInfo', text = icons.diagnostics.Information })
-    sign({ name = 'DiagnosticSignHint', text = icons.diagnostics.Hint })
-  end
+    sign({ name = "DiagnosticSign", text = icons.ui.Gear })
+    sign({ name = "DiagnosticSignError", text = icons.diagnostics.Error })
+    sign({ name = "DiagnosticSignWarn", text = icons.diagnostics.Warning })
+    sign({ name = "DiagnosticSignInfo", text = icons.diagnostics.Information })
+    sign({ name = "DiagnosticSignHint", text = icons.diagnostics.Hint })
+  end,
 })
 
 -- Show diagnostic in floating window on hover
@@ -112,17 +114,17 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
 create({ "BufWritePost" }, {
   pattern = { "*.dart" },
   callback = function()
-    require("flutter-tools").setup {}
+    require("flutter-tools").setup({})
     vim.fn.system("flutter pub get") -- Ensure dependencies are up to date
     vim.fn.system("flutter pub global run flutter_tools --hot-reload")
-  end
+  end,
 })
 
 -- automatically import output chunks from a jupytr notebook
 -- tris to find a kernel that matches the krnel in the jupyter notebook
 -- falls back to a kernel that matches the name of the active venv (if any)
 local imb = function(e) -- init molten buffer
-  vim.schedule(function ()
+  vim.schedule(function()
     local kernels = vim.fn.MoltenAvailableKernels()
     local try_kernel_name = function()
       local metadata = vim.json.decode(io.open(e.file, "r"):read("a"))["metadata"]
@@ -150,18 +152,18 @@ create({ "BufAdd" }, {
 })
 
 -- catch open files like ./hi.ipynb
-create({ "BufEnter", }, {
-  pattern = {"*.ipynb"},
+create({ "BufEnter" }, {
+  pattern = { "*.ipynb" },
   callback = function(e)
     if vim.api.nvim_get_vvar("vim_did_enter") ~= 1 then
       imb(e)
     end
-  end
+  end,
 })
 
 -- use molten for regular python files
 create({ "BufEnter" }, {
-  pattern = {"*.py"},
+  pattern = { "*.py" },
   callback = function(e)
     if string.match(e.file, ".otter.") then
       return
@@ -179,9 +181,9 @@ create({ "BufEnter" }, {
 -- Undo those config changes when we go back to a markdown or quarto file
 create({ "BufEnter" }, {
   pattern = {
-    '*.qmd',
-    '*.md',
-    '*.ipynb',
+    "*.qmd",
+    "*.md",
+    "*.ipynb",
   },
   callback = function(e)
     if string.match(e.file, ".otter.") then
@@ -245,110 +247,109 @@ local function new_notebook(filename)
   end
 end
 
-vim.api.nvim_create_user_command('NewNotebook', function(opts)
-    new_notebook(opts.args)
-  end, {
-    nargs = 1,
-    complete = 'file',
-  }
-)
+vim.api.nvim_create_user_command("NewNotebook", function(opts)
+  new_notebook(opts.args)
+end, {
+  nargs = 1,
+  complete = "file",
+})
 
 -- Open in last edit point
-create({ 'BufReadPost' }, {
+create({ "BufReadPost" }, {
   callback = function()
-    vim.cmd [[ if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif ]]
-  end
+    vim.cmd([[ if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif ]])
+  end,
 })
 
 -- Border color for all floating windows
 create({
-  'ColorScheme',
-  'VimEnter',
-  'BufEnter',
-  'WinEnter',
-  'BufWinEnter'
+  "ColorScheme",
+  "VimEnter",
+  "BufEnter",
+  "WinEnter",
+  "BufWinEnter",
 }, {
   callback = function()
-    vim.cmd [[ highlight FloatBorder guifg=#F28FAD ]]
-    vim.cmd [[ highlight CursorLineNr gui=bold guifg=#F28FAD ]]
-    vim.cmd [[ highlight LineNr guifg=#2aa198 ]]
-    vim.cmd [[ highlight CursorLine guibg=#3f3a60 ]]
-  end
+    vim.cmd([[ highlight FloatBorder guifg=#F28FAD ]])
+    vim.cmd([[ highlight CursorLineNr gui=bold guifg=#F28FAD ]])
+    vim.cmd([[ highlight LineNr guifg=#2aa198 ]])
+    vim.cmd([[ highlight CursorLine guibg=#3f3a60 ]])
+  end,
 })
 
 -- Highlights for Bufferline
---gui=underline cterm=underline 
+--gui=underline cterm=underline
 create({
-  'ColorScheme',
-  'VimEnter',
-  'BufEnter',
-  'WinEnter',
-  'BufWinEnter'
+  "ColorScheme",
+  "VimEnter",
+  "BufEnter",
+  "WinEnter",
+  "BufWinEnter",
 }, {
   callback = function()
-    vim.cmd [[ highlight BufferLineTabSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]]
-    vim.cmd [[ highlight BufferLineTabSeparatorSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]]
-  end
+    vim.cmd([[ highlight BufferLineTabSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
+    vim.cmd([[ highlight BufferLineTabSeparatorSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
+  end,
 })
 
 -- Set popup scrollbar color and vertical split color
 create({
-  'VimEnter',
-  'BufEnter',
-  'WinEnter',
-  'BufWinEnter'
+  "VimEnter",
+  "BufEnter",
+  "WinEnter",
+  "BufWinEnter",
 }, {
   callback = function()
-    vim.cmd [[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]]
-    vim.cmd [[ highlight WinSeparator guifg=#61AFEF ]]
-  end
+    vim.cmd([[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]])
+    vim.cmd([[ highlight WinSeparator guifg=#61AFEF ]])
+  end,
 })
 
 -- Source bufferline config on VimEnter and BufEnter
 create({
-  'VimEnter',
-  'BufEnter',
+  "VimEnter",
+  "BufEnter",
 }, {
   callback = function()
-    vim.cmd [[ source ~/.config/nvim/lua/plugins/bufferline.lua ]]
-    vim.cmd [[ :set relativenumber ]] -- Enforce relative line numbers
-    vim.diagnostic.config({virtual_text = false}) -- disable diagnostic virtual text
-  end
+    vim.cmd([[ source ~/.config/nvim/lua/plugins/bufferline.lua ]])
+    vim.cmd([[ :set relativenumber ]]) -- Enforce relative line numbers
+    vim.diagnostic.config({ virtual_text = false }) -- disable diagnostic virtual text
+  end,
 })
 
 -- Italic/Bold/Underline/underdashed font support for various neovim highlights
 create({
-  'VimEnter',
-  'BufEnter',
-  'WinEnter',
-  'BufWinEnter'
+  "VimEnter",
+  "BufEnter",
+  "WinEnter",
+  "BufWinEnter",
 }, {
   callback = function()
     -- All Keywords
-    vim.cmd [[ hi Keyword gui=underdotted cterm=underdotted ]]
+    vim.cmd([[ hi Keyword gui=underdotted cterm=underdotted ]])
     -- All Comments
-    vim.cmd [[ hi Comment gui=italic cterm=italic ]]
+    vim.cmd([[ hi Comment gui=italic cterm=italic ]])
     -- All Functions
-    vim.cmd [[ hi Function gui=bold cterm=bold ]]
+    vim.cmd([[ hi Function gui=bold cterm=bold ]])
     -- All Constants
-    vim.cmd [[ hi Constant gui=underline cterm=underline ]]
+    vim.cmd([[ hi Constant gui=underline cterm=underline ]])
     -- All Exceptions
-    vim.cmd [[ hi Exception gui=italic cterm=italic ]]
+    vim.cmd([[ hi Exception gui=italic cterm=italic ]])
     -- All Types
-    vim.cmd [[ hi Type gui=italic cterm=italic ]]
+    vim.cmd([[ hi Type gui=italic cterm=italic ]])
     -- All Labels
-    vim.cmd [[ hi Label gui=italic cterm=italic ]]
+    vim.cmd([[ hi Label gui=italic cterm=italic ]])
     -- All Includes
-    vim.cmd [[ hi Include gui=underdashed cterm=underdashed ]]
+    vim.cmd([[ hi Include gui=underdashed cterm=underdashed ]])
     -- All StorageClasses
-    vim.cmd [[ hi StorageClass gui=underdashed cterm=underdashed ]]
+    vim.cmd([[ hi StorageClass gui=underdashed cterm=underdashed ]])
     -- All Structures
-    vim.cmd [[ hi Structure gui=italic cterm=italic ]]
+    vim.cmd([[ hi Structure gui=italic cterm=italic ]])
     -- All Typedefs
-    vim.cmd [[ hi Typedef gui=underdouble cterm=underdouble ]]
+    vim.cmd([[ hi Typedef gui=underdouble cterm=underdouble ]])
     -- All SpecialComments
-    vim.cmd [[ hi SpecialComment gui=italic cterm=italic ]]
+    vim.cmd([[ hi SpecialComment gui=italic cterm=italic ]])
     -- All PreProcs
-    vim.cmd [[ hi PreProc gui=italic cterm=italic ]]
-  end
+    vim.cmd([[ hi PreProc gui=italic cterm=italic ]])
+  end,
 })
