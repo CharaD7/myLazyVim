@@ -1,6 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighing = false,
+    },
     ensure_installed = {
       "astro",
       "markdown",
@@ -24,10 +28,6 @@ return {
       "vim",
       "vue"
     },
-    highlight = {
-      enable = true,
-    },
-    additional_vim_regex_highlighing = false,
     -- MDX
     vim.filetype.add({
       extension = {
