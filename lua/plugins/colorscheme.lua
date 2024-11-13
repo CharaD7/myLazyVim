@@ -2,7 +2,6 @@ return {
   {
     "nvimdev/zephyr-nvim",
     lazy = true,
-    priority = 1000,
   },
   {
     "morhetz/gruvbox",
