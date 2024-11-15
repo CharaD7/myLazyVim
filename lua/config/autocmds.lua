@@ -219,7 +219,7 @@ local default_notebook = [[
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        ""
+        "print('Hello, world!')"
       ]
      }
     ],
