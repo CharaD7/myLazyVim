@@ -9,7 +9,10 @@ return {
       lspFeatures = {
         enabled = true,
         chunks = "curly",
-        languages = { "r", "python", "jupyter" },
+        languages = { "python", "jupyter", "bash", "html" },
+      },
+      completion = {
+        enabled = true,
       },
       codeRunner = {
         enabled = false,
@@ -23,6 +26,7 @@ return {
   end,
   keys = {
     {"<leader>qr", ":lua require('quarto.runner').run_cell()<cr>", desc = "Run Cell"},
+    {"<leader>qp", ":lua require('quarto.preview').toggle_preview<cr>", desc = "Quarto Preview"},
     {"<leader>qa", ":lua require('quarto.runner).run_above()<cr>", desc = "Run Cell and Above"},
     {"<leader>qA", ":lua require('quarto.runner).run_all()<cr>", desc = "Run All Cells"},
     {"<leader>ql", ":lua require('quarto.runner).run_line()<cr>", desc = "Run Line"},
