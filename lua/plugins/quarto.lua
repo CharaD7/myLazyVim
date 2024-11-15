@@ -34,8 +34,8 @@ return {
     {"<leader>RA", ":lua require('quarto.runner').run_all(true)<cr>", desc = "Run All Cells of All Languages"},
     {
       "<C-p>",
-      ":lua require('toggleterm.terminal').Terminal:new({ cmd = 'python3', hidden = true, direction = 'float' }):toggle()<cr>",
-      desc = "Toggle quarto python terminal"
+      ":lua require('toggleterm.terminal').Terminal:new({ cmd = 'ipython', hidden = true, direction = 'float' }):toggle()<cr>",
+      desc = "Toggle quarto ipython terminal"
     }
   },
   opts = {
