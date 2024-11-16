@@ -30,6 +30,9 @@ return {
       autocomplete = {
         -- draw = "reversed",
         winblend = vim.o.pumblend,
+        border = 'rounded',
+        scrollbar = true,
+        auto_show = true,
       },
       documentation = {
         auto_show = true,
