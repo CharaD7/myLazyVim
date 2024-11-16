@@ -11,6 +11,7 @@
   "bufferline.nvim": { "branch": "main", "commit": "5c528bee3dd797d5bd6bae5f229411939b25b203" },
   "catppuccin": { "branch": "main", "commit": "637d99e638bc6f1efedac582f6ccab08badac0c6" },
   "ccc.nvim": { "branch": "main", "commit": "7c639042583c7bdc7ce2e37e5a0e0aa6d0659c6a" },
+  "cmp-digraphs": { "branch": "master", "commit": "5efc1f0078d7c5f3ea1c8e3aad04da3fd6e081a9" },
   "codeium.nvim": { "branch": "main", "commit": "dddaee0d1e9a1d0bcaea66f08a8103b3cdf26604" },
   "conform.nvim": { "branch": "master", "commit": "023f795dbcf32d4351b6a9ed2e613d471b5bb812" },
   "copilot.lua": { "branch": "master", "commit": "f8d8d872bb319f640d5177dad5fbf01f7a16d7d0" },
