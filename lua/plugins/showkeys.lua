@@ -7,5 +7,8 @@ return {
     position = 'bottom-center',
     timeout = 1,
     -- more opts
-  }
+  },
+  keys = {
+    {';ss', ':ShowkeysToggle<cr>', desc = 'ShowkeysToggle'}
+  },
 }
