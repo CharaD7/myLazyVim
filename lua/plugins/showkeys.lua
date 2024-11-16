@@ -3,8 +3,9 @@ return {
   cmd = "ShowkeysToggle",
   opts = {
     exclude_modes = {"i"},
-    maxkeys = 5,
+    maxkeys = 3,
     position = 'bottom-center',
+    show_count = true,
     timeout = 1,
     -- more opts
   }
