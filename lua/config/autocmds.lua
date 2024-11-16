@@ -322,8 +322,6 @@ create({
 }, {
   callback = function()
     vim.cmd([[ source ~/.config/nvim/lua/plugins/bufferline.lua ]])
-    vim.cmd([[ :set relativenumber ]]) -- Enforce relative line numbers
-    vim.diagnostic.config({ virtual_text = false }) -- disable diagnostic virtual text
   end,
 })
 
