@@ -6,9 +6,10 @@ return {
     "sources.completion.enabled_providers",
     "sources.compat",
   },
+  lazy = false,
   dependencies = {
     "rafamadriz/friendly-snippets",
-    { "dmitmel/cmp-digraphs" },
+    "dmitmel/cmp-digraphs",
     -- add blink.compat to dependencies
     { "saghen/blink.compat", opts = {} },
   },
@@ -55,6 +56,10 @@ return {
         -- remember to enable your providers here
         enabled_providers = { "lsp", "path", "snippets", "buffer" },
       },
+      documentation = {
+        border = 'padded',
+        scrollbar = true,
+      },
       providers = {
         -- create provider
         digraphs = {
@@ -85,6 +90,13 @@ return {
   },
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
   config = function(_, opts)
+    -- lspconfig
+    local lspconfig = require('lspconfig')
+    for server, config in pairs(opts.server or {}) do
+      config.capabilities = require('blink-cmp').get_lsp_capabilities(config.capabilities)
+      lspconfig[server].setup(config)
+    end
+
     -- setup compat sources
     opts.kind_icons = LazyVim.config.icons.kinds
     local enabled = opts.sources.completion.enabled_providers
