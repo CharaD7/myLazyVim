@@ -81,7 +81,7 @@ return {
     },
 
     keymap = {
-      preset = "default",
+      preset = "enter",
       ["<Tab>"] = {
         LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
         "fallback",
