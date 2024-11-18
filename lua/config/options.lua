@@ -45,6 +45,12 @@ vim.opt.listchars:append("eol:↴")
 vim.opt.listchars:append("trail:␣")
 vim.opt.listchars:append("tab:» ")
 
+-- don't continue comments automagically
+-- https://neovim.io/doc/user/options.html#'formatoptions'
+vim.opt.formatoptions:remove 'c'
+vim.opt.formatoptions:remove 'r'
+vim.opt.formatoptions:remove 'o'
+
 -- Neovide Configuration
 if vim.g.neovide then
   vim.g.neovide_scale_factor = 1.0
