@@ -7,11 +7,75 @@ local js_based_languages = {
 }
 
 return {
-  {"nvim-neotest/nvim-nio"},
+  {
+    'nvim-neotest/neotest',
+    dependencies = { 'nvim-neotest/neotest-python' },
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('neotest').setup {
+        adapters = {
+          require 'neotest-python',
+        },
+      }
+    end,
+    keys = {
+      { ';dtt', ":lua require'neotest'.run.run({strategy = 'dap'})<cr>", desc = '[t]est' },
+      { ';dts', ":lua require'neotest'.run.stop()<cr>", desc = '[s]top test' },
+      { ';dta', ":lua require'neotest'.run.attach()<cr>", desc = '[a]ttach test' },
+      { ';dtf', ":lua require'neotest'.run.run(vim.fn.expand('%'))<cr>", desc = 'test [f]ile' },
+      { ';dts', ":lua require'neotest'.summary.toggle()<cr>", desc = 'test [s]ummary' },
+    },
+  },
+
   {
     "mfussenegger/nvim-dap",
+    dependencies = {
+      {
+        'nvim-neotest/nvim-nio',
+        'rcarriga/nvim-dap-ui',
+        'mfussenegger/nvim-dap-python',
+        'theHamsta/nvim-dap-virtual-text',
+      },
+    },
     config = function()
+      vim.fn.sign_define('DapBreakpoint', { text = '🦆', texthl = '', linehl = '', numhl = '' })
       local dap = require("dap")
+      local ui = require("dapui")
+      ui.setup()
+      require('dap-python').setup()
+      require('dap.ext.vscode').load_launchjs 'launch.json'
+
+      require('nvim-dap-virtual-text').setup {
+        -- Hides tokens, secrets, and other sensitive information
+        -- From TJ DeVries' config
+        -- Not necessary, but also can't hurt
+        display_callback = function(variable)
+          local name = string.lower(variable.name)
+          local value = string.lower(variable.value)
+          if name:match 'secret' or name:match 'api' or value:match 'secret' or value:match 'api' then
+            return '*****'
+          end
+
+          if #variable.value > 15 then
+            return ' ' .. string.sub(variable.value, 1, 15) .. '... '
+          end
+
+          return ' ' .. variable.value
+        end,
+      }
+
+      dap.listeners.before.attach.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        ui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        ui.close()
+      end
       local venv = os.getenv("VIRTUAL_ENV") .. "/bin/python3"
       dap.adapters.python = {
         type = 'executable',
@@ -144,20 +208,13 @@ return {
     end,
 
     keys = {
-      {
-        "<leader>dO",
-        function()
-          require("dap").step_out()
-        end,
-        desc = "Step Out",
-      },
-      {
-        "<leader>do",
-        function ()
-          require("dap").step_over()
-        end,
-        desc = "Step Over",
-      },
+      { '<leader>db', ":lua require'dap'.toggle_breakpoint()<cr>", desc = 'Toggle Breakpoint' },
+      { '<leader>dc', ":lua require'dap'.continue()<cr>", desc = 'Continue' },
+      { '<leader>do', ":lua require'dap'.step_over()<cr>", desc = 'Step Over' },
+      { '<leader>dO', ":lua require'dap'.step_out()<cr>", desc = 'Step Out' },
+      { '<leader>di', ":lua require'dap'.step_into()<cr>", desc = 'Step Into' },
+      { '<leader>dr', ":lua require'dap'.repl_open()<cr>", desc = 'Repl Open' },
+      { '<leader>du', ":lua require'dapui'.toggle()<cr>", desc = 'DapUi Toggle' },
       {
         "<leader>da",
         function ()
