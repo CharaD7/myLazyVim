@@ -134,7 +134,7 @@ local function redir(args)
   end
 end
 
-local create = vim.api.nvim_user_autocmd
+local create = vim.api.nvim_create_user_autocmd
 
 create("Redir", redir, {
   nargs = "+",
