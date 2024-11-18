@@ -3,11 +3,12 @@
 -- Add any additional options here
 
 local cmd = vim.cmd
+local tabsize = 2
 
 local options = {
   guifont = "Fira Code iScript:h10",
   ve = "block", -- All virtual text editing modes in block
-  cmdheight  =1, -- hide cmd line when not in use
+  cmdheight = 1, -- hide cmd line when not in use
   list = true,
   termguicolors = true,
   fillchars = 'eob: ',
@@ -18,12 +19,12 @@ local options = {
   timeoutlen = 500,
   ttimeoutlen = 11,
   wildoptions = "pum",
-  expandtab = true,
   signcolumn = 'yes:1', -- consistent signcolumns
-  shiftwidth = 2,
+  expandtab = true,
+  shiftwidth = tabsize,
+  tabstop = tabsize,
   smartindent = true,
   breakindent = true,
-  tabstop = 2,
   guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait400-blinkoff400-blinkon400-Cursor/lCursor,sm:block-blinkwait175-blinkoff175-blinkon175",
   pumblend = 15,
   winblend = 15,
