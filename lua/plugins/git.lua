@@ -5,7 +5,7 @@ return {
 
   {
     'lewis6991/gitsigns.nvim',
-    enabled = false,
+    enabled = true,
     config = function()
       require('gitsigns').setup {}
     end,
@@ -32,7 +32,7 @@ return {
     'f-person/git-blame.nvim',
     init = function()
       require('gitblame').setup {
-        enabled = false,
+        enabled = true,
       }
       vim.g.gitblame_display_virtual_text = 1
       vim.g.gitblame_enabled = 1
