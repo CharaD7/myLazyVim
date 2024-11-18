@@ -37,6 +37,12 @@ end
 cmd([[ let &t_Cs = "\e[4:3m]" ]])
 cmd([[ let &t_Ce = "\e[4:0m]" ]])
 
+-- diagnostics
+vim.diagnostic.config {
+  underline = true,
+  signs = true,
+}
+
 -- Pretty Fold
 vim.opt.fillchars:append('fold:•')
 -- More options for listchars.
