@@ -19,6 +19,7 @@ local options = {
   ttimeoutlen = 11,
   wildoptions = "pum",
   expandtab = true,
+  signcolumn = 'yes:1', -- consistent signcolumns
   shiftwidth = 2,
   smartindent = true,
   breakindent = true,
