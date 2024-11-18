@@ -38,16 +38,5 @@ return {
       vim.g.gitblame_enabled = 1
     end,
   },
-
-  { -- github PRs and the like with gh - cli
-    'pwntester/octo.nvim',
-    enabled = true,
-    cmd = 'Octo',
-    config = function()
-      require('octo').setup()
-      vim.keymap.set('n', '<leader>gpl', ':Octo pr list<cr>', { desc = 'Octo PR list' })
-      vim.keymap.set('n', '<leader>gpr', ':Octo review start<cr>', { desc = 'Octo Review' })
-    end,
-  },
 }
 
