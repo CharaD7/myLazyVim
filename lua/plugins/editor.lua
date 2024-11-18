@@ -24,7 +24,7 @@ return {
     'stevearc/conform.nvim',
     enabled = true,
     keys = {
-      { '<leader>cf', '<cmd>lua require("conform").format()<cr>', desc = "[f]ormat" },
+      { '<leader>cf', '<cmd>lua require("conform").format()<cr>', desc = "Format" },
     },
     config = function()
       require('conform').setup {
