@@ -110,6 +110,14 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
   end,
 })
 
+-- Check tiem anytime focus is restored or we enter a buffer
+create({ 'FocusGained', 'BufEnter' }, {
+  pattern = { '*' },
+  command = 'checktime',
+})
+
+
+
 -- Hot reload dart files on save
 create({ "BufWritePost" }, {
   pattern = { "*.dart" },
