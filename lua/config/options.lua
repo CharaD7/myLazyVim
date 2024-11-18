@@ -8,6 +8,8 @@ local options = {
   guifont = "Fira Code iScript:h10",
   ve = "block", -- All virtual text editing modes in block
   list = true,
+  termguicolors = true,
+  fillchars = 'eob: ',
   relativenumber = true,
   encoding = 'utf-8',
   fileencoding = 'utf-8',
@@ -17,6 +19,8 @@ local options = {
   wildoptions = "pum",
   expandtab = true,
   shiftwidth = 2,
+  smartindent = true,
+  breakindent = true,
   tabstop = 2,
   guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait400-blinkoff400-blinkon400-Cursor/lCursor,sm:block-blinkwait175-blinkoff175-blinkon175",
   pumblend = 15,
@@ -30,9 +34,6 @@ end
 -- Undercurl
 cmd([[ let &t_Cs = "\e[4:3m]" ]])
 cmd([[ let &t_Ce = "\e[4:0m]" ]])
-
--- Stop auto commenting new lines
-cmd([[ au BufEnter * set formatoptions+=/ ]])
 
 -- Pretty Fold
 vim.opt.fillchars:append('fold:•')
