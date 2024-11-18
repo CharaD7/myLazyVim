@@ -93,4 +93,8 @@ return {
         end,
       }
 
+      vim.wo.conceallevel = 1
+    end,
+  },
+}
 
