@@ -5,6 +5,8 @@ local log = require("plenary.log").new({
   plugin = "redir",
 })
 
+local create = vim.api.nvim_create_user_command
+
 local function redir_open_win(buf, vertical, stderr_p)
   local wn = stderr_p and "redir_sterr_win" or "redir_win"
   if vim.g[wn] == nil then
@@ -134,7 +136,7 @@ local function redir(args)
   end
 end
 
-vim.api.nvim_create_user_command("Redir", redir, {
+create("Redir", redir, {
   nargs = "+",
   complete = "command",
   range = true,
@@ -142,7 +144,7 @@ vim.api.nvim_create_user_command("Redir", redir, {
 })
 vim.cmd([[cabbrev R Redir]])
 
-vim.api.nvim_create_user_command("Mes", function()
+create("Mes", function()
   vim.cmd("Redir messages")
 end, { bar = true })
 vim.cmd([[cabbrev M Mes]])
@@ -162,17 +164,17 @@ local function evaler(range)
   end
 end
 
-vim.api.nvim_create_user_command("EvalFile", function(args)
+create("EvalFile", function(args)
   local bang = args.bang
   evaler("%")(bang)
 end, { bar = true, bang = true })
 
-vim.api.nvim_create_user_command("EvalLine", function(args)
+create("EvalLine", function(args)
   local bang = args.bang
   evaler(".")(bang)
 end, { bar = true, bang = true })
 
-vim.api.nvim_create_user_command("EvalRange", function(args)
+create("EvalRange", function(args)
   local bang = args.bang
   evaler("'<,'>")(bang)
 end, { bar = true, bang = true, range = true })
