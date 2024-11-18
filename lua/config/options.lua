@@ -43,6 +43,10 @@ vim.diagnostic.config {
   signs = true,
 }
 
+-- additional builtin vim packages
+-- filter quickfix list with Cfilter
+vim.cmd.packadd 'cfilter'
+
 -- Pretty Fold
 vim.opt.fillchars:append('fold:•')
 -- More options for listchars.
