@@ -134,9 +134,7 @@ local function redir(args)
   end
 end
 
-local create = vim.api.nvim_create_user_autocmd
-
-create("Redir", redir, {
+vim.api.nvim_create_user_command("Redir", redir, {
   nargs = "+",
   complete = "command",
   range = true,
@@ -144,7 +142,7 @@ create("Redir", redir, {
 })
 vim.cmd([[cabbrev R Redir]])
 
-create("Mes", function()
+vim.api.nvim_create_user_command("Mes", function()
   vim.cmd("Redir messages")
 end, { bar = true })
 vim.cmd([[cabbrev M Mes]])
@@ -164,17 +162,17 @@ local function evaler(range)
   end
 end
 
-create("EvalFile", function(args)
+vim.api.nvim_create_user_command("EvalFile", function(args)
   local bang = args.bang
   evaler("%")(bang)
 end, { bar = true, bang = true })
 
-create("EvalLine", function(args)
+vim.api.nvim_create_user_command("EvalLine", function(args)
   local bang = args.bang
   evaler(".")(bang)
 end, { bar = true, bang = true })
 
-create("EvalRange", function(args)
+vim.api.nvim_create_user_command("EvalRange", function(args)
   local bang = args.bang
   evaler("'<,'>")(bang)
 end, { bar = true, bang = true, range = true })
