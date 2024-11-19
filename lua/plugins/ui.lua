@@ -16,12 +16,20 @@ return {
     end
   },
 
+  { -- scrollbar
+    'dstein64/nvim-scrollview',
+    enabled = true,
+    opts = {
+      current_only = true,
+    },
+  },
+
   -- notify
   {
     "rcarriga/nvim-notify",
     opts = {
       timeout = 3000,
     }
-  }
+  },
 
 }
