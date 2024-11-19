@@ -107,16 +107,16 @@ keymap.set("v", "<s-a-k>", ":m '<-2<CR>==gv=gv", opts)
 keymap.set("n", "<c-x>", ":bdelete<cr>", opts)
 
 
--- local function markdown_codeblock(language, content)
---   return '\\`\\`\\`{' .. language .. '}\n' .. content .. '\n\\`\\`\\`'
--- end
---
--- local quarto_notebook_cmd = 'nvim -c enew -c "set filetype=quarto"' ..
--- ' -c "norm GO## IPython\nThis is Quarto IPython notebook. Syntax is the same as in markdown\n\n' .. markdown_codeblock('python', '# enter code here\n') .. '"' ..
--- ' -c "norm Gkk"' ..
--- -- This line needed because QuartoActivate and MoltenInit commands must be accessible; should be adjusted depending on plugin manager
--- " -c \"lua require('lazy.core.loader').load({'molten-nvim', 'quarto-nvim'}, {cmd = 'Lazy load'})\"" ..
--- ' -c "MoltenInit python3" -c QuartoActivate -c startinsert'
---
--- -- Create new quarto notebook file
--- keymap.set("n", "<leader>qn", quarto_notebook_cmd, opts)
+local function markdown_codeblock(language, content)
+  return '\\`\\`\\`{' .. language .. '}\n' .. content .. '\n\\`\\`\\`'
+end
+
+local quarto_notebook_cmd = 'nvim -c enew -c "set filetype=quarto"' ..
+' -c "norm GO## IPython\nThis is Quarto IPython notebook. Syntax is the same as in markdown\n\n' .. markdown_codeblock('python', '# enter code here\n') .. '"' ..
+' -c "norm Gkk"' ..
+-- This line needed because QuartoActivate and MoltenInit commands must be accessible; should be adjusted depending on plugin manager
+" -c \"lua require('lazy.core.loader').load({'molten-nvim', 'quarto-nvim'}, {cmd = 'Lazy load'})\"" ..
+' -c "MoltenInit python3" -c QuartoActivate -c startinsert'
+
+-- Create new quarto notebook file
+keymap.set("n", "<leader>qn", quarto_notebook_cmd, opts)
