@@ -194,13 +194,6 @@ return {
         desc = "Dismiss All Notifications",
       },
       {
-        "<C-x>",
-        function()
-          Snacks.bufdelete()
-        end,
-        desc = "Delete Buffer",
-      },
-      {
         "<leader>gg",
         function()
           Snacks.lazygit()
