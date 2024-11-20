@@ -138,7 +138,7 @@ return {
         ---@class snacks.lazygit.Config: snacks.terminal.Opts
         ---@field args? string[]
         ---@field theme? snacks.lazygit.Theme
-        {
+        lazygit = {
           -- automatically configure lazygit to use the current colorscheme
           -- and integrate edit with the current neovim instance
           configure = true,
@@ -163,9 +163,9 @@ return {
             selectedLineBgColor        = { bg = "Visual" }, -- set to `default` to have no background colour
             unstagedChangesColor       = { fg = "DiagnosticError" },
           },
-          win = {
-            style = "lazygit",
-          },
+          -- win = {
+          --   style = "lazygit",
+          -- },
         },
         -- LazyGit full screen
         -- lazygit = {
