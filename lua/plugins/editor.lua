@@ -106,28 +106,6 @@ return {
       "xiyaowong/telescope-emoji.nvim",
       "nvim-telescope/telescope-media-files.nvim",
     },
-    keys = {
-      {
-        "sf",
-        function()
-          local telescope = require("telescope")
-          local function telescope_buffer_dir()
-            return vim.fn.expand("%:p:h")
-          end
-
-          telescope.extensions.file_browser.file_browser({
-            path = "%:p:h",
-            cwd = telescope_buffer_dir(),
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = true,
-            initial_mode = "normal",
-            layout_config = { height = 20 },
-          })
-        end,
-      },
-    },
     config = function(_, opts)
       local telescope = require("telescope")
       local actions = require("telescope.actions")
