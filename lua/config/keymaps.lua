@@ -104,7 +104,7 @@ keymap.set("v", "<s-a-j>", ":m '>+1<CR>==gv=gv", opts)
 keymap.set("v", "<s-a-k>", ":m '<-2<CR>==gv=gv", opts)
 
 -- Delete current buffer
-keymap.set("n", "<c-x>", ":bdelete<cr>", opts)
+-- keymap.set("n", "<c-x>", ":bdelete<cr>", opts) -- use snacks instead
 
 
 local function markdown_codeblock(language, content)
