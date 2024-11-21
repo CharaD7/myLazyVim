@@ -3,8 +3,29 @@ return {
     -- for complete functionality (language features)
     'quarto-dev/quarto-nvim',
     ft = { 'quarto' },
-    dev = false,
-    opts = {},
+    opts = {
+      debug = false,
+      closePreviewOnExit = true,
+      lspFeatures = {
+        enabled = true,
+        chunks = "curly",
+        languages = { "r", "python", "julia", "bash", "html" },
+        diagnostics = {
+          enabled = true,
+          triggers = { "BufWritePost" },
+        },
+        completion = {
+          enabled = true,
+        },
+      },
+      codeRunner = {
+        enabled = false,
+        default_method = 'molten', -- 'molten' or 'slime'
+        ft_runners = { python = 'molten' }, -- filetype to runner, ie. `{ python = "molten" }`.
+        -- Takes precedence over `default_method`
+        never_run = { "yaml" }, -- filetypes which are never sent to a code runner
+      },
+    },
     dependencies = {
       -- for language features in code cells
       -- configured in lua/plugins/lsp.lua and
@@ -56,18 +77,18 @@ return {
       vim.cmd [[
         let g:slime_dispatch_ipython_pause = 100
         function SlimeOverride_EscapeText_quarto(text)
-          call v:lua.Quarto_is_in_python_chunk()
-            if exists('g:slime_python_ipython') && len(split(a:text,"\n")) > 1 && b:quarto_is_python_chunk && !(exists('b:quarto_is_r_mode') && b:quarto_is_r_mode)
-            return ["%cpaste -q\n", g:slime_dispatch_ipython_pause, a:text, "--", "\n"]
-            else
-            if exists('b:quarto_is_r_mode') && b:quarto_is_r_mode && b:quarto_is_python_chunk
-            return [a:text, "\n"]
-            else
-            return [a:text]
-            end
-          end
+        call v:lua.Quarto_is_in_python_chunk()
+        if exists('g:slime_python_ipython') && len(split(a:text,"\n")) > 1 && b:quarto_is_python_chunk && !(exists('b:quarto_is_r_mode') && b:quarto_is_r_mode)
+        return ["%cpaste -q\n", g:slime_dispatch_ipython_pause, a:text, "--", "\n"]
+        else
+        if exists('b:quarto_is_r_mode') && b:quarto_is_r_mode && b:quarto_is_python_chunk
+        return [a:text, "\n"]
+        else
+        return [a:text]
+        end
+        end
         endfunction
-      ]]
+        ]]
 
       vim.g.slime_target = 'neovim'
       vim.g.slime_no_mappings = true
@@ -127,28 +148,6 @@ return {
     'jbyuki/nabla.nvim',
     keys = {
       { '<leader>qm', ':lua require"nabla".toggle_virt()<cr>', desc = 'Toggle Math equations' },
-    },
-  },
-
-  {
-    'benlubas/molten-nvim',
-    enabled = false,
-    build = ':UpdateRemotePlugins',
-    init = function()
-      vim.g.molten_image_provider = 'image.nvim'
-      vim.g.molten_output_win_max_height = 20
-      vim.g.molten_auto_open_output = false
-    end,
-    keys = {
-      { "<leader>me", "<cmd>MoltenEvaluateOperator<cr>", desc = "Evaluate Operator" },
-      { "<leader>mo", "<cmd>noautocmd MoltenEnterOutput<cr>", desc = "Open Output Window" },
-      { "<leader>mr", "<cmd>MoltenReevaluateCell<cr>", desc = "Re-evaluate Cell" },
-      { "<leader>mv", "<cmd>MoltenEvaluateVisual<cr>gv", mode = "v", desc = "Evaluate Visual Selection" },
-      { "<leader>mh", "<cmd>MoltenHideOutput<cr>", desc = "Close Output Window" },
-      { "<leader>md", "<cmd>MoltenDelete<cr>", desc = "Delete Molten Cell" },
-      -- The below works for html outputs
-      { "<leader>mb", "<cmd>MoltenOpenInBrowser<cr>", desc = "Open Output in Browser" },
-      { '<leader>mi', ':MoltenInit<cr>', desc = 'Molten Init' },
     },
   },
 }
