@@ -8,14 +8,14 @@ return  {
       vim.g.molten_auto_open_output = false
     end,
     keys = {
-      { "<leader>me", "<cmd>MoltenEvaluateOperator<cr>", desc = "Evaluate Operator" },
-      { "<leader>mo", "<cmd>noautocmd MoltenEnterOutput<cr>", desc = "Open Output Window" },
-      { "<leader>mr", "<cmd>MoltenReevaluateCell<cr>", desc = "Re-evaluate Cell" },
-      { "<leader>mv", "<cmd>MoltenEvaluateVisual<cr>gv", mode = "v", desc = "Evaluate Visual Selection" },
-      { "<leader>mh", "<cmd>MoltenHideOutput<cr>", desc = "Close Output Window" },
-      { "<leader>md", "<cmd>MoltenDelete<cr>", desc = "Delete Molten Cell" },
+      { "<leader>me", ":MoltenEvaluateOperator<cr>", desc = "Evaluate Operator" },
+      { "<leader>mo", ":noautocmd MoltenEnterOutput<cr>", desc = "Open Output Window" },
+      { "<leader>mr", ":MoltenReevaluateCell<cr>", desc = "Re-evaluate Cell" },
+      { "<leader>mv", ":MoltenEvaluateVisual<cr>gv", mode = "v", desc = "Evaluate Visual Selection" },
+      { "<leader>mh", ":MoltenHideOutput<cr>", desc = "Close Output Window" },
+      { "<leader>md", ":MoltenDelete<cr>", desc = "Delete Molten Cell" },
       -- The below works for html outputs
-      { "<leader>mb", "<cmd>MoltenOpenInBrowser<cr>", desc = "Open Output in Browser" },
+      { "<leader>mb", ":MoltenOpenInBrowser<cr>", desc = "Open Output in Browser" },
       { '<leader>mi', ':MoltenInit<cr>', desc = 'Molten Init' },
     },
   }
