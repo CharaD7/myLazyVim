@@ -14,19 +14,20 @@ return {
       },
     },
     debugger = { -- integrate with nvim dap + install dart code debugger
-      enabled = true
+      enabled = false
     },
     widget_guides = {
       enabled = true,
-    },
-    dev_tools = {
-      autostart = false, -- autostart devtools server if not detected
     },
     lsp = {
       color = {
         enabled = true, -- whether or not to highlight color variables at all
         background = true, -- highlight the background
+        virtual_text = false,
       },
+    },
+    ui = {
+      border = "rounded",
     },
   },
 }
