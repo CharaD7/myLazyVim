@@ -184,6 +184,13 @@ create({
   end,
 })
 
+-- Automtically hot-reload Flutter app when dart file is written to buffer
+create({'BufWritePost'}, {
+  pattern = '*.dart',
+  command = ':silent !clear | execute "Flutter" .. (FlutterDevices() > 0 and "Reload" or "Run")',
+  group = vim.api.nvim_create_augroup('Flutter', {})
+})
+
 -- Set popup scrollbar color and vertical split color
 create({
   "VimEnter",
