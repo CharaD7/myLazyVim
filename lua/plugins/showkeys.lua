@@ -9,6 +9,6 @@ return {
     -- more opts
   },
   keys = {
-    {';ss', ':ShowkeysToggle<cr>', desc = 'ShowkeysToggle'}
+    {';sk', ':ShowkeysToggle<cr>', desc = 'ShowkeysToggle'}
   },
 }
