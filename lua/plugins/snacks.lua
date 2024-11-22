@@ -26,7 +26,7 @@ return {
   -- Disable toggle term and use Snacks terminal instead
   {
     "akinsho/toggleterm.nvim",
-    enabled = false,
+    enabled = true,
   },
   -- Disable mini buffer remove and use Snacks buffer delete instead
   {
