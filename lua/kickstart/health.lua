@@ -46,7 +46,7 @@ local function maybe_system(command)
 end
 
 local check_image_dependencies = function()
-  local backend = 'kitty'
+  local backend = 'tmux'
 
   local shell
   if vim.fn.has 'nvim-0.10.0' == 1 then
