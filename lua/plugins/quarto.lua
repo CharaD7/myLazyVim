@@ -3,27 +3,22 @@ return {
     -- for complete functionality (language features)
     'quarto-dev/quarto-nvim',
     ft = { 'quarto' },
+    dev = false,
     opts = {
-      debug = false,
-      closePreviewOnExit = true,
       lspFeatures = {
-        enabled = true,
-        chunks = "curly",
-        languages = { "r", "python", "julia", "bash", "html" },
+        languages = {"python", "markdown", "rust"},
+        chunks = "all",
         diagnostics = {
           enabled = true,
-          triggers = { "BufWritePost" },
+          triggers = {"BufWritePost"},
         },
         completion = {
           enabled = true,
         },
       },
       codeRunner = {
-        enabled = false,
-        default_method = 'molten', -- 'molten' or 'slime'
-        ft_runners = { python = 'molten' }, -- filetype to runner, ie. `{ python = "molten" }`.
-        -- Takes precedence over `default_method`
-        never_run = { "yaml" }, -- filetypes which are never sent to a code runner
+        enabled = true,
+        default_method = "molten",
       },
     },
     keys = {
@@ -80,6 +75,8 @@ return {
     'jpalardy/vim-slime',
     dev = false,
     init = function()
+      vim.g.slime_target = 'neovim'
+      vim.g.slime_no_mappings = true
       vim.b['quarto_is_python_chunk'] = false
       Quarto_is_in_python_chunk = function()
         require('otter.tools.functions').is_otter_language_context 'python'
@@ -99,16 +96,14 @@ return {
         end
         end
         endfunction
-        ]]
+      ]]
 
-      vim.g.slime_target = 'neovim'
-      vim.g.slime_no_mappings = true
-      vim.g.slime_python_ipython = 1
     end,
     config = function()
+      vim.g.slime_python_ipython = 1
       vim.g.slime_input_pid = false
       vim.g.slime_suggest_default = true
-      vim.g.slime_menu_config = false
+      vim.g.slime_menu_config = 1
       vim.g.slime_neovim_ignore_unlisted = true
 
       local function mark_terminal()
