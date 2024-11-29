@@ -80,13 +80,7 @@ return {
       },
     },
 
-    keymap = {
-      preset = "enter",
-      ["<Tab>"] = {
-        LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
-        "fallback",
-      },
-    },
+    keymap = {preset = "enter"},
   },
   ---@param opts blink.cmp.Config | { sources: { compat: string[] } }
   config = function(_, opts)
