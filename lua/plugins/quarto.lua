@@ -6,7 +6,7 @@ return {
     dev = false,
     opts = {
       lspFeatures = {
-        languages = {"python", "markdown", "rust"},
+        languages = {"python", "markdown"},
         chunks = "all",
         diagnostics = {
           enabled = true,
@@ -19,7 +19,6 @@ return {
       codeRunner = {
         enabled = true,
         default_method = "molten",
-        ft = {"quarto", "markdown"},
       },
     },
     keys = {
@@ -38,12 +37,18 @@ return {
       -- configured in lua/plugins/lsp.lua and
       -- added as a nvim-cmp source in lua/plugins/completion.lua
       'jmbuhr/otter.nvim',
+      'benlubas/molten.nvim',
     },
     init = function ()
       require("quarto").activate()
     end,
     config = function()
-      local runner = require("quarto.runner")
+      local molten = require("molten")
+      local quarto = require("quarto")
+      quarto.codeRunner.ft_runners = {
+        ["python"] = molten
+      }
+      local runner = quarto.codeRunner
       vim.keymap.set("n", ";rc", runner.run_cell,  { desc = "Run Cell", silent = true })
       vim.keymap.set("n", ";ra", runner.run_above, { desc = "Run Cell and Above", silent = true })
       vim.keymap.set("n", ";rA", runner.run_all,   { desc = "Run All Cells", silent = true })
@@ -72,55 +77,6 @@ return {
         },
       },
     },
-  },
-
-  { -- send code from python/r/qmd documets to a terminal or REPL
-    -- like ipython, R, bash
-    'jpalardy/vim-slime',
-    dev = false,
-    init = function()
-      vim.g.slime_target = 'neovim'
-      vim.g.slime_no_mappings = true
-      vim.b['quarto_is_python_chunk'] = false
-      Quarto_is_in_python_chunk = function()
-        require('otter.tools.functions').is_otter_language_context 'python'
-      end
-
-      vim.cmd [[
-        let g:slime_dispatch_ipython_pause = 100
-        function SlimeOverride_EscapeText_quarto(text)
-        call v:lua.Quarto_is_in_python_chunk()
-        if exists('g:slime_python_ipython') && len(split(a:text,"\n")) > 1 && b:quarto_is_python_chunk && !(exists('b:quarto_is_r_mode') && b:quarto_is_r_mode)
-        return ["%cpaste -q\n", g:slime_dispatch_ipython_pause, a:text, "--", "\n"]
-        else
-        if exists('b:quarto_is_r_mode') && b:quarto_is_r_mode && b:quarto_is_python_chunk
-        return [a:text, "\n"]
-        else
-        return [a:text]
-        end
-        end
-        endfunction
-      ]]
-
-    end,
-    config = function()
-      vim.g.slime_python_ipython = 1
-      vim.g.slime_input_pid = false
-      vim.g.slime_suggest_default = true
-      vim.g.slime_menu_config = 1
-      vim.g.slime_neovim_ignore_unlisted = true
-
-      local function mark_terminal()
-        local job_id = vim.b.terminal_job_id
-        vim.print('job_id: ' .. job_id)
-      end
-
-      local function set_terminal()
-        vim.fn.call('slime#config', {})
-      end
-      vim.keymap.set('n', ';cm', mark_terminal, { desc = 'Mark terminal' })
-      vim.keymap.set('n', ';cs', set_terminal, { desc = 'Set terminal' })
-    end,
   },
 
   { -- paste an image from the clipboard or drag-and-drop
@@ -154,11 +110,5 @@ return {
     end,
   },
 
-  { -- preview equations
-    'jbyuki/nabla.nvim',
-    keys = {
-      { '<leader>qm', ':lua require"nabla".toggle_virt()<cr>', desc = 'Toggle Math equations' },
-    },
-  },
 }
 
