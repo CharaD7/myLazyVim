@@ -44,9 +44,6 @@ return {
         opts = {}
       },
     },
-    init = function ()
-      require("quarto").activate()
-    end,
     config = function()
       local runner = require("quarto.runner")
       vim.keymap.set("n", ";rc", runner.run_cell,  { desc = "Run Cell", silent = true })
