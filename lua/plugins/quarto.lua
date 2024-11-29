@@ -36,19 +36,19 @@ return {
       -- for language features in code cells
       -- configured in lua/plugins/lsp.lua and
       -- added as a nvim-cmp source in lua/plugins/completion.lua
-      'jmbuhr/otter.nvim',
-      'benlubas/molten-nvim',
+      {
+        'jmbuhr/otter.nvim',
+        dependencies = {
+          'nvim-treesitter/nvim-treesitter'
+        },
+        opts = {}
+      },
     },
     init = function ()
       require("quarto").activate()
     end,
     config = function()
-      local molten = require("molten")
-      local quarto = require("quarto")
-      quarto.codeRunner.ft_runners = {
-        ["python"] = molten
-      }
-      local runner = quarto.codeRunner
+      local runner = require("quarto.runner")
       vim.keymap.set("n", ";rc", runner.run_cell,  { desc = "Run Cell", silent = true })
       vim.keymap.set("n", ";ra", runner.run_above, { desc = "Run Cell and Above", silent = true })
       vim.keymap.set("n", ";rA", runner.run_all,   { desc = "Run All Cells", silent = true })
