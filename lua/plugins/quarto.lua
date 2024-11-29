@@ -37,7 +37,7 @@ return {
       -- configured in lua/plugins/lsp.lua and
       -- added as a nvim-cmp source in lua/plugins/completion.lua
       'jmbuhr/otter.nvim',
-      'benlubas/molten.nvim',
+      'benlubas/molten-nvim',
     },
     init = function ()
       require("quarto").activate()
