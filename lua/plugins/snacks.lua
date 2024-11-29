@@ -41,7 +41,7 @@ return {
   -- Disable nvim notify and use Snacks notify instead
   {
     "rcarriga/nvim-notify",
-    enabled = false,
+    enabled = true,
   },
   -- Disable dashboard
   {
