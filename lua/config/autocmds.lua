@@ -203,6 +203,7 @@ create({
     vim.cmd([[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]])
     vim.cmd([[ highlight ScrollView guifg=#61AFEF guibg=#61AFEF ]])
     vim.cmd([[ highlight WinSeparator guifg=#61AFEF ]])
+    -- vim.cmd([[ highlight BlinkCmpDocBorder guifg=#61AFEF ]])
   end,
 })
 
