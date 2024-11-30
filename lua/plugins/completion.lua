@@ -8,7 +8,6 @@ return {
 
   { -- completion
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
@@ -104,18 +103,29 @@ return {
             mode = 'symbol',
             menu = {
               otter = '[🦦]',
-              nvim_lsp = '[LSP]',
-              nvim_lsp_signature_help = '[sig]',
-              luasnip = '[snip]',
-              buffer = '[buf]',
-              path = '[path]',
-              spell = '[spell]',
-              pandoc_references = '[ref]',
-              tags = '[tag]',
-              treesitter = '[TS]',
+              nvim_lsp = '',
+              -- nvim_lsp = '[LSP]',
+              nvim_lsp_signature_help = '',
+              -- nvim_lsp_signature_help = '[sig]',
+              luasnip = '',
+              -- luasnip = '[snip]',
+              buffer = '',
+              -- buffer = '[buf]',
+              path = '',
+              -- path = '[path]',
+              spell = ' ',
+              -- spell = '[spell]',
+              pandoc_references = ' ',
+              -- pandoc_references = '[ref]',
+              tags = '',
+              -- tags = '[tag]',
+              treesitter = '',
+              -- treesitter = '[TS]',
               calc = '[calc]',
-              latex_symbols = '[tex]',
-              emoji = '[emoji]',
+              latex_symbols = '',
+              -- latex_symbols = '[tex]',
+              emoji = 'ﲃ',
+              -- emoji = '[emoji]',
             },
           },
         },
@@ -137,9 +147,8 @@ return {
           entries = 'native',
         },
         window = {
-          documentation = {
-            border = require('misc.style').border,
-          },
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
       }
 
@@ -153,27 +162,5 @@ return {
     end,
   },
 
-  { -- gh copilot
-    'zbirenbaum/copilot.lua',
-    enabled = true,
-    config = function()
-      require('copilot').setup {
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          debounce = 75,
-          keymap = {
-            accept = 'enter',
-            -- accept_word = false,
-            -- accept_line = false,
-            next = '<C-]>',
-            prev = '<C-[>',
-            dismiss = '<Esc>',
-          },
-        },
-        panel = { enabled = true },
-      }
-    end,
-  },
 }
 
