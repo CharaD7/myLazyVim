@@ -536,14 +536,6 @@ return {
       require("mason-lspconfig").setup()
     end,
   },
-  -- Null-ls
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      table.insert(opts.sources, nls.builtins.formatting.prettierd)
-    end,
-  },
   -- Color picker
   {
     "uga-rosa/ccc.nvim",
