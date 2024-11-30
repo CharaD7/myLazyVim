@@ -26,9 +26,9 @@ return {
       'jmbuhr/otter.nvim',
     },
     config = function()
-      local cmp = require 'cmp'
-      local luasnip = require 'luasnip'
-      local lspkind = require 'lspkind'
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+      local lspkind = require('lspkind')
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -95,7 +95,7 @@ return {
             end
           end, { 'i', 's' }),
         },
-        autocomplete = false,
+        autocomplete = true,
 
         ---@diagnostic disable-next-line: missing-fields
         formatting = {
@@ -130,7 +130,7 @@ return {
           },
         },
         sources = {
-          -- { name = 'otter' }, -- for code chunks in quarto
+          { name = 'otter' }, -- for code chunks in quarto
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
           { name = 'nvim_lsp' },
@@ -145,6 +145,9 @@ return {
         },
         view = {
           entries = 'native',
+          docs = {
+            auto_open = false
+          },
         },
         window = {
           completion = cmp.config.window.bordered(),
