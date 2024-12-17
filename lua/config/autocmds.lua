@@ -169,6 +169,20 @@ create({
   end,
 })
 
+-- Auto-enable transparent plugin
+create({
+  "ColorScheme",
+  "VimEnter",
+  "BufEnter",
+  "WinEnter",
+  "BufWinEnter",
+}, {
+  callback = function()
+    local transparent = require('transparent')
+    transparent.clear_prefix('NeoTree')
+  end,
+})
+
 -- Highlights for Bufferline
 --gui=underline cterm=underline
 create({
