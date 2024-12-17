@@ -180,6 +180,8 @@ create({
   callback = function()
     local transparent = require('transparent')
     transparent.clear_prefix('NeoTree')
+    transparent.clear_prefix('BufferLine')
+    vim.cmd([[ TransparentEnable ]])
   end,
 })
 
