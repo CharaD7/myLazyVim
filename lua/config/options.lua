@@ -6,7 +6,7 @@ local cmd = vim.cmd
 local tabsize = 2
 
 local options = {
-  guifont = "Fira Code iScript:h10",
+  guifont = "Fira Code iScript:h8",
   ve = "block", -- All virtual text editing modes in block
   cmdheight = 1, -- hide cmd line when not in use
   list = true,
