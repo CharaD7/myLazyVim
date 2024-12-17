@@ -9,11 +9,10 @@ return {
       'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
       'EndOfBuffer',
     },
-    extra_groups = {'NeoTreeNormal', 'NeoTreeNormalNC'},
+    extra_groups = {
+      'NeoTreeNormal',
+      'NeoTreeNormalNC',
+      'NormalFloat',
+    },
   },
-  config = function()
-    local transparent = require('transparent')
-    transparent.clear_prefix('BufferLine')
-    transparent.clear_prefix('NeoTree')
-  end
 }
