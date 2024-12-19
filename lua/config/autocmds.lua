@@ -165,7 +165,7 @@ create({
     vim.cmd([[ highlight CursorLineNr gui=bold guifg=#F28FAD ]])
     vim.cmd([[ highlight Visual guibg=#555500 guifg=#FFFFFF ]]) -- background and foreground color for visual line
     vim.cmd([[ highlight LineNr guifg=#2aa198 ]])
-    vim.cmd([[ highlight CursorLine guibg=#3f3a60 ]])
+    -- vim.cmd([[ highlight CursorLine guibg=#3f3a60 ]])
   end,
 })
 
