@@ -30,12 +30,6 @@ return {
       { ';qp', ':QuartoPreview<cr>', desc = 'Quarto Preview' },
       { ';qc', ':QuartoClosePreview<cr>', desc = 'Quarto Close Preview' },
       { ';qa', ':QuartoActivate<cr>', desc = 'Quarto Activate' },
-      -- { ';qd', ':QuartoDiagnostics<cr>', desc = 'Quarto Diagnostics' },
-      -- { ';qs', ':QuartoSend<cr>', desc = 'Quarto Send' },
-      -- { ';qSa', ':QuartoSendAbove<cr>', desc = 'Quarto Send Above' },
-      -- { ';qSb', ':QuartoSendBelow<cr>', desc = 'Quarto Send Below' },
-      -- { ';qSA', ':QuartoSendAll<cr>', desc = 'Quarto Send All' },
-      -- { ';qSl', ':QuartoSendLine<cr>', desc = 'Quarto Send Line' },
     },
     dependencies = {
       -- for language features in code cells
