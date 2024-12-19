@@ -6,7 +6,7 @@ return {
   },
   config = function()
     require("codeium").setup({
-      enable_cmp_source = true,
+      enable_chat = true,
       key_bindings = {
         accept = "<cr>",
         next = "<Tab>",
