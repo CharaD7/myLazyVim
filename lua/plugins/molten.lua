@@ -20,5 +20,5 @@
       { "<leader>mb", ":MoltenOpenInBrowser<cr>", desc = "Open Output in Browser" },
       { '<leader>mi', ':MoltenInit<cr>', desc = 'Molten Init' },
     },
-  },
+  }
 
