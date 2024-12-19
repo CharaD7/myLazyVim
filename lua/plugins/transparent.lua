@@ -1,6 +1,5 @@
 return {
   'xiyaowong/transparent.nvim',
-  lazy = false,
   opts = {
     groups = {
       'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
