@@ -41,13 +41,8 @@ return {
       -- for language features in code cells
       -- configured in lua/plugins/lsp.lua and
       -- added as a nvim-cmp source in lua/plugins/completion.lua
-      {
-        'jmbuhr/otter.nvim',
-        dependencies = {
-          'nvim-treesitter/nvim-treesitter'
-        },
-        opts = {}
-      },
+      'jmbuhr/otter.nvim',
+      'nvim-treesitter/nvim-treesitter',
     },
     config = function()
       local runner = require("quarto.runner")
