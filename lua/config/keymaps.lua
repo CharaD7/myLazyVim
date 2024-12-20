@@ -54,9 +54,6 @@ keymap.set("n", "<c-right>", ":vertical resize +2<cr>", opts)
 keymap.set("n", "<c-up", ":resize -2<cr>", opts)
 keymap.set("n", "<c-down", ":resize +2<cr>", opts)
 
--- Telescope buffers
-keymap.set("n", "<leader>tb", ":Telescope buffers<cr>", opts)
-
 -- Lspsaga
 keymap.set("n", ";f", ":Lspsaga finder<cr>", opts )
 keymap.set("n", ";a", ":Lspsaga code_action<cr>", opts)
