@@ -39,6 +39,7 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     config = function()
+      vim.g.molten_terminal = "tmux"
       local runner = require("quarto.runner")
       vim.keymap.set("n", ";rc", runner.run_cell,  { desc = "Run Cell", silent = true })
       vim.keymap.set("n", ";ra", runner.run_above, { desc = "Run Cell and Above", silent = true })
