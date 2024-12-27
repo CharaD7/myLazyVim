@@ -248,6 +248,11 @@ return {
       flags = lsp_flags,
       on_attach = on_attach
     }
+    nvim_lsp.svelte.setup{
+      capabilities = capabilities,
+      flags = lsp_flags,
+      on_attach = on_attach
+    }
     nvim_lsp.htmx.setup{
       capabilities = capabilities,
       flags = lsp_flags,
