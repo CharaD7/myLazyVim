@@ -14,7 +14,7 @@ return {
       },
     },
     debugger = { -- integrate with nvim dap + install dart code debugger
-      enabled = true,
+      enabled = false,
       register_configurations = function (path)
         require("dap").configurations.dart = {
           {
