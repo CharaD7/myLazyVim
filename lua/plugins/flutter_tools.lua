@@ -40,6 +40,12 @@ return {
         background = true, -- highlight the background
         virtual_text = false,
       },
+      settings = {
+        completeFunctionCalls = true,
+        renameFilesWithClasses = "prompt",
+        enableSnippets = true,
+        updateImportsOnRename = true,
+      },
     },
     ui = {
       border = "rounded",
