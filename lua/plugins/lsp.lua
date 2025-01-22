@@ -504,6 +504,7 @@ return {
         'jupytext',
         "shfmt",
         "eslint-lsp",
+        "dart-debug-adapter",
         "csharp-language-server",
         "htmx-lsp",
         "rust-analyzer",

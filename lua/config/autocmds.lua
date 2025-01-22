@@ -109,7 +109,7 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
     vim.cmd([[ :wa! ]])
     -- if the current file is a .dart file, then run FlutterReload
     if vim.fn.expand("%:e") == "dart" then
-      vim.cmd([[ FlutterReload ]])
+      vim.cmd([[ FlutterReload ]] 
     end
   end,
 })
