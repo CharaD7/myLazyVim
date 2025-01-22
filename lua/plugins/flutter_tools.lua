@@ -1,12 +1,12 @@
 return {
-  'akinsho/flutter-tools.nvim',
+  "akinsho/flutter-tools.nvim",
   lazy = false,
   dependencies = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim',
+    "nvim-lua/plenary.nvim",
+    "stevearc/dressing.nvim",
   },
   config = true,
-  opts ={
+  opts = {
     decorations = {
       statusline = {
         -- Show currently running device if an application is started with a spec: device
@@ -16,7 +16,7 @@ return {
     },
     debugger = { -- integrate with nvim dap + install dart code debugger
       enabled = false,
-      register_configurations = function (path)
+      register_configurations = function(path)
         require("dap").configurations.dart = {
           {
             type = "dart",
@@ -27,10 +27,10 @@ return {
             -- The nvim-dap plugin populates this variable with the editor's current working directory
             cwd = "${workspaceFolder}",
             -- This gets forwarded to the Flutter CLI tool, substitute `linux` for whatever device you wish to launch
-            toolArgs = {"-d", "linux"},
-          }
+            toolArgs = { "-d", "linux" },
+          },
         }
-      end
+      end,
     },
     widget_guides = {
       enabled = true,
@@ -44,7 +44,7 @@ return {
         enabled = true, -- whether or not to highlight color variables at all
         background = true, -- highlight the background
         background_color = nil, -- required when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
-        virtual_text = true,
+        virtual_text = false,
         virtual_text_str = "■", -- the virtual text character to highlight
       },
       settings = {
