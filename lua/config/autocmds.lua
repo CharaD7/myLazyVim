@@ -139,15 +139,6 @@ create({ "TermOpen" }, {
   end,
 })
 
--- Hot reload dart files on save
-create({ "BufWritePost" }, {
-  pattern = { "**/*.dart" },
-  callback = function()
-    print("Reloading Flutter app...")
-    vim.cmd("FlutterReload")
-  end,
-})
-
 -- Open in last edit point
 create({ "BufReadPost" }, {
   callback = function()
