@@ -109,32 +109,32 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
     vim.cmd([[ :wa! ]])
     -- if the current file is a .dart file, then run FlutterReload
     if vim.fn.expand("%:e") == "dart" then
-      vim.cmd([[ FlutterReload ]] 
+      vim.cmd([[ FlutterReload ]])
     end
   end,
 })
 
 -- Check time anytime focus is restored or we enter a buffer
-create({ 'FocusGained', 'BufEnter' }, {
-  pattern = { '*' },
-  command = 'checktime',
+create({ "FocusGained", "BufEnter" }, {
+  pattern = { "*" },
+  command = "checktime",
 })
 
 local function set_terminal_keymaps()
   local opts = { buffer = 0 }
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+  vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
+  vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 end
 
 -- Disable line number and signcolumn when terminal is open
-create({ 'TermOpen' }, {
-  pattern = { '*' },
+create({ "TermOpen" }, {
+  pattern = { "*" },
   callback = function(_)
-    vim.cmd.setlocal 'nonumber'
-    vim.wo.signcolumn = 'no'
+    vim.cmd.setlocal("nonumber")
+    vim.wo.signcolumn = "no"
     set_terminal_keymaps()
   end,
 })
@@ -181,9 +181,9 @@ create({
   "BufWinEnter",
 }, {
   callback = function()
-    local transparent = require('transparent')
-    transparent.clear_prefix('NeoTree')
-    transparent.clear_prefix('BufferLine')
+    local transparent = require("transparent")
+    transparent.clear_prefix("NeoTree")
+    transparent.clear_prefix("BufferLine")
     vim.cmd([[ TransparentEnable ]])
   end,
 })
