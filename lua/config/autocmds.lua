@@ -107,6 +107,10 @@ create({ "DiagnosticChanged" }, {
 create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
   callback = function()
     vim.cmd([[ :wa! ]])
+    -- if the current file is a .dart file, then run FlutterReload
+    if vim.fn.expand("%:e") == "dart" then
+      vim.cmd([[ FlutterReload ]])
+    end
   end,
 })
 
@@ -137,9 +141,10 @@ create({ 'TermOpen' }, {
 
 -- Hot reload dart files on save
 create({ "BufWritePost" }, {
-  pattern = { "*/lib/*.dart" },
+  pattern = { "**/*.dart" },
   callback = function()
-    vim.cmd([[ FlutterReload ]])
+    print("Reloading Flutter app...")
+    vim.cmd("FlutterReload")
   end,
 })
 
