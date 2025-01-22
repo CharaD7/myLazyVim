@@ -137,10 +137,8 @@ create({ 'TermOpen' }, {
 
 -- Hot reload dart files on save
 create({ "BufWritePost" }, {
-  pattern = { "*.dart" },
+  pattern = { "*/lib/*.dart" },
   callback = function()
-    require("flutter-tools").setup({})
-    vim.fn.system("flutter pub get") -- Ensure dependencies are up to date
     vim.cmd("FlutterReload")
   end,
 })
