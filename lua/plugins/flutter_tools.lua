@@ -44,7 +44,8 @@ return {
         enabled = true, -- whether or not to highlight color variables at all
         background = true, -- highlight the background
         background_color = nil, -- required when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
-        virtual_text = false,
+        virtual_text = true,
+        virtual_text_str = "■", -- the virtual text character to highlight
       },
       settings = {
         showTodos = true,
