@@ -110,7 +110,7 @@ create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
   end,
 })
 
--- Check tiem anytime focus is restored or we enter a buffer
+-- Check time anytime focus is restored or we enter a buffer
 create({ 'FocusGained', 'BufEnter' }, {
   pattern = { '*' },
   command = 'checktime',
