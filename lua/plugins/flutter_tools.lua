@@ -3,6 +3,7 @@ return {
   lazy = false,
   dependencies = {
       'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim',
   },
   config = true,
   opts ={
@@ -34,13 +35,19 @@ return {
     widget_guides = {
       enabled = true,
     },
+    dev_log = {
+      enabled = true,
+      notify_errors = true, -- if there is an error whilst running, then notify the user.
+    },
     lsp = {
       color = {
         enabled = true, -- whether or not to highlight color variables at all
         background = true, -- highlight the background
+        background_color = nil, -- required when background is transparent (i.e. background_color = { r = 19, g = 17, b = 24},)
         virtual_text = false,
       },
       settings = {
+        showTodos = true,
         completeFunctionCalls = true,
         renameFilesWithClasses = "prompt",
         enableSnippets = true,
