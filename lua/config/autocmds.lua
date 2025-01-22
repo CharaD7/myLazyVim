@@ -139,7 +139,7 @@ create({ 'TermOpen' }, {
 create({ "BufWritePost" }, {
   pattern = { "*/lib/*.dart" },
   callback = function()
-    vim.cmd("FlutterReload")
+    vim.cmd([[ FlutterReload ]])
   end,
 })
 
