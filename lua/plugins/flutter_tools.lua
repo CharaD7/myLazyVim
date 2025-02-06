@@ -15,7 +15,7 @@ return {
       },
     },
     debugger = { -- integrate with nvim dap + install dart code debugger
-      enabled = false,
+      enabled = true,
       register_configurations = function(path)
         require("dap").configurations.dart = {
           {
@@ -43,7 +43,7 @@ return {
       color = {
         enabled = true, -- whether or not to highlight color variables at all
         background = true, -- highlight the background
-        virtual_text = false,
+        virtual_text = true,
         virtual_text_str = "■", -- the virtual text character to highlight
       },
       settings = {
