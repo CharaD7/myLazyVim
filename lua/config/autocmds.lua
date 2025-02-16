@@ -56,6 +56,21 @@ create({
   end,
 })
 
+-- Check conda environment for all python-type files
+create({
+  "FileType",
+  "BufRead",
+  "BufNewFile",
+}, {
+  pattern = { "*.py", "*.ipynb", "*.qmd" },
+  callback = function()
+    -- source the conda environment if conda is activated
+    if vim.fn.exists("$CONDA_SHLVL") == 1 and vim.fn.getenv("CONDA_SHLVL") > 0 then
+      vim.cmd([[ source ~/anaconda3/etc/profile.d/conda.fish ]])
+    end
+  end,
+})
+
 -- Enable italics if colorscheme is set to gruvbox
 create("ColorScheme", {
   pattern = "*",
