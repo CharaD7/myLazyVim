@@ -30,6 +30,7 @@ return {
             name = "Launch Flutter Program",
             -- The nvim-dap plugin populates this variable with the filename of the current buffer
             dartSdkPath = "~/flutter/bin/cache/dart-sdk",
+            flutterSdkPath = "~/flutter",
             program = "${file}",
             -- The nvim-dap plugin populates this variable with the editor's current working directory
             cwd = "${workspaceFolder}",
