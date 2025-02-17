@@ -37,7 +37,7 @@ return {
     },
     dev_log = {
       enabled = false,
-      notify_errors = false, -- if there is an error whilst running, then notify the user.
+      notify_errors = true, -- if there is an error whilst running, then notify the user.
     },
     lsp = {
       color = {
