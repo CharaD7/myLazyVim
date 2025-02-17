@@ -17,7 +17,7 @@ return {
     debugger = { -- integrate with nvim dap + install dart code debugger
       enabled = true,
       run_via_dap = true,
-      register_configurations = function(path)
+      register_configurations = function(_)
         require("dap").adapters.dart = {
           type = "executable",
           command = vim.fn.stdpath("data") .. "/mason/bin/dart-debug-adapter",
