@@ -200,15 +200,23 @@ return {
       capabilities = capabilities,
       on_attach = on_attach
     }
+
+    nvim_lsp.dartls.setup{
+      capabilities = capabilities,
+      on_attach = on_attach
+    }
+
     nvim_lsp.dotls.setup {
       capabilities = capabilities,
       flags = lsp_flags,
     }
+
     nvim_lsp.ts_ls.setup {
       capabilities = capabilities,
       flags = lsp_flags,
       filetypes = { 'mjs', 'js', 'javascript', 'typescript', 'ojs' },
     }
+
     nvim_lsp.yamlls.setup {
       capabilities = capabilities,
       flags = lsp_flags,
@@ -221,15 +229,18 @@ return {
         },
       },
     }
+
     require("tailwind-tools").setup({
       capabilities = capabilities,
       flags = lsp_flags,
     })
+
     nvim_lsp.typos_lsp.setup{
       capabilities = capabilities,
       flags = lsp_flags,
       on_attach = on_attach
     }
+
     nvim_lsp.emmet_language_server.setup{
       capabilities = capabilities,
       on_attach = on_attach,
@@ -243,21 +254,25 @@ return {
         },
       },
     }
+
     nvim_lsp.gitlab_ci_ls.setup{
       capabilities = capabilities,
       flags = lsp_flags,
       on_attach = on_attach
     }
+
     nvim_lsp.svelte.setup{
       capabilities = capabilities,
       flags = lsp_flags,
       on_attach = on_attach
     }
+
     nvim_lsp.htmx.setup{
       capabilities = capabilities,
       flags = lsp_flags,
       on_attach = on_attach
     }
+
     nvim_lsp.jsonls.setup{
       capabilities = capabilities,
       flags = lsp_flags,
