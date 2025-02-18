@@ -149,6 +149,19 @@ return {
         }
       end
 
+      local set_cs_dap = function()
+        require('dap-csharp').setup()
+        dap.configurations.cs = {
+          {
+            type = 'coreclr',
+            name = 'Attach remote',
+            request = 'attach',
+            mode = 'remote',
+          },
+        }
+      end
+      set_cs_dap()
+
       local set_python_dap = function()
         require('dap-python').setup() -- earlier, so I can setup the various defaults ready to be replaced
         require('dap-python').resolve_python = function()
