@@ -94,7 +94,7 @@ return {
       },
       -- choose which picker to use with the plugin
       -- possible values are "telescope" | "fzf" | "basic"
-      picker = "fzf-lua",
+      picker = "fzf",
     })
 
     -- Example command
