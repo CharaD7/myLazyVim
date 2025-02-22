@@ -43,7 +43,6 @@ return {
       local ui = require("dapui")
       ui.setup()
       require('dap-python').setup()
-      require('dap.ext.vscode').load_launchjs 'launch.json'
 
       require('nvim-dap-virtual-text').setup {
         -- Hides tokens, secrets, and other sensitive information
@@ -75,6 +74,10 @@ return {
       end
       dap.listeners.before.event_exited.dapui_config = function()
         ui.close()
+      end
+      -- if there is an active virtual environment, use it, else, do nothing
+      if os.getenv("VIRTUAL_ENV") == nil then
+        return
       end
       local venv = os.getenv("VIRTUAL_ENV") .. "/bin/python3"
       dap.adapters.python = {
