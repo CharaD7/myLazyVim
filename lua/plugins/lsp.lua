@@ -201,10 +201,10 @@ return {
       on_attach = on_attach
     }
 
-    -- nvim_lsp.dartls.setup{
-    --   capabilities = capabilities,
-    --   on_attach = on_attach
-    -- }
+    nvim_lsp.dartls.setup{
+      capabilities = capabilities,
+      on_attach = on_attach
+    }
 
     nvim_lsp.dotls.setup {
       capabilities = capabilities,
@@ -519,7 +519,7 @@ return {
         'jupytext',
         "shfmt",
         "eslint-lsp",
-        -- "dart-debug-adapter",
+        "dart-debug-adapter",
         "csharp-language-server",
         "htmx-lsp",
         "rust-analyzer",
