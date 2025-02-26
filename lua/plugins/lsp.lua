@@ -183,7 +183,7 @@ return {
       settings = {
         typescript = {
           inlayHints = {
-            enmmMemberValues = { enabled = true },
+            enumMemberValues = { enabled = true },
             functionLikeReturnTypes = { enabled = true },
             propertyDeclarationTypes = { enabled = true },
             parameterTypes = { enabled = true, suppressWhenArgumentMatchesName = true},
