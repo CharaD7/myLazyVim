@@ -174,6 +174,25 @@ return {
       },
     }
 
+    nvim_lsp.volar.setup{
+      capabilities = capabilities,
+      on_attach = on_attach,
+      init_options = {
+        vue = { hybridMode = false }
+      },
+      settings = {
+        typescript = {
+          inlayHints = {
+            enmmMemberValues = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            parameterTypes = { enabled = true, suppressWhenArgumentMatchesName = true},
+            variableTypes = { enabled = true },
+          }
+        }
+      },
+    }
+
     nvim_lsp.html.setup{
       capabilities = capabilities,
       on_attach = on_attach,
@@ -524,6 +543,7 @@ return {
         "htmx-lsp",
         "rust-analyzer",
         "svelte-language-server",
+        "vue-language-server",
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
