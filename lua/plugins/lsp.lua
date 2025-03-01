@@ -178,7 +178,7 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
       init_options = {
-        vue = { hybridMode = false }
+        vue = { hybridMode = true }
       },
       settings = {
         typescript = {
