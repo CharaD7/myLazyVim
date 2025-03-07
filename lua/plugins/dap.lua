@@ -75,6 +75,31 @@ return {
       dap.listeners.before.event_exited.dapui_config = function()
         ui.close()
       end
+
+      -- coreclr adapter
+      local set_coreclr_dap = function ()
+        dap.adapters.coreclr = {
+          type = 'executable',
+          command = '/usr/local/bin/netcoredbg/netcoredbg',
+          args = { '--interpreter=vscode' },
+          -- args = { 'exec', 'dbg-netcore' },
+        }
+
+        dap.configurations.cs = {
+          {
+            type = "coreclr",
+            name = "launch - netcoredbg",
+            request = "launch",
+            program = function()
+              return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+            end,
+          },
+        }
+        
+      end
+
+      set_coreclr_dap()
+
       -- if there is an active virtual environment, use it, else, do nothing
       if os.getenv("VIRTUAL_ENV") == nil then
         return
@@ -151,19 +176,6 @@ return {
           },
         }
       end
-
-      local set_cs_dap = function()
-        require('dap-csharp').setup()
-        dap.configurations.cs = {
-          {
-            type = 'coreclr',
-            name = 'Attach remote',
-            request = 'attach',
-            mode = 'remote',
-          },
-        }
-      end
-      set_cs_dap()
 
       local set_python_dap = function()
         require('dap-python').setup() -- earlier, so I can setup the various defaults ready to be replaced
