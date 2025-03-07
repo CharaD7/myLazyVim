@@ -29,14 +29,6 @@ return {
 
   {
     "mfussenegger/nvim-dap",
-    dependencies = {
-      {
-        'nvim-neotest/nvim-nio',
-        'rcarriga/nvim-dap-ui',
-        'mfussenegger/nvim-dap-python',
-        'theHamsta/nvim-dap-virtual-text',
-      },
-    },
     config = function()
       vim.fn.sign_define('DapBreakpoint', { text = '🦆', texthl = '', linehl = '', numhl = '' })
       local dap = require("dap")
@@ -242,6 +234,7 @@ return {
       { '<leader>dO', ":lua require'dap'.step_out()<cr>", desc = 'Step Out' },
       { '<leader>di', ":lua require'dap'.step_into()<cr>", desc = 'Step Into' },
       { '<leader>dr', ":lua require'dap'.repl_open()<cr>", desc = 'Repl Open' },
+      { '<leader>dl', ":lua require'dap'.run_last()<cr>", desc = 'Run Last' },
       { '<leader>du', ":lua require'dapui'.toggle()<cr>", desc = 'DapUi Toggle' },
       {
         "<leader>da",
@@ -260,6 +253,12 @@ return {
       },
     },
     dependencies = {
+      {
+        'nvim-neotest/nvim-nio',
+        'rcarriga/nvim-dap-ui',
+        'mfussenegger/nvim-dap-python',
+        'theHamsta/nvim-dap-virtual-text',
+      },
       -- Install the vscode-js-debug adapter
       {
         "microsoft/vscode-js-debug",
