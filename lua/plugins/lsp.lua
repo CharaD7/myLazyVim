@@ -109,7 +109,8 @@ return {
       end
     end
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
     local lsp_flags = {
       allow_incremental_sync = true,
       debounce_text_changes = 150,
