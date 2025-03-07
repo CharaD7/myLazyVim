@@ -136,6 +136,7 @@ create({ "CursorHold", "CursorHoldI" }, {
           vim.opt.updatetime = 800
           -- Display hover using Lspsaga
           vim.cmd([[ :Lspsaga hover_doc ]])
+          -- TODO: Stop hover doc from gaining focus
         end
       end
     end
