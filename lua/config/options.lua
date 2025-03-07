@@ -29,6 +29,7 @@ local options = {
   guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait400-blinkoff400-blinkon400-Cursor/lCursor,sm:block-blinkwait175-blinkoff175-blinkon175",
   pumblend = 15,
   winblend = 15,
+  completeopt = "menuone,noinsert,popup",
 }
 
 for key, value in pairs(options) do
