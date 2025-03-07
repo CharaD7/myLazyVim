@@ -1,5 +1,4 @@
-local chara = require("chara")
-local icons = chara.icons
+local icons = require("chara.icons")
 local js_based_languages = {
   "typescript",
   "javascript",
