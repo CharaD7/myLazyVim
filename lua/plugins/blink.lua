@@ -9,7 +9,7 @@ return {
   opts = {
     fuzzy = { implementation = "prefer_rust_with_warning" },
     sources = {
-      default = { 'lsp', 'path', 'easy-dotnet', 'snippets', 'buffer' },
+      default = { 'lsp', 'omni', 'cmdline', 'path', 'easy-dotnet', 'snippets', 'buffer' },
       compat = { "codeium" },
       providers = {
         codeium = {
