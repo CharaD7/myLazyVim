@@ -7,13 +7,21 @@ return {
     'saghen/blink.compat',
   },
   opts = {
+    fuzzy = { implementation = "prefer_rust_with_warning" },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'path', 'easy-dotnet', 'snippets', 'buffer' },
       compat = { "codeium" },
       providers = {
         codeium = {
           kind = "Codeium",
           score_offset = 100,
+          async = true,
+        },
+        ["easy-dotnet"] = {
+          name = "easy-dotnet",
+          enabled = true,
+          module = "easy-dotnet.completion.blink",
+          score_offset = 300,
           async = true,
         },
       },
