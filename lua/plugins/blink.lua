@@ -37,8 +37,8 @@ return {
     },
     -- opts_extend = { "sources.default" },
     completion = {
-      menu = { border = 'single' },
-      documentation = { window = { border = 'single' } },
+      menu = { border = 'rounded' },
+      documentation = { window = { border = 'rounded' } },
     },
     signature = { window = { border = 'single' } },
   },
