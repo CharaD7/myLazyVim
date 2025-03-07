@@ -1,3 +1,4 @@
+local icons = chara.icons
 local js_based_languages = {
   "typescript",
   "javascript",
@@ -253,11 +254,27 @@ return {
       },
     },
     dependencies = {
+      'nvim-neotest/nvim-nio',
+      'mfussenegger/nvim-dap-python',
+      'theHamsta/nvim-dap-virtual-text',
       {
-        'nvim-neotest/nvim-nio',
         'rcarriga/nvim-dap-ui',
-        'mfussenegger/nvim-dap-python',
-        'theHamsta/nvim-dap-virtual-text',
+        opts = {
+          icons = {
+            expanded = "▾",
+            collapsed = "▸",
+            current_frame = icons.ui.Fire
+          },
+          mappings = {
+            -- Use a table to apply multiple mappings
+            expand = {"<CR>", "<2-LeftMouse>"},
+            open = "o",
+            remove = "d",
+            edit = "e",
+            repl = "r",
+            toggle = "t", gg
+          },
+        }
       },
       -- Install the vscode-js-debug adapter
       {
