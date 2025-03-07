@@ -113,6 +113,11 @@ create({ "DiagnosticChanged" }, {
 -- Show diagnostic in floating window on hover
 create({ "CursorHold", "CursorHoldI" }, {
   callback = function()
+    -- Ensure we are in normal mode
+    if vim.api.nvim_get_mode().mode ~= "n" then
+      return
+    end
+
     local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
     local has_hover = false
 
