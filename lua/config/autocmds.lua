@@ -113,11 +113,32 @@ create({ "DiagnosticChanged" }, {
 -- Show diagnostic in floating window on hover
 create({ "CursorHold", "CursorHoldI" }, {
   callback = function()
-    -- Temporarily set the updatetime to 600ms
-    vim.opt.updatetime = 600
-    -- Call hover_doc on cursor hold
-    vim.cmd([[ :Lspsaga hover_doc ]])
-    -- vim.cmd([[ lua vim.diagnostic.open_float(nil, { focus=false }) ]])
+    local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
+    local has_hover = false
+
+    -- Check if any active LSP client for the current buffer supports hover
+    for _, client in ipairs(clients) do
+      if client.server_capabilities and client.server_capabilities.hoverProvider then
+        has_hover = true
+        break
+      end
+    end
+
+    -- Proceed if hover is supported
+    if has_hover then
+      -- Capture hover response
+      local result = vim.lsp.buf_request_sync(0, "textDocument/hover", vim.lsp.util.make_position_params(), 600)
+      -- Check if result contains meaningful information
+      if result and not vim.tbl_isempty(result) then
+        local contents = result[1] and result[1].result and result[1].result.contents
+        if contents and #vim.lsp.util.convert_input_to_markdown_lines(contents) > 1 then
+          -- Temporarily set the updatetime to 600ms
+          vim.opt.updatetime = 800
+          -- Display hover using Lspsaga
+          vim.cmd([[ :Lspsaga hover_doc ]])
+        end
+      end
+    end
   end,
 })
 
