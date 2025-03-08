@@ -45,6 +45,8 @@ return {
     tree_sitter = { enabled = true, weight_adjust = 1.0 },
   },
   config = function ()
+    vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled())
+
     local nvim_lsp = require("nvim_lsp") -- composer global require php-stubs/wordpress-globals php-stubs/wordpress-stubs php-stubs/woocommerce-stubs php-stubs/acf-pro-stubs wpsyntex/polylang-stubs php-stubs/genesis-stubs php-stubs/wp-cli-stubs
     local configs = require('lspconfig.configs')
     local util = require('lspconfig.util')
