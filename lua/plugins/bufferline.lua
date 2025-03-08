@@ -26,6 +26,7 @@ return {
       show_tab_indicators = true,
       separator_style = "slope",
       always_show_bufferline = true,
+      truncate_names = false,
       offsets = {
         {
           filetype = "NvimTree",
