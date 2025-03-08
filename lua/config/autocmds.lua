@@ -138,7 +138,7 @@ create({ "CursorHold", "CursorHoldI" }, {
         local contents = result[1] and result[1].result and result[1].result.contents
         if contents and #vim.lsp.util.convert_input_to_markdown_lines(contents) > 1 then
           -- Temporarily set the updatetime to 600ms
-          vim.opt.updatetime = 1500
+          vim.opt.updatetime = 2000
           -- Display hover using Lspsaga
           vim.cmd([[ :Lspsaga hover_doc ]])
           -- TODO: Stop hover doc from gaining focus
