@@ -19,15 +19,6 @@ return {
   -- LSPconfig
   "neovim/nvim-lspconfig",
   dependencies = {
-    "ms-jpq/coq_nvim",
-    "ms-jpq/coq.thirdparty",
-    {
-      "ms-jpq/coq.artifacts",
-      branch = "artifacts",
-    },
-    {
-      "Mte90/coq_wordpress",
-    },
     { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
     { -- nice loading notifications
       -- PERF: but can slow down startup
@@ -49,18 +40,6 @@ return {
     { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
     { 'folke/neoconf.nvim', opts = {}, enabled = false },
   },
-  init = function()
-    vim.g.coq_settings = {
-      auto_start = true, -- if you want to start COQ at startup
-      opts = {
-        keymaps = {
-          jump_to_mark = '<S-h>',
-          bigger_preview = '<S-k>'
-        }
-      }
-    }
-
-  end,
   clients = {
     lsp = { enabled = true },
     tree_sitter = { enabled = true, weight_adjust = 1.0 },
@@ -125,36 +104,6 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
     capabilities.textDocument.completion.completionItem.resolveSupport = {
       properties = {'documentation', 'detail', 'additionalTextEdits',}
-    }
-
-    local coq = require("coq")
-    capabilities = coq.lsp_ensure_capabilities(capabilities)
-    nvim_lsp.intelephense.setup({
-      settings = {
-        intelephense = {
-          stubs = {"bcmath", "bz2", "Core", "curl", "date", "dom", "fileinfo", "filter", "gd", "gettext", "hash", "iconv", "imap", "intl", "json", "libxml", "mbstring", "mcrypt", "mysql", "mysqli", "password", "pcntl", "pcre", "PDO", "pdo_mysql", "Phar", "readline", "regex", "session", "SimpleXML", "sockets", "sodium", "standard", "superglobals", "tokenizer", "xml", "xdebug", "xmlreader", "xmlwriter", "yaml", "zip", "zlib", "wordpress-stubs", "woocommerce-stubs", "acf-pro-stubs", "wordpress-globals", "wp-cli-stubs", "genesis-stubs", "polylang-stubs"},
-          environment = {
-            includePaths = {'/home/chara-tech/.composer/vendor/php-stubs/', '/home/chara-tech/.composer/vendor/wpsyntex/'}
-          },
-          files = {
-            maxSize = 5000000;
-          };
-        };
-      },
-      capabilities = capabilities,
-      on_attach = on_attach
-    })
-
-    local phpactor_capabilities = vim.lsp.protocol.make_client_capabilities()
-    phpactor_capabilities.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true
-    }
-
-    phpactor_capabilities['textDocument']['codeAction'] = {}
-    nvim_lsp.phpactor.setup{
-      capabilities = phpactor_capabilities,
-      on_attach = on_attach
     }
 
     nvim_lsp.cssls.setup{
@@ -579,7 +528,6 @@ return {
         "shellcheck",
         "vls",
         "clangd",
-        "marksman",
         "gopls",
         "prettier",
       })
