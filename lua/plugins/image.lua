@@ -10,7 +10,7 @@ return {
     "3rd/image.nvim",
     dependencies = { "luarocks.nvim" },
     opts = {
-      backend = "kitty",
+      backend = "tmux",
       processor = "magick_rock", -- or "magick_cli"
       integrations = {
         markdown = {
