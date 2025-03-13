@@ -1,6 +1,6 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
-  "CopilotChat.nvim": { "branch": "main", "commit": "b094001f80f91411d8743742b1e7b7bfa11e28bf" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "14f15e64d1d0ebb2213f94405f39ef476a4df07f" },
   "LazyVim": { "branch": "main", "commit": "3f034d0a7f58031123300309f2efd3bb0356ee21" },
   "LuaSnip": { "branch": "master", "commit": "c9b9a22904c97d0eb69ccb9bab76037838326817" },
   "SchemaStore.nvim": { "branch": "main", "commit": "c183ec0ee5847642f3e8a2de881fc9cfebec1536" },
