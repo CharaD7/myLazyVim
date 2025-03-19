@@ -131,6 +131,6 @@
   "volt": { "branch": "main", "commit": "21a2351697abfed26d4469b88d3ab124d55a1b3f" },
   "vscode-js-debug": { "branch": "main", "commit": "cdca7f206692f5ceed702c19b7f7f72aa2bba3b9" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
-  "yanky.nvim": { "branch": "main", "commit": "b97b31b64faf038bf8bcd7c4b45415741a55d1e5" },
+  "yanky.nvim": { "branch": "main", "commit": "a21a0b4f593e1fb17b17882f1ab3a3c1b943b831" },
   "zephyr-nvim": { "branch": "main", "commit": "7fd86b7164442d3b5ec2c81b2694d040e716b5cf" }
 }
