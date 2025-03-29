@@ -26,7 +26,7 @@
   "easy-dotnet.nvim": { "branch": "main", "commit": "86de4c79c65c4ce17a1a95fd05065290397e7c15" },
   "edgy.nvim": { "branch": "main", "commit": "7e8dedc39abebe40c289b8012cc89b11c69aa7a0" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
-  "flutter-tools.nvim": { "branch": "main", "commit": "8edcdabfe982c77482ebde2ba3f46f2adc677e64" },
+  "flutter-tools.nvim": { "branch": "main", "commit": "2d91a86a43a1ae1303e48aac55542f57b5731990" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "fzf-lua": { "branch": "main", "commit": "ac6a34ea39831ec71c14f72075facf377ea9a00d" },
   "git-blame.nvim": { "branch": "master", "commit": "b12da2156ec1c3f53f42c129201ff0bfed69c86e" },
