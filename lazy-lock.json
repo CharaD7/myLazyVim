@@ -36,7 +36,7 @@
   "global-note.nvim": { "branch": "main", "commit": "1e0d4bba425d971ed3ce40d182c574a25507115c" },
   "grug-far.nvim": { "branch": "main", "commit": "9411a99390014231753bbb7a2afe6886fda99257" },
   "gruvbox": { "branch": "master", "commit": "f1ecde848f0cdba877acb0c740320568252cc482" },
-  "image.nvim": { "branch": "master", "commit": "6ffafab2e98b5bda46bf227055aa84b90add8cdc" },
+  "image.nvim": { "branch": "master", "commit": "2e2d28b7734b5efdfc1219f4da8a46c761587bc2" },
   "img-clip.nvim": { "branch": "main", "commit": "24c13df08e3fe66624bed5350a2a780f77f1f65b" },
   "inc-rename.nvim": { "branch": "main", "commit": "87ebe7bee0b83d3b6e4f1494c74abed21b318175" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
