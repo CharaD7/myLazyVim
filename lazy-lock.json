@@ -45,6 +45,7 @@
   "kulala.nvim": { "branch": "main", "commit": "48e4995dccb6ab647ddc7ceeb0017cd25c2a8b98" },
   "lali-components.nvim": { "branch": "main", "commit": "82ef346420eb69a51a339daab5880f3305f009c0" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "lazydev.nvim": { "branch": "main", "commit": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c" },
   "live-server.nvim": { "branch": "main", "commit": "3547fecc984dde6de20664058b028e5e94e9bc87" },
   "lsp_lines.nvim": { "branch": "main", "commit": "3b57922d2d79762e6baedaf9d66d8ba71f822816" },
   "lspkind-nvim": { "branch": "master", "commit": "d79a1c3299ad0ef94e255d045bed9fa26025dab6" },
