@@ -18,6 +18,7 @@
   "copilot.lua": { "branch": "master", "commit": "0a7502946845fb14b860a6384c709a791bbab96a" },
   "crates.nvim": { "branch": "main", "commit": "73d2c590c74a0c582144987a4decb4a642755859" },
   "dashboard-nvim": { "branch": "master", "commit": "ae309606940d26d8c9df8b048a6e136b6bbec478" },
+  "dial.nvim": { "branch": "master", "commit": "2c7e2750372918f072a20f3cf754d845e143d7c9" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "django-plus.vim": { "branch": "master", "commit": "220cfbc03e89c636606f0f4bc89f8135be5f765e" },
   "dotnet.nvim": { "branch": "main", "commit": "f5c52f9f52a3d8ca8dff6916c2228fb41a075274" },
