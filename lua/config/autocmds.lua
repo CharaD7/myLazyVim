@@ -170,6 +170,19 @@ create({
   end,
 })
 
+-- Cursor color for all floating windows
+create({
+  "ColorScheme",
+  "VimEnter",
+  "BufEnter",
+  "WinEnter",
+  "BufWinEnter",
+}, {
+  callback = function()
+    vim.cmd([[ highlight Cursor guifg=#61AFEF ]])
+  end,
+})
+
 -- Auto-enable transparent plugin
 create({
   "ColorScheme",
