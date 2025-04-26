@@ -32,7 +32,7 @@
   "git-blame.nvim": { "branch": "master", "commit": "8503b199edf9a666fe7b1a989cf14e3c26b2eb03" },
   "git-conflict.nvim": { "branch": "main", "commit": "a1badcd070d176172940eb55d9d59029dad1c5a6" },
   "git.nvim": { "branch": "main", "commit": "8a792b81db80efec43dfd40ca41a2af59a1b08bc" },
-  "gitsigns.nvim": { "branch": "main", "commit": "b79047e81f645875e500b4f433d8133bc421446c" },
+  "gitsigns.nvim": { "branch": "main", "commit": "140ac646db125904e456e42ab8b538d28f9607d7" },
   "global-note.nvim": { "branch": "main", "commit": "1e0d4bba425d971ed3ce40d182c574a25507115c" },
   "grug-far.nvim": { "branch": "main", "commit": "f66017591ffa611344b3b2b490df73464c33113e" },
   "gruvbox": { "branch": "master", "commit": "697c00291db857ca0af00ec154e5bd514a79191f" },
