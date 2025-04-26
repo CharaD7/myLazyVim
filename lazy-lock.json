@@ -13,7 +13,7 @@
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "catppuccin": { "branch": "main", "commit": "5b5e3aef9ad7af84f463d17b5479f06b87d5c429" },
   "ccc.nvim": { "branch": "main", "commit": "af2cf5a963f401aad868c065222ee13d4bbc9050" },
-  "codeium.nvim": { "branch": "main", "commit": "ad4414878f7ece254deab8c922d82cec124d161f" },
+  "codeium.nvim": { "branch": "main", "commit": "6e4a661a2d701ff615872ec5a30025a329419d5f" },
   "conform.nvim": { "branch": "master", "commit": "372fc521f8421b7830ea6db4d6ea3bae1c77548c" },
   "copilot.lua": { "branch": "master", "commit": "089ec63c91e66368dbe1026bf2eb70fd7dc52884" },
   "crates.nvim": { "branch": "main", "commit": "73d2c590c74a0c582144987a4decb4a642755859" },
