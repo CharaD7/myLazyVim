@@ -119,7 +119,6 @@
   "vim-dadbod": { "branch": "master", "commit": "fa31d0ffeebaa59cf97a81e7f92194cced54a13f" },
   "vim-dadbod-completion": { "branch": "master", "commit": "a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6" },
   "vim-dadbod-ui": { "branch": "master", "commit": "460432301a5cb280ea265ddfa15c9f3dcd1d26b7" },
-  "vim-slime": { "branch": "main", "commit": "507107dd24c9b85721fa589462fd5068e0f70266" },
   "vim-moonfly-colors": { "branch": "master", "commit": "0cec429fe76eeda43b5b88226f16979bdeff1595" },
   "vim-tmux-navigator": { "branch": "master", "commit": "33afa80db65113561dc53fa732b7f5e53d5ecfd0" },
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
