@@ -126,11 +126,12 @@ return {
       },
     }
 
+    -- Vue
     nvim_lsp.volar.setup{
       capabilities = capabilities,
       on_attach = on_attach,
       init_options = {
-        vue = { hybridMode = true }
+        vue = { hybridMode = false }
       },
       settings = {
         typescript = {
@@ -145,8 +146,10 @@ return {
       },
     }
 
+    -- Typescript
     nvim_lsp.ts_ls.setup{
       capabilities = capabilities,
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
       on_attach = on_attach,
       init_options = {
         plugins = {
