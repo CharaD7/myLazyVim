@@ -104,7 +104,7 @@
   "pretty-fold.nvim": { "branch": "master", "commit": "a7d8b424abe0eedf50116c460fbe6dfd5783b1d5" },
   "render-markdown.nvim": { "branch": "main", "commit": "a1b0988f5ab26698afb56b9c2f0525a4de1195c1" },
   "roslyn.nvim": { "branch": "main", "commit": "8dc729a651ae980088246caf651e5ff24e21077a" },
-  "rustaceanvim": { "branch": "master", "commit": "d197f4942d79c699d1a7771b29197a733ffb0261" },
+  "rustaceanvim": { "branch": "master", "commit": "cb532f57c1ed2463c66df683468eb3994e554002" },
   "scope.nvim": { "branch": "main", "commit": "6b4208f017da9b122d69ddc5841e040dffe7313c" },
   "showkeys": { "branch": "main", "commit": "8daf5abb5fece0c9e1fa2c5679aaf226a80f5c38" },
   "smear-cursor.nvim": { "branch": "main", "commit": "162703638203060b1d3412e73429d232bbd2627e" },
