@@ -23,7 +23,7 @@
   "django-plus.vim": { "branch": "master", "commit": "220cfbc03e89c636606f0f4bc89f8135be5f765e" },
   "dotnet.nvim": { "branch": "main", "commit": "f5c52f9f52a3d8ca8dff6916c2228fb41a075274" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
-  "easy-dotnet.nvim": { "branch": "main", "commit": "b57f3b97167fc71c342746410d85a5f19f7717cc" },
+  "easy-dotnet.nvim": { "branch": "main", "commit": "8311c95ffc671d9b676a1b094218b2a7823345f3" },
   "edgy.nvim": { "branch": "main", "commit": "7e8dedc39abebe40c289b8012cc89b11c69aa7a0" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "flutter-tools.nvim": { "branch": "main", "commit": "d5bb1dc3db78d7ab65dd8c5a6f32a38e383b9cb1" },
