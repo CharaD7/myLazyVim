@@ -98,7 +98,7 @@
   "octo.nvim": { "branch": "master", "commit": "e5405d01c0252d711ff6256179140d8dd5c847d6" },
   "omnisharp-extended-lsp.nvim": { "branch": "main", "commit": "ec1a2431f8872f650a85ed71c24f0715df2e49c2" },
   "otter.nvim": { "branch": "main", "commit": "f3a401851c25c64220dcf2470252a1adc28308d5" },
-  "outline.nvim": { "branch": "main", "commit": "1208cf085e697978bf8658e9488a0904dddb9fe8" },
+  "outline.nvim": { "branch": "main", "commit": "0eb9289ab39c91caf8b3ed0e3a17764809d69558" },
   "persistence.nvim": { "branch": "main", "commit": "166a79a55bfa7a4db3e26fc031b4d92af71d0b51" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "pretty-fold.nvim": { "branch": "master", "commit": "a7d8b424abe0eedf50116c460fbe6dfd5783b1d5" },
