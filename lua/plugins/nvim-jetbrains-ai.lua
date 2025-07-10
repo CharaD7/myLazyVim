@@ -7,6 +7,6 @@ return {
     "nvim-lua/plenary.nvim"
   },
   config = function()
-    require("jetbrainsai").setup()
+    require("jetbrainsai").init()
   end
 }
