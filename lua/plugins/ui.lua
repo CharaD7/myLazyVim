@@ -90,10 +90,10 @@ return {
     ft = { 'markdown', 'quarto', 'vimwiki' },
     cond = function()
       -- Disable on Windows system
-       return vim.fn.has 'win32' ~= 1 
+      return vim.fn.has 'win32' ~= 1 
     end,
     dependencies = {
-       'leafo/magick', -- that's a lua rock
+      'leafo/magick', -- that's a lua rock
     },
     config = function()
       -- Requirements
