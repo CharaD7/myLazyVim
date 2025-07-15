@@ -79,6 +79,42 @@ keymap.set("n", "<leader>tv", ":ToggleTerm direction=vertical size=25<cr>", opts
 -- Messages
 keymap.set("n", ";m", ":messages<cr>", opts)
 
+-- Convert leading spaces to tabs interactively
+local function indent_to_tabs()
+	-- You prefer 2 spaces as one indent level, so we override tabstop logic
+	local tab_size = 2
+	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+
+	for i, line in ipairs(lines) do
+		local leading = line:match("^%s+")
+		if leading then
+			local num_spaces = 0
+			for c in leading:gmatch(".") do
+				if c == "\t" then
+					num_spaces = num_spaces + tab_size -- treat tab as equivalent to 2 spaces
+				else
+					num_spaces = num_spaces + 1
+				end
+			end
+
+			local tabs = math.floor(num_spaces / tab_size)
+			local rest = line:sub(#leading + 1)
+			lines[i] = string.rep("\t", tabs) .. rest
+		end
+	end
+
+	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+
+	vim.notify("✅ Indentation now respects 2-space tab logic", vim.log.levels.INFO, {
+		title = "Makefile Formatter",
+		timeout = 2500,
+		icon = "󰓾",
+	})
+end
+
+-- Convert leading spaces to tabs
+keymap.set("n", ";ii",indent_to_tabs, opts)
+
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
 
@@ -105,7 +141,7 @@ keymap.set("n", "<c-x>", ":bdelete<cr>", opts)
 
 
 local function markdown_codeblock(language, content)
-  return '\\`\\`\\`{' .. language .. '}\n' .. content .. '\n\\`\\`\\`'
+	return '\\`\\`\\`{' .. language .. '}\n' .. content .. '\n\\`\\`\\`'
 end
 
 local quarto_notebook_cmd = 'nvim -c enew -c "set filetype=quarto"' ..
