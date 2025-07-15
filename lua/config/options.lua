@@ -24,6 +24,7 @@ local options = {
   expandtab = false,
   shiftwidth = tabsize,
   tabstop = tabsize,
+  softtabstop = tabsize,
   smartindent = true,
   breakindent = true,
   guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait400-blinkoff400-blinkon400-Cursor/lCursor,sm:block-blinkwait175-blinkoff175-blinkon175",
