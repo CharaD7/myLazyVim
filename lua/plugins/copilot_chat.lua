@@ -39,10 +39,10 @@ return {
         vim.ui.input({
           prompt = "Quick Chat: ",
         }, function(input)
-          if input ~= "" then
-            require("CopilotChat").ask(input)
-          end
-        end)
+            if input ~= "" then
+              require("CopilotChat").ask(input)
+            end
+          end)
       end,
       desc = "Quick Chat (CopilotChat)",
       mode = { "n", "v" },
