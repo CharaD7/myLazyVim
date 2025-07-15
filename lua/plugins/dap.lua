@@ -88,7 +88,7 @@ return {
             end,
           },
         }
-        
+
       end
 
       set_coreclr_dap()
