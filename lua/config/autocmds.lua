@@ -36,13 +36,13 @@ create({
   "BufRead",
   "BufNewFile",
 }, {
-  pattern = { "*" },
-  callback = function()
-    vim.cmd([[ set tabstop=2 ]])
-    vim.cmd([[ set shiftwidth=2 ]])
-    vim.cmd([[ set expandtab ]])
-  end,
-})
+    pattern = { "*" },
+    callback = function()
+      vim.cmd([[ set tabstop=2 ]])
+      vim.cmd([[ set shiftwidth=2 ]])
+      vim.cmd([[ set expandtab ]])
+    end,
+  })
 
 -- Use php syntax for blade Filetypes
 create({
@@ -50,11 +50,11 @@ create({
   "BufRead",
   "BufNewFile",
 }, {
-  pattern = { "*.blade.php" },
-  callback = function()
-    vim.cmd([[ set filetype=php ]])
-  end,
-})
+    pattern = { "*.blade.php" },
+    callback = function()
+      vim.cmd([[ set filetype=php ]])
+    end,
+  })
 
 -- Check conda environment for all python-type files
 create({
@@ -62,14 +62,14 @@ create({
   "BufRead",
   "BufNewFile",
 }, {
-  pattern = { "*.py", "*.ipynb", "*.qmd" },
-  callback = function()
-    -- source the conda environment if conda is activated
-    if vim.fn.exists("$CONDA_SHLVL") == 1 and vim.fn.getenv("CONDA_SHLVL") > 0 then
-      vim.cmd([[ source ~/anaconda3/etc/profile.d/conda.fish ]])
-    end
-  end,
-})
+    pattern = { "*.py", "*.ipynb", "*.qmd" },
+    callback = function()
+      -- source the conda environment if conda is activated
+      if vim.fn.exists("$CONDA_SHLVL") == 1 and vim.fn.getenv("CONDA_SHLVL") > 0 then
+        vim.cmd([[ source ~/anaconda3/etc/profile.d/conda.fish ]])
+      end
+    end,
+  })
 
 -- Enable italics if colorscheme is set to gruvbox
 create("ColorScheme", {
@@ -161,14 +161,14 @@ create({
   "WinEnter",
   "BufWinEnter",
 }, {
-  callback = function()
-    vim.cmd([[ highlight FloatBorder guifg=#61AFEF ]])
-    vim.cmd([[ highlight CursorLineNr guifg=#F28FAD ]])
-    vim.cmd([[ highlight Visual guibg=#555500 guifg=#FFFFFF ]]) -- background and foreground color for visual line
-    -- vim.cmd([[ highlight LineNr guifg=#2aa198 ]])
-    -- vim.cmd([[ highlight CursorLine guibg=#3f3a60 ]])
-  end,
-})
+    callback = function()
+      vim.cmd([[ highlight FloatBorder guifg=#61AFEF ]])
+      vim.cmd([[ highlight CursorLineNr guifg=#F28FAD ]])
+      vim.cmd([[ highlight Visual guibg=#555500 guifg=#FFFFFF ]]) -- background and foreground color for visual line
+      -- vim.cmd([[ highlight LineNr guifg=#2aa198 ]])
+      -- vim.cmd([[ highlight CursorLine guibg=#3f3a60 ]])
+    end,
+  })
 
 -- Cursor color for all floating windows
 create({
@@ -178,10 +178,10 @@ create({
   "WinEnter",
   "BufWinEnter",
 }, {
-  callback = function()
-    vim.cmd([[ highlight Cursor guifg=#61AFEF ]])
-  end,
-})
+    callback = function()
+      vim.cmd([[ highlight Cursor guifg=#61AFEF ]])
+    end,
+  })
 
 -- Auto-enable transparent plugin
 create({
@@ -191,13 +191,13 @@ create({
   "WinEnter",
   "BufWinEnter",
 }, {
-  callback = function()
-    local transparent = require("transparent")
-    transparent.clear_prefix("NeoTree")
-    transparent.clear_prefix("BufferLine")
-    vim.cmd([[ TransparentEnable ]])
-  end,
-})
+    callback = function()
+      local transparent = require("transparent")
+      transparent.clear_prefix("NeoTree")
+      transparent.clear_prefix("BufferLine")
+      vim.cmd([[ TransparentEnable ]])
+    end,
+  })
 
 -- Highlights for Bufferline
 --gui=underline cterm=underline
@@ -208,11 +208,11 @@ create({
   "WinEnter",
   "BufWinEnter",
 }, {
-  callback = function()
-    vim.cmd([[ highlight BufferLineTabSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
-    vim.cmd([[ highlight BufferLineTabSeparatorSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
-  end,
-})
+    callback = function()
+      vim.cmd([[ highlight BufferLineTabSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
+      vim.cmd([[ highlight BufferLineTabSeparatorSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
+    end,
+  })
 
 -- Automtically hot-reload Flutter app when dart file is written to buffer
 -- create({'BufWritePost'}, {
@@ -229,23 +229,23 @@ create({
   "WinEnter",
   "BufWinEnter",
 }, {
-  callback = function()
-    vim.cmd([[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]])
-    vim.cmd([[ highlight ScrollView guifg=#61AFEF guibg=#61AFEF ]])
-    vim.cmd([[ highlight WinSeparator guifg=#61AFEF ]])
-    -- vim.cmd([[ highlight BlinkCmpDocBorder guifg=#61AFEF ]])
-  end,
-})
+    callback = function()
+      vim.cmd([[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]])
+      vim.cmd([[ highlight ScrollView guifg=#61AFEF guibg=#61AFEF ]])
+      vim.cmd([[ highlight WinSeparator guifg=#61AFEF ]])
+      -- vim.cmd([[ highlight BlinkCmpDocBorder guifg=#61AFEF ]])
+    end,
+  })
 
 -- Source bufferline config on VimEnter and BufEnter
 create({
   "VimEnter",
   "BufEnter",
 }, {
-  callback = function()
-    vim.cmd([[ source ~/.config/nvim/lua/plugins/bufferline.lua ]])
-  end,
-})
+    callback = function()
+      vim.cmd([[ source ~/.config/nvim/lua/plugins/bufferline.lua ]])
+    end,
+  })
 
 -- Italic/Bold/Underline/underdashed font support for various neovim highlights
 create({
@@ -254,32 +254,32 @@ create({
   "WinEnter",
   "BufWinEnter",
 }, {
-  callback = function()
-    -- All Keywords
-    vim.cmd([[ hi Keyword gui=underdotted cterm=underdotted ]])
-    -- All Comments
-    vim.cmd([[ hi Comment gui=italic cterm=italic ]])
-    -- All Functions
-    vim.cmd([[ hi Function gui=bold cterm=bold ]])
-    -- All Constants
-    vim.cmd([[ hi Constant gui=underline cterm=underline ]])
-    -- All Exceptions
-    vim.cmd([[ hi Exception gui=italic cterm=italic ]])
-    -- All Types
-    vim.cmd([[ hi Type gui=italic cterm=italic ]])
-    -- All Labels
-    vim.cmd([[ hi Label gui=italic cterm=italic ]])
-    -- All Includes
-    vim.cmd([[ hi Include gui=underdashed cterm=underdashed ]])
-    -- All StorageClasses
-    vim.cmd([[ hi StorageClass gui=underdashed cterm=underdashed ]])
-    -- All Structures
-    vim.cmd([[ hi Structure gui=italic cterm=italic ]])
-    -- All Typedefs
-    vim.cmd([[ hi Typedef gui=underdouble cterm=underdouble ]])
-    -- All SpecialComments
-    vim.cmd([[ hi SpecialComment gui=italic cterm=italic ]])
-    -- All PreProcs
-    vim.cmd([[ hi PreProc gui=italic cterm=italic ]])
-  end,
-})
+    callback = function()
+      -- All Keywords
+      vim.cmd([[ hi Keyword gui=underdotted cterm=underdotted ]])
+      -- All Comments
+      vim.cmd([[ hi Comment gui=italic cterm=italic ]])
+      -- All Functions
+      vim.cmd([[ hi Function gui=bold cterm=bold ]])
+      -- All Constants
+      vim.cmd([[ hi Constant gui=underline cterm=underline ]])
+      -- All Exceptions
+      vim.cmd([[ hi Exception gui=italic cterm=italic ]])
+      -- All Types
+      vim.cmd([[ hi Type gui=italic cterm=italic ]])
+      -- All Labels
+      vim.cmd([[ hi Label gui=italic cterm=italic ]])
+      -- All Includes
+      vim.cmd([[ hi Include gui=underdashed cterm=underdashed ]])
+      -- All StorageClasses
+      vim.cmd([[ hi StorageClass gui=underdashed cterm=underdashed ]])
+      -- All Structures
+      vim.cmd([[ hi Structure gui=italic cterm=italic ]])
+      -- All Typedefs
+      vim.cmd([[ hi Typedef gui=underdouble cterm=underdouble ]])
+      -- All SpecialComments
+      vim.cmd([[ hi SpecialComment gui=italic cterm=italic ]])
+      -- All PreProcs
+      vim.cmd([[ hi PreProc gui=italic cterm=italic ]])
+    end,
+  })
