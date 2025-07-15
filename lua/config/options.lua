@@ -58,7 +58,7 @@ vim.opt.listchars:append("eol:↴")
 vim.opt.listchars:append("trail:␣")
 vim.opt.listchars:append("tab:»")
 
--- don't continue comments automagically
+-- don't continue comments automatically
 -- https://neovim.io/doc/user/options.html#'formatoptions'
 vim.opt.formatoptions:remove 'c'
 vim.opt.formatoptions:remove 'r'
