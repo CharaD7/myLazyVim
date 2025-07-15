@@ -8,7 +8,7 @@ return {
       local home_dir = vim.fn.expand('~')
       if require("easy-dotnet.extensions").isWindows() then
         local secret_path = home_dir ..
-            '\\AppData\\Roaming\\Microsoft\\UserSecrets\\' .. secret_guid .. "\\secrets.json"
+        '\\AppData\\Roaming\\Microsoft\\UserSecrets\\' .. secret_guid .. "\\secrets.json"
         path = secret_path
       else
         local secret_path = home_dir .. "/.microsoft/usersecrets/" .. secret_guid .. "/secrets.json"
@@ -31,18 +31,18 @@ return {
         enable_buffer_test_execution = true, --Experimental, run tests directly from buffer
         noBuild = true,
         noRestore = true,
-          icons = {
-            passed = "",
-            skipped = "",
-            failed = "",
-            success = "",
-            reload = "",
-            test = "",
-            sln = "󰘐",
-            project = "󰘐",
-            dir = "",
-            package = "",
-          },
+        icons = {
+          passed = "",
+          skipped = "",
+          failed = "",
+          success = "",
+          reload = "",
+          test = "",
+          sln = "󰘐",
+          project = "󰘐",
+          dir = "",
+          package = "",
+        },
         mappings = {
           run_test_from_buffer = { lhs = "<leader>r", desc = "run test from buffer" },
           filter_failed_tests = { lhs = "<leader>fe", desc = "filter failed tests" },
@@ -88,9 +88,9 @@ return {
       csproj_mappings = true,
       fsproj_mappings = true,
       auto_bootstrap_namespace = {
-          --block_scoped, file_scoped
-          type = "block_scoped",
-          enabled = true
+        --block_scoped, file_scoped
+        type = "block_scoped",
+        enabled = true
       },
       -- choose which picker to use with the plugin
       -- possible values are "telescope" | "fzf" | "basic"
