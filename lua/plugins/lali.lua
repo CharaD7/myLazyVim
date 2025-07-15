@@ -1,4 +1,4 @@
 return {
-    'ricardoramirezr/lali-components.nvim',
-    ft = 'blade'
+  'ricardoramirezr/lali-components.nvim',
+  ft = 'blade'
 }
