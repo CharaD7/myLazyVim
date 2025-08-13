@@ -285,3 +285,15 @@ create({
 			vim.bo.softtabstop = 0
 		end,
 	})
+
+
+-- Render binary files within neovim
+-- Render pdf files
+vim.api.nvim_create_autocmd("BufReadCmd", {
+  pattern = "*.pdf",
+  callback = function()
+    local filename = vim.fn.shellescape(vim.api.nvim_buf_get_name(0))
+    vim.cmd("silent !mupdf " .. filename .. " &")
+    vim.cmd("let tobedeleted = bufnr('%') | b# | exe \"bd! \" . tobedeleted")
+  end
+})
