@@ -79,7 +79,7 @@
   "nvim-autopairs": { "branch": "master", "commit": "23320e75953ac82e559c610bec5a90d9c6dfa743" },
   "nvim-code-action-menu": { "branch": "main", "commit": "8c7672a4b04d3cc4edd2c484d05b660a9cb34a1b" },
   "nvim-dap": { "branch": "master", "commit": "7523676a4be17644587aa47e4d42f6f7646d4727" },
-  "nvim-dap-python": { "branch": "master", "commit": "030385d03363988370adaa5cf21fa465daddb088" },
+  "nvim-dap-python": { "branch": "master", "commit": "bfe572e4458e0ac876b9539a1e9f301c72db8ea0" },
   "nvim-dap-ui": { "branch": "master", "commit": "cf91d5e2d07c72903d052f5207511bf7ecdb7122" },
   "nvim-dap-virtual-text": { "branch": "master", "commit": "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6" },
   "nvim-dap-vscode-js": { "branch": "main", "commit": "03bd29672d7fab5e515fc8469b7d07cc5994bbf6" },
