@@ -9,7 +9,7 @@ return {
     auto_suggestions_provider = "copilot",
 
     -- Configure your custom provider under the correct vendors table
-    vendors = {
+    providers = {
       opencode = {
         __inherited_from = "openai", -- Inherit standard OpenAI API structure
         endpoint = "https://opencode.ai", -- Replace with OpenCode's actual API endpoint
