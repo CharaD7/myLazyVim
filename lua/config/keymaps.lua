@@ -33,11 +33,11 @@ keymap.set("n", "sj", "<c-w>j")
 keymap.set("n", "sl", "<c-w>l")
 
 -- Vim TMUX navigator
-keymap.set("n", "<c-h>", ":<c-u>TmuxNavigateLeft<cr>", opts)
-keymap.set("n", "<c-l>", ":<c-u>TmuxNavigateRight<cr>", opts)
-keymap.set("n", "<c-k>", ":<c-u>TmuxNavigateUp<cr>", opts)
-keymap.set("n", "<c-j>", ":<c-u>TmuxNavigateDown<cr>", opts)
-keymap.set("n", "<c-/>", ":<c-u>TmuxNavigatePrevious<cr>", opts)
+-- keymap.set("n", "<c-h>", ":<c-w>h<cr>", opts)
+-- keymap.set("n", "<c-l>", ":<c-w>l<cr>", opts)
+-- keymap.set("n", "<c-k>", ":<c-w>k<cr>", opts)
+-- keymap.set("n", "<c-j>", ":<c-w>j<cr>", opts)
+-- keymap.set("n", "<c-/>", ":<c-w>TmuxNavigatePrevious<cr>", opts)
 
 -- Git conflict resolution
 keymap.set("n", "<leader>co", ":GitConflictChooseOurs<cr>", opts)
@@ -55,7 +55,7 @@ keymap.set("n", "<c-up", ":resize -2<cr>", opts)
 keymap.set("n", "<c-down", ":resize +2<cr>", opts)
 
 -- Lspsaga
-keymap.set("n", ";f", ":Lspsaga finder<cr>", opts )
+keymap.set("n", ";f", ":Lspsaga finder<cr>", opts)
 keymap.set("n", ";a", ":Lspsaga code_action<cr>", opts)
 keymap.set("n", ";o", ":Lspsaga hover_doc<cr>", opts)
 keymap.set("n", ";t", ":Lspsaga outline<cr>", opts)
@@ -81,39 +81,39 @@ keymap.set("n", ";m", ":messages<cr>", opts)
 
 -- Convert leading spaces to tabs interactively
 local function indent_to_tabs()
-	-- You prefer 2 spaces as one indent level, so we override tabstop logic
-	local tab_size = 2
-	local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+  -- You prefer 2 spaces as one indent level, so we override tabstop logic
+  local tab_size = 2
+  local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
 
-	for i, line in ipairs(lines) do
-		local leading = line:match("^%s+")
-		if leading then
-			local num_spaces = 0
-			for c in leading:gmatch(".") do
-				if c == "\t" then
-					num_spaces = num_spaces + tab_size -- treat tab as equivalent to 2 spaces
-				else
-					num_spaces = num_spaces + 1
-				end
-			end
+  for i, line in ipairs(lines) do
+    local leading = line:match("^%s+")
+    if leading then
+      local num_spaces = 0
+      for c in leading:gmatch(".") do
+        if c == "\t" then
+          num_spaces = num_spaces + tab_size -- treat tab as equivalent to 2 spaces
+        else
+          num_spaces = num_spaces + 1
+        end
+      end
 
-			local tabs = math.floor(num_spaces / tab_size)
-			local rest = line:sub(#leading + 1)
-			lines[i] = string.rep("\t", tabs) .. rest
-		end
-	end
+      local tabs = math.floor(num_spaces / tab_size)
+      local rest = line:sub(#leading + 1)
+      lines[i] = string.rep("\t", tabs) .. rest
+    end
+  end
 
-	vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 
-	vim.notify("✅ Indentation now respects 2-space tab logic", vim.log.levels.INFO, {
-		title = "Makefile Formatter",
-		timeout = 2500,
-		icon = "󰓾",
-	})
+  vim.notify("✅ Indentation now respects 2-space tab logic", vim.log.levels.INFO, {
+    title = "Makefile Formatter",
+    timeout = 2500,
+    icon = "󰓾",
+  })
 end
 
 -- Convert leading spaces to tabs
-keymap.set("n", ";ii",indent_to_tabs, opts)
+keymap.set("n", ";ii", indent_to_tabs, opts)
 
 -- Checkhealth
 keymap.set("n", "<leader>ch", ":checkhealth<cr>", opts)
@@ -139,17 +139,18 @@ keymap.set("v", "<s-a-k>", ":m '<-2<CR>==gv=gv", opts)
 -- Delete current buffer
 keymap.set("n", "<c-x>", ":bdelete<cr>", opts)
 
-
 local function markdown_codeblock(language, content)
-	return '\\`\\`\\`{' .. language .. '}\n' .. content .. '\n\\`\\`\\`'
+  return "\\`\\`\\`{" .. language .. "}\n" .. content .. "\n\\`\\`\\`"
 end
 
-local quarto_notebook_cmd = 'nvim -c enew -c "set filetype=quarto"' ..
-' -c "norm GO## IPython\nThis is Quarto IPython notebook. Syntax is the same as in markdown\n\n' .. markdown_codeblock('python', '# enter code here\n') .. '"' ..
-' -c "norm Gkk"' ..
--- This line needed because QuartoActivate and MoltenInit commands must be accessible; should be adjusted depending on plugin manager
-" -c \"lua require('lazy.core.loader').load({'molten-nvim', 'quarto-nvim'}, {cmd = 'Lazy load'})\"" ..
-' -c "MoltenInit python3" -c QuartoActivate -c startinsert'
+local quarto_notebook_cmd = 'nvim -c enew -c "set filetype=quarto"'
+  .. ' -c "norm GO## IPython\nThis is Quarto IPython notebook. Syntax is the same as in markdown\n\n'
+  .. markdown_codeblock("python", "# enter code here\n")
+  .. '"'
+  .. ' -c "norm Gkk"'
+  -- This line needed because QuartoActivate and MoltenInit commands must be accessible; should be adjusted depending on plugin manager
+  .. " -c \"lua require('lazy.core.loader').load({'molten-nvim', 'quarto-nvim'}, {cmd = 'Lazy load'})\""
+  .. ' -c "MoltenInit python3" -c QuartoActivate -c startinsert'
 
 -- Create new quarto notebook file
 keymap.set("n", "<leader>qn", quarto_notebook_cmd, opts)

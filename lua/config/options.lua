@@ -16,7 +16,7 @@ local options = {
 	relativenumber = true,
 	encoding = 'utf-8',
 	fileencoding = 'utf-8',
-	updatetime = 100,
+	updatetime = 300,
 	timeoutlen = 500,
 	ttimeoutlen = 10,
 	wildoptions = "pum",
@@ -79,7 +79,7 @@ if vim.g.neovide then
 	vim.g.neovide_theme = 'auto' -- Detect neovim set theme mode and switch accordingly
 	vim.g.neovide_floating_blur_amount_y = 4.0 -- works only on mac
 	vim.g.neovide_remember_window_size = true
-	vim.g.neovide_opacity = 0.8
+	vim.g.neovide_opacity = 0.5
 	vim.g.neovide_padding_top = 5
 	vim.g.neovide_padding_bottom = 5
 	vim.g.neovide_padding_right = 5

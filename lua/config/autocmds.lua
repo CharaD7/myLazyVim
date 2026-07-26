@@ -15,8 +15,10 @@ create("WinEnter", {
 	callback = function()
 		local win_config = vim.api.nvim_win_get_config(0)
 		if win_config.zindex then
-			require("lsp_lines").setup()
-			vim.diagnostic.config({ virtual_lines = false })
+			pcall(function()
+				require("lsp_lines").setup()
+				vim.diagnostic.config({ virtual_lines = false })
+			end)
 		end
 	end,
 })
@@ -78,9 +80,10 @@ create({ "BufWritePre" }, {
 })
 
 -- Configuration for vim diagnostics
+local icons
 create({ "DiagnosticChanged" }, {
 	callback = function()
-		local icons = require("chara.icons")
+		icons = icons or require("chara.icons")
 		local sign = function(opts)
 			vim.fn.sign_define(opts.name, {
 				texthl = opts.name,
@@ -96,11 +99,10 @@ create({ "DiagnosticChanged" }, {
 	end,
 })
 
--- Enable autosave at every edit and on focus lost
-create({ "CursorHold", "CursorHoldI", "FocusLost" }, {
+-- Enable autosave on focus lost only (CursorHold is too frequent)
+create({ "FocusLost" }, {
 	callback = function()
 		vim.cmd([[ :wa! ]])
-		-- if the current file is a .dart file, then run FlutterReload
 		if vim.fn.expand("%:e") == "dart" then
 			vim.cmd([[ FlutterReload ]])
 		end
@@ -139,136 +141,42 @@ create({ "BufReadPost" }, {
 	end,
 })
 
--- Border color for all floating windows
-create({
-	"ColorScheme",
-	"VimEnter",
-	"BufEnter",
-	"WinEnter",
-	"BufWinEnter",
-}, {
-		callback = function()
-			vim.cmd([[ highlight FloatBorder guifg=#61AFEF ]])
-			vim.cmd([[ highlight CursorLineNr guifg=#F28FAD ]])
-			vim.cmd([[ highlight Visual guibg=#555500 guifg=#FFFFFF ]]) -- background and foreground color for visual line
-			-- vim.cmd([[ highlight LineNr guifg=#2aa198 ]])
-			-- vim.cmd([[ highlight CursorLine guibg=#3f3a60 ]])
-		end,
-	})
+-- Consolidated highlights: set on VimEnter, VeryLazy (after lazy plugins load), and ColorScheme
+local function set_highlights()
+  vim.cmd([[ highlight FloatBorder guifg=#61AFEF ]])
+  vim.cmd([[ highlight CursorLineNr guifg=#F28FAD gui=bold ]])
+  vim.cmd([[ highlight Visual guibg=#555500 guifg=#FFFFFF ]])
+  vim.cmd([[ highlight LineNr guifg=#2aa198 ]])
+  vim.cmd([[ highlight Cursor guifg=#61AFEF ]])
+  vim.cmd([[ highlight BufferLineTabSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
+  vim.cmd([[ highlight BufferLineTabSeparatorSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
+  vim.cmd([[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]])
+  vim.cmd([[ highlight ScrollView guifg=#61AFEF guibg=#61AFEF ]])
+  vim.cmd([[ highlight WinSeparator guifg=#61AFEF ]])
+  vim.cmd([[ hi Keyword gui=underdotted cterm=underdotted ]])
+  vim.cmd([[ hi Comment gui=italic cterm=italic ]])
+  vim.cmd([[ hi Function gui=bold cterm=bold ]])
+  vim.cmd([[ hi Constant gui=underline cterm=underline ]])
+  vim.cmd([[ hi Exception gui=italic cterm=italic ]])
+  vim.cmd([[ hi Type gui=italic cterm=italic ]])
+  vim.cmd([[ hi Label gui=italic cterm=italic ]])
+  vim.cmd([[ hi Include gui=underdashed cterm=underdashed ]])
+  vim.cmd([[ hi StorageClass gui=underdashed cterm=underdashed ]])
+  vim.cmd([[ hi Structure gui=italic cterm=italic ]])
+  vim.cmd([[ hi Typedef gui=underdouble cterm=underdouble ]])
+  vim.cmd([[ hi SpecialComment gui=italic cterm=italic ]])
+  vim.cmd([[ hi PreProc gui=italic cterm=italic ]])
+  pcall(function()
+    local t = require("transparent")
+    t.clear_prefix("NeoTree")
+    t.clear_prefix("BufferLine")
+    vim.cmd([[ TransparentEnable ]])
+  end)
+end
 
--- Cursor color for all floating windows
-create({
-	"ColorScheme",
-	"VimEnter",
-	"BufEnter",
-	"WinEnter",
-	"BufWinEnter",
-}, {
-		callback = function()
-			vim.cmd([[ highlight Cursor guifg=#61AFEF ]])
-		end,
-	})
-
--- Auto-enable transparent plugin
-create({
-	"ColorScheme",
-	"VimEnter",
-	"BufEnter",
-	"WinEnter",
-	"BufWinEnter",
-}, {
-		callback = function()
-			local transparent = require("transparent")
-			transparent.clear_prefix("NeoTree")
-			transparent.clear_prefix("BufferLine")
-			vim.cmd([[ TransparentEnable ]])
-		end,
-	})
-
--- Highlights for Bufferline
---gui=underline cterm=underline
-create({
-	"ColorScheme",
-	"VimEnter",
-	"BufEnter",
-	"WinEnter",
-	"BufWinEnter",
-}, {
-		callback = function()
-			vim.cmd([[ highlight BufferLineTabSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
-			vim.cmd([[ highlight BufferLineTabSeparatorSelected gui=bold,underline guisp=#F28FAD guifg=#F28FAD ]])
-		end,
-	})
-
--- Automtically hot-reload Flutter app when dart file is written to buffer
--- create({'BufWritePost'}, {
---   pattern = '*.dart',
---   callback = function ()
---     vim.cmd([[ :silent !clear | execute "Flutter" .. (FlutterDevices() > 0 and \"Reload\" or \"Run\") ]])
---   end,
--- })
-
--- Set popup scrollbar color and vertical split color
-create({
-	"VimEnter",
-	"BufEnter",
-	"WinEnter",
-	"BufWinEnter",
-}, {
-		callback = function()
-			vim.cmd([[ highlight PmenuThumb guifg=#61AFEF guibg=#61AFEF ]])
-			vim.cmd([[ highlight ScrollView guifg=#61AFEF guibg=#61AFEF ]])
-			vim.cmd([[ highlight WinSeparator guifg=#61AFEF ]])
-			-- vim.cmd([[ highlight BlinkCmpDocBorder guifg=#61AFEF ]])
-		end,
-	})
-
--- Source bufferline config on VimEnter and BufEnter
-create({
-	"VimEnter",
-	"BufEnter",
-}, {
-		callback = function()
-			vim.cmd([[ source ~/.config/nvim/lua/plugins/bufferline.lua ]])
-		end,
-	})
-
--- Italic/Bold/Underline/underdashed font support for various neovim highlights
-create({
-	"VimEnter",
-	"BufEnter",
-	"WinEnter",
-	"BufWinEnter",
-}, {
-		callback = function()
-			-- All Keywords
-			vim.cmd([[ hi Keyword gui=underdotted cterm=underdotted ]])
-			-- All Comments
-			vim.cmd([[ hi Comment gui=italic cterm=italic ]])
-			-- All Functions
-			vim.cmd([[ hi Function gui=bold cterm=bold ]])
-			-- All Constants
-			vim.cmd([[ hi Constant gui=underline cterm=underline ]])
-			-- All Exceptions
-			vim.cmd([[ hi Exception gui=italic cterm=italic ]])
-			-- All Types
-			vim.cmd([[ hi Type gui=italic cterm=italic ]])
-			-- All Labels
-			vim.cmd([[ hi Label gui=italic cterm=italic ]])
-			-- All Includes
-			vim.cmd([[ hi Include gui=underdashed cterm=underdashed ]])
-			-- All StorageClasses
-			vim.cmd([[ hi StorageClass gui=underdashed cterm=underdashed ]])
-			-- All Structures
-			vim.cmd([[ hi Structure gui=italic cterm=italic ]])
-			-- All Typedefs
-			vim.cmd([[ hi Typedef gui=underdouble cterm=underdouble ]])
-			-- All SpecialComments
-			vim.cmd([[ hi SpecialComment gui=italic cterm=italic ]])
-			-- All PreProcs
-			vim.cmd([[ hi PreProc gui=italic cterm=italic ]])
-		end,
-	})
+create({ "VimEnter" }, { callback = set_highlights })
+create("User", { pattern = "VeryLazy", callback = set_highlights })
+create({ "ColorScheme" }, { callback = set_highlights })
 
 -- Enforce indentation settings for all files to have tabs instead of space
 create({
