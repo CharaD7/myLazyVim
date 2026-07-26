@@ -442,7 +442,7 @@ return {
 		}
 
 		require'py_lsp'.setup({
-			language_server = {"pylsp", "ruff"}, --"pylsp",
+			language_server = {"pylsp", "ruff", "pyright", "pylint" }, --"pylsp",
 			source_strategies = "system", -- {"poetry", "default", "conda", "system"},
 			capabilities = capabilities,
 			on_attach = on_attach,
@@ -526,7 +526,7 @@ return {
 	end,
 	-- Mason
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		opts = function(_, opts)
 			vim.list_extend(opts.ensure_installed, {
 				"stylua",
@@ -556,7 +556,7 @@ return {
 	},
 	-- Mason lspconfig
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup()
 		end,

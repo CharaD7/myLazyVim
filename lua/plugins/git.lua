@@ -1,11 +1,9 @@
--- git plugins
-
 return {
-  { 'sindrets/diffview.nvim' },
+  { 'sindrets/diffview.nvim', cmd = "DiffviewOpen" },
 
   {
     'lewis6991/gitsigns.nvim',
-    enabled = true,
+    event = "BufReadPost",
     config = function()
       require('gitsigns').setup {}
     end,
@@ -13,24 +11,25 @@ return {
 
   {
     'akinsho/git-conflict.nvim',
-    init = function()
+    keys = {
+      { '<leader>gco', ':GitConflictChooseOurs<cr>' },
+      { '<leader>gct', ':GitConflictChooseTheirs<cr>' },
+      { '<leader>gcb', ':GitConflictChooseBoth<cr>' },
+      { '<leader>gc0', ':GitConflictChooseNone<cr>' },
+      { ']x', ':GitConflictNextConflict<cr>' },
+      { '[x', ':GitConflictPrevConflict<cr>' },
+    },
+    config = function()
       require('git-conflict').setup {
         default_mappings = true,
         disable_diagnostics = false,
       }
     end,
-    -- keys = {
-    --   { '<leader>gco', ':GitConflictChooseOurs<cr>' },
-    --   { '<leader>gct', ':GitConflictChooseTheirs<cr>' },
-    --   { '<leader>gcb', ':GitConflictChooseBoth<cr>' },
-    --   { '<leader>gc0', ':GitConflictChooseNone<cr>' },
-    --   { ']x', ':GitConflictNextConflict<cr>' },
-    --   { '[x', ':GitConflictPrevConflict<cr>' },
-    -- },
   },
   {
     'f-person/git-blame.nvim',
-    init = function()
+    event = "BufReadPost",
+    config = function()
       require('gitblame').setup {
         enabled = true,
       }
@@ -39,4 +38,3 @@ return {
     end,
   },
 }
-

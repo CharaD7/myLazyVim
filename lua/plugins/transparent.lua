@@ -1,5 +1,6 @@
 return {
   'xiyaowong/transparent.nvim',
+  cmd = "TransparentEnable",
   opts = {
     groups = {
       'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',

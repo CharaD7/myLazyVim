@@ -1,11 +1,10 @@
 return {
 	"r-pletnev/pdfreader.nvim",
-	lazy = false,
+  cmd = "PdfReader",
 	dependencies = {
-		"folke/snacks.nvim", -- image rendering
+		"folke/snacks.nvim",
 	},
 	config = function()
 		require("pdfreader").setup()
 	end,
 }
-

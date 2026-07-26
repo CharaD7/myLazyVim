@@ -1,6 +1,6 @@
 return {
   'saghen/blink.cmp',
-  depedencies = {
+  dependencies = {
     -- 'hrsh7th/nvim-cmp',
     'rafamadriz/friendly-snippets',
     'codeium.nvim',
@@ -9,19 +9,12 @@ return {
   opts = {
     fuzzy = { implementation = "prefer_rust_with_warning" },
     sources = {
-      default = { 'lsp', 'omni', 'cmdline', 'path', 'easy-dotnet', 'snippets', 'buffer' },
+      default = { 'lsp', 'omni', 'cmdline', 'path', 'snippets', 'buffer' },
       compat = { "codeium" },
       providers = {
         codeium = {
           kind = "Codeium",
           score_offset = 100,
-          async = true,
-        },
-        ["easy-dotnet"] = {
-          name = "easy-dotnet",
-          enabled = true,
-          module = "easy-dotnet.completion.blink",
-          score_offset = 300,
           async = true,
         },
       },

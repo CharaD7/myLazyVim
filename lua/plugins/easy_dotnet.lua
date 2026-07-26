@@ -1,7 +1,6 @@
 return {
   "GustavEikaas/easy-dotnet.nvim",
-  -- 'nvim-telescope/telescope.nvim' or 'ibhagwan/fzf-lua'
-  -- are highly recommended for a better experience
+  cmd = "DotnetUI",
   config = function()
     local function get_secret_path(secret_guid)
       local path = ""
@@ -18,17 +17,11 @@ return {
     end
 
     local dotnet = require("easy-dotnet")
-    -- Options are not required
     dotnet.setup({
-      --Optional function to return the path for the dotnet sdk (e.g C:/ProgramFiles/dotnet/sdk/8.0.0)
-      -- easy-dotnet will resolve the path automatically if this argument is omitted, for a performance improvement you can add a function that returns a hardcoded string
-      -- You should define this function to return a hardcoded path for a performance improvement 🚀
       get_sdk_path = get_sdk_path,
-      ---@type TestRunnerOptions
       test_runner = {
-        ---@type "split" | "float" | "buf"
         viewmode = "float",
-        enable_buffer_test_execution = true, --Experimental, run tests directly from buffer
+        enable_buffer_test_execution = true,
         noBuild = true,
         noRestore = true,
         icons = {
@@ -56,12 +49,10 @@ return {
           expand_all = { lhs = "-", desc = "expand all" },
           collapse_all = { lhs = "W", desc = "collapse all" },
           close = { lhs = "q", desc = "close testrunner" },
-          refresh_testrunner = { lhs = "<C-r>", desc = "refresh testrunner" }
+          refresh_testrunner = { lhs = "<C-r>", desc = "refresh testrunner" },
         },
-        --- Optional table of extra args e.g "--blame crash"
-        additional_args = {}
+        additional_args = {},
       },
-      ---@param action "test" | "restore" | "build" | "run"
       terminal = function(path, action, args)
         local commands = {
           run = function()
@@ -75,26 +66,22 @@ return {
           end,
           build = function()
             return string.format("dotnet build %s %s", path, args)
-          end
+          end,
         }
-
         local command = commands[action]() .. "\r"
         vim.cmd("vsplit")
         vim.cmd("term " .. command)
       end,
       secrets = {
-        path = get_secret_path
+        path = get_secret_path,
       },
       csproj_mappings = true,
       fsproj_mappings = true,
       auto_bootstrap_namespace = {
-        --block_scoped, file_scoped
         type = "block_scoped",
-        enabled = true
+        enabled = true,
       },
-      -- choose which picker to use with the plugin
-      -- possible values are "telescope" | "fzf" | "basic"
       picker = "fzf",
     })
-  end
+  end,
 }

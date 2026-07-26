@@ -1,3 +1,4 @@
 return {
-	"adalessa/laravel.nvim"
+	"adalessa/laravel.nvim",
+  ft = "php",
 }

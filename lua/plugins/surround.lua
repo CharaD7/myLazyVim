@@ -1,6 +1,9 @@
 return {
   "ur4ltz/surround.nvim",
-  config = function ()
+  keys = {
+    { ",s", mode = { "n", "v" }, desc = "Surround" },
+  },
+  config = function()
     local surround = require("surround")
     surround.setup({
       context_offset = 101,
@@ -16,5 +19,5 @@ return {
       },
       prefix = ",",
     })
-  end
+  end,
 }

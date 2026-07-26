@@ -30,12 +30,12 @@ return {
   },
   -- Disable mini buffer remove and use Snacks buffer delete instead
   {
-    "echasnovski/mini.bufremove",
+    "nvim-mini/mini.bufremove",
     enabled = false,
   },
   -- Disable mini cursor word and use Snacks words instead
   {
-    "echasnovski/mini.cursorword",
+    "nvim-mini/mini.cursorword",
     enabled = false,
   },
   -- Disable nvim notify and use Snacks notify instead
@@ -74,7 +74,7 @@ return {
   {
     "folke/snacks.nvim",
     priority = 1000,
-    lazy = false,
+    event = "VeryLazy",
     ---@type snacks.Config
     opts = {
       dashboard = {

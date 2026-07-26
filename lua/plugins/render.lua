@@ -1,8 +1,7 @@
 return {
   'MeanderingProgrammer/render-markdown.nvim',
-  dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-  ---@module 'render-markdown'
-  ---@type render.md.UserConfig
+  ft = { "markdown", "quarto", "Avante" },
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
   opts = {
     completion = {
       blink = { enabled = true },
@@ -32,13 +31,9 @@ return {
         '└', '┴', '┘',
         '│', '─',
       },
-      -- Gets placed in delimiter row for each column, position is based on alignment.
       alignment_indicator = '━',
-      -- Highlight for table heading, delimiter, and the line above.
       head = 'RenderMarkdownTableHead',
-      -- Highlight for everything else, main table rows and the line below.
       row = 'RenderMarkdownTableRow',
-      -- Highlight for inline padding used to add back concealed space.
       filler = 'RenderMarkdownTableFill',
     },
     quote = {
@@ -57,19 +52,13 @@ return {
       highlight = 'RenderMarkdownBullet',
       render_modes = true,
       unchecked = {
-        -- Replaces '[ ]' of 'task_list_marker_unchecked'.
         icon = '󰄱 ',
-        -- Highlight for the unchecked icon.
         highlight = 'RenderMarkdownUnchecked',
-        -- Highlight for item associated with unchecked checkbox.
         scope_highlight = nil,
       },
       checked = {
-        -- Replaces '[x]' of 'task_list_marker_checked'.
         icon = '󰱒 ',
-        -- Highlight for the checked icon.
         highlight = 'RenderMarkdownChecked',
-        -- Highlight for item associated with checked checkbox.
         scope_highlight = nil,
       },
     },
@@ -84,15 +73,10 @@ return {
       enabled = true,
       style = 'full',
       render_modes = true,
-      -- Highlight for code blocks.
       highlight = 'RenderMarkdownCode',
-      -- Highlight for language, overrides icon provider value.
       highlight_language = nil,
-      -- Highlight for border, use false to add no highlight.
       highlight_border = 'RenderMarkdownCodeBorder',
-      -- Highlight for language, used if icon provider does not have a value.
       highlight_fallback = 'RenderMarkdownCodeFallback',
-      -- Highlight for inline code.
       highlight_inline = 'RenderMarkdownCodeInline',
     },
     paragraph = {
@@ -108,24 +92,13 @@ return {
       sign = true,
       atx = true,
       icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
-      -- Highlight for the heading icon and extends through the entire line.
-      -- Output is evaluated by `clamp(value, context.level)`.
     },
     callout = {
-      -- Callouts are a special instance of a 'block_quote' that start with a 'shortcut_link'.
-      -- The key is for healthcheck and to allow users to change its values, value type below.
-      -- | raw        | matched against the raw text of a 'shortcut_link', case insensitive |
-      -- | rendered   | replaces the 'raw' value when rendering                             |
-      -- | highlight  | highlight for the 'rendered' text and quote markers                 |
-      -- | quote_icon | optional override for quote.icon value for individual callout       |
-      -- | category   | optional metadata useful for filtering                              |
-
       note      = { raw = '[!NOTE]',      rendered = '󰋽 Note',      highlight = 'RenderMarkdownInfo',    category = 'github'   },
       tip       = { raw = '[!TIP]',       rendered = '󰌶 Tip',       highlight = 'RenderMarkdownSuccess', category = 'github'   },
       important = { raw = '[!IMPORTANT]', rendered = '󰅾 Important', highlight = 'RenderMarkdownHint',    category = 'github'   },
       warning   = { raw = '[!WARNING]',   rendered = '󰀪 Warning',   highlight = 'RenderMarkdownWarn',    category = 'github'   },
       caution   = { raw = '[!CAUTION]',   rendered = '󰳦 Caution',   highlight = 'RenderMarkdownError',   category = 'github'   },
-      -- Obsidian: https://help.obsidian.md/Editing+and+formatting/Callouts
       abstract  = { raw = '[!ABSTRACT]',  rendered = '󰨸 Abstract',  highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
       summary   = { raw = '[!SUMMARY]',   rendered = '󰨸 Summary',   highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
       tldr      = { raw = '[!TLDR]',      rendered = '󰨸 Tldr',      highlight = 'RenderMarkdownInfo',    category = 'obsidian' },
@@ -148,7 +121,6 @@ return {
       example   = { raw = '[!EXAMPLE]',   rendered = '󰉹 Example',   highlight = 'RenderMarkdownHint' ,   category = 'obsidian' },
       quote     = { raw = '[!QUOTE]',     rendered = '󱆨 Quote',     highlight = 'RenderMarkdownQuote',   category = 'obsidian' },
       cite      = { raw = '[!CITE]',      rendered = '󱆨 Cite',      highlight = 'RenderMarkdownQuote',   category = 'obsidian' },
-
     },
   },
 }

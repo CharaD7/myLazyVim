@@ -1,5 +1,6 @@
 return {
   "quarto-dev/quarto-nvim",
+  ft = { "quarto", "markdown" },
   dependencies = {
     "jmbuhr/otter.nvim",
     "nvim-treesitter/nvim-treesitter",
@@ -21,10 +22,9 @@ return {
     },
     codeRunner = {
       enabled = true,
-      default_method = "slime", -- "molten", "slime", "iron" or <function>
-      ft_runners = {}, -- filetype to runner, ie. `{ python = "molten" }`.
-      -- Takes precedence over `default_method`
-      never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
+      default_method = "slime",
+      ft_runners = {},
+      never_run = { 'yaml' },
     },
-  }
+  },
 }

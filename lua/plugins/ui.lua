@@ -18,7 +18,7 @@ return {
 
   { -- scrollbar
     'dstein64/nvim-scrollview',
-    enabled = true,
+    event = "BufReadPost",
     opts = {
       current_only = true,
     },

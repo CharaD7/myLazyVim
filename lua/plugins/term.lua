@@ -1,6 +1,7 @@
 return {
   "akinsho/toggleterm.nvim",
   version = "*",
+  cmd = "ToggleTerm",
   opts = {
     direction = "float",
     float_opts = {
@@ -8,7 +9,7 @@ return {
     },
     highlights = {
       FloatBorder = {
-        guifg = "#F28FAD"
+        guifg = "#F28FAD",
       },
     },
     shell = "/usr/bin/tmux",
